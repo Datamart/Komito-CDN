@@ -1,0 +1,10 @@
+.is-needingAuthorization .view-selector-container,
+.is-needingAuthorization #reports,
+.is-authorized  #embed-api-auth-container {
+  display: none;
+}
+
+.is-authorized .view-selector-container,
+.is-authorized #reports {
+  display: block;
+}
