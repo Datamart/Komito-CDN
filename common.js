@@ -8,6 +8,18 @@
 
 (function() {
   /**
+   * Initializes Google Analytics.
+   */
+  function initGa_() {
+    var ga = window['ga'];
+    if (ga) {
+      ga('create', 'UA-5065160-14', 'auto');
+      ga('require', 'displayfeatures');
+      ga('send', 'pageview');
+    }
+  }
+
+  /**
    * Toggles element class name.
    * @param {Node} element The element to add or remove the class on.
    * @param {string} className The class name to toggle.
@@ -38,5 +50,6 @@
     }
   }
 
+  initGa_();
   initMenu_();
 })();
