@@ -1,6 +1,1 @@
-*.pyc
-*.svn
-*.svn-base
-*.so
 .DS_Store
-build/lib
