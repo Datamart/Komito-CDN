@@ -53,8 +53,8 @@
    * @const {!Array.<string>}
    * @see https://developers.google.com/analytics/devguides/reporting/core/dimsmets
    */
-  var SOCIAL_METRICS = ['sessions', 'socialInteractions', 'uniqueSocialInteractions',
-                        'socialInteractionsPerSession'];
+  var SOCIAL_METRICS = ['socialInteractions', 'uniqueSocialInteractions',
+                        'socialInteractionsPerSession']; // 'sessions',
 
   /**
    * List of widgets Ids.
