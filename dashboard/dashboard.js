@@ -373,8 +373,7 @@
       return parseInt(a[0], 10) > parseInt(b[0], 10);
     });
 
-    var table = new charts.DataTable('report-events-scroll-table-container');
-    table.draw([
+    (new charts.DataTable('report-events-scroll-table-container')).draw([
       ['Depth'].concat(EVENTS_METRICS.map(function(name) {
         return {'label': toLabel_(name), 'type': 'number', 'name': name}
       }))
