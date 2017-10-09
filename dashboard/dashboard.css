@@ -8,3 +8,9 @@
 .is-authorized #reports {
   display: block;
 }
+
+.chart-container {
+  font-size: 20px;
+  height: 225px;
+  width: 225px;
+}
