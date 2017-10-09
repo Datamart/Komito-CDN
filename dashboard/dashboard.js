@@ -377,6 +377,11 @@
     setWidgetContent_(
         'events-scroll', getEventsGrid_(filtered, dimensions));
 
+    var table = new charts.DataTable('report-events-scroll-table-container');
+    table.draw([
+      ['Depth'].concat(EVENTS_METRICS)
+    ].concat(filtered));
+
     data = [[], []];
     filtered.forEach(function(row) {
       data[0].push(row[0]);
