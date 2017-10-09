@@ -356,10 +356,10 @@
    */
   function renderScrollEventsWidget_(data) {
     /** @type {!Array.<Array>} */ var filtered = [];
+    /** @type {number} */ var total = 0;
 
     data.forEach(function(row) {
       /** @type {number} */ var value = parseInt(row[EVENTS_LABEL_INDEX], 10);
-      /** @type {number} */ var total = 0;
 
       if (value >= 25 && value <= 100) {
         total += +row[EVENTS_TOTAL_INDEX];
