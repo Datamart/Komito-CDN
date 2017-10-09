@@ -380,7 +380,7 @@
     data = [[], []];
     filtered.forEach(function(row) {
       data[0].push(row[0]);
-      data[1].push(row[1]);
+      data[1].push(+row[1]);
     });
     (new charts.DonutChart('report-events-scroll-chart-container')).draw(data);
   }
