@@ -312,9 +312,9 @@
    * @private
    */
   function toLabel_(text) {
-    /** @type {string} */ var first = name.charAt(0);
+    /** @type {string} */ var first = text.charAt(0);
     first = first != first.toUpperCase() ? first.toUpperCase() : '';
-    return first + name.replace(/([A-Z])/g, ' $1').slice(1);
+    return first + text.replace(/([A-Z])/g, ' $1').slice(1);
   }
 
   /**
