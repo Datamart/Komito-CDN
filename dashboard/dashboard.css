@@ -15,12 +15,18 @@
   width: 225px;
 }
 
+.chart-container .kmt-parameter td {
+  background: transparent;
+  border: 0;
+}
+
 table.data-table {}
 table.data-table caption {}
 table.data-table thead tr th {}
 table.data-table thead tr th span {}
 table.data-table tbody tr td {}
 table.data-table tfoot tr td {}
+
 table.data-table tr.data-row-even {}
 table.data-table tr.data-row-odd {
   background-color: rgba(200, 200, 200, .2);

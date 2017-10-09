@@ -379,6 +379,9 @@
         return {'label': toLabel_(name), 'type': 'number', 'name': name}
       }))
     ].concat(filtered), {'footer': false});
+    table.addEventListener('sort', function() {
+      console.log(table.getColumn());
+    });
 
     data = [[], []];
     filtered.forEach(function(row) {
