@@ -359,24 +359,27 @@
 
     data.forEach(function(row) {
       /** @type {number} */ var value = parseInt(row[EVENTS_LABEL_INDEX], 10);
+      /** @type {number} */ var total = 0;
 
-      (value >= 25 && value <= 100) && filtered.push([
-        row[EVENTS_LABEL_INDEX],
-        row[EVENTS_TOTAL_INDEX],
-        row[EVENTS_UNIQUE_INDEX],
-        row[EVENTS_SESSIONS_INDEX],
-        (+row[EVENTS_PER_SESSIONS_INDEX]).toFixed(2)
-      ]);
+      if (value >= 25 && value <= 100) {
+        total += +row[EVENTS_TOTAL_INDEX];
+        filtered.push([
+          row[EVENTS_LABEL_INDEX],
+          row[EVENTS_TOTAL_INDEX],
+          row[EVENTS_UNIQUE_INDEX],
+          row[EVENTS_SESSIONS_INDEX],
+          (+row[EVENTS_PER_SESSIONS_INDEX]).toFixed(2)
+        ]);
+      }
     });
 
-    filtered.sort(function(a, b) {
-      return parseInt(a[0], 10) > parseInt(b[0], 10);
-    });
+    filtered.sort(function(a, b) {return parseInt(a[0], 10) > parseInt(b[0], 10);});
+    filtered.forEach(function(row) { row.push(row[1] / total * 100); });
 
     (new charts.DataTable('report-events-scroll-table-container')).draw([
       ['Depth'].concat(EVENTS_METRICS.map(function(name) {
         return {'label': toLabel_(name), 'type': 'number', 'name': name}
-      }))
+      }), [{'label': '%', 'name': 'presents', 'format': '<div style="width:{{ value }}%" class="bar"></div>'}}])
     ].concat(filtered), {'footer': false});
 
     data = [[], []];
