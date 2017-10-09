@@ -298,15 +298,23 @@
    */
   function getSimpleGrid_(data, dimensions, metrics) {
     return '<table border=1><thead><tr>' +
-           '<th>' + dimensions.map(function(name) {
-             return name.charAt(0).toUpperCase() + name.replace(/([A-Z])/g, ' $1').slice(1);
-           }).join('</th><th>') + '</th>' +
-           '<th>' + metrics.map(function(name) {
-             return name.charAt(0).toUpperCase() + name.replace(/([A-Z])/g, ' $1').slice(1);
-           }).join('</th><th>') + '</th>' +
+           '<th>' + dimensions.map(toLabel_).join('</th><th>') + '</th>' +
+           '<th>' + metrics.map(toLabel_).join('</th><th>') + '</th>' +
            '</tr></thead><tbody><tr>' + data.map(function(row) {
              return '<td>' + row.join('</td><td>') + '</td>';
            }).join('</tr><tr>') + '</tr></tbody></table>';
+  }
+
+  /**
+   * Converts camelCase text to human-readable text.
+   * @param {string} text Text to convert.
+   * @return {string} Converted text.
+   * @private
+   */
+  function toLabel_(text) {
+    /** @type {string} */ var first = name.charAt(0);
+    first = first != first.toUpperCase() ? first.toUpperCase() : '';
+    return first + name.replace(/([A-Z])/g, ' $1').slice(1);
   }
 
   /**
