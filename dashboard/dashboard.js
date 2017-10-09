@@ -377,8 +377,12 @@
     setWidgetContent_(
         'events-scroll', getEventsGrid_(filtered, dimensions));
 
-    filtered.unshift(dimensions.concat(EVENTS_METRICS));
-    (new charts.DonutChart('report-events-scroll-chart-container')).draw(filtered);
+    data = [[], []];
+    filtered.forEach(function(row) {
+      data[0].push(row[0]);
+      data[1].push(row[1]);
+    });
+    (new charts.DonutChart('report-events-scroll-chart-container')).draw(data);
   }
 
   function renderOutboundEventsWidget_(table) {
