@@ -374,7 +374,7 @@
     });
 
     filtered.sort(function(a, b) {return parseInt(a[0], 10) > parseInt(b[0], 10);});
-    filtered.forEach(function(row) { row.push(row[1] / total * 100); });
+    filtered.forEach(function(row) { row.push((row[1] / total * 100).toFixed(2)); });
 
     var format = '<div class="bar"><span style="width:{{ value }}%"></span>{{ value }}%</div>';
 
