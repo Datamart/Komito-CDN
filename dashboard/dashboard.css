@@ -69,7 +69,8 @@ table.data-table thead th.data-sort-desc {}
 .data-table .bar span {
   background: #3366BB;
   display: inline-block;
-  height: 20px;
+  height: 11px;
+  margin-right: 5px;
   -webkit-transition: width 2s;
   transition: width 2s;
   width: 0;

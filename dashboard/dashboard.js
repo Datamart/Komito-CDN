@@ -378,7 +378,7 @@
     filtered.sort(function(a, b) {return parseInt(a[0], 10) > parseInt(b[0], 10);});
 
     filtered.forEach(function(row) {
-      row.push('<div class="bar"><span style="width:' + (row[1] / max * 100 - 10) + '%"></span>' +
+      row.push('<div class="bar"><span style="width:' + (row[1] / max * 100 - 20) + '%"></span>' +
         (row[1] / total * 100).toFixed(2)+'%</div>');
     });
 
