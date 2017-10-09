@@ -20,8 +20,12 @@
   border: 0;
 }
 
-.kmt-parameter table.data-table tr th {
-  width: '';
+.kmt-parameter table.data-table tr th[width="14%"] {
+  width: 14%;
+}
+
+.kmt-parameter table.data-table tr th[width="30%"] {
+  width: 30%;
 }
 
 table.data-table {}
