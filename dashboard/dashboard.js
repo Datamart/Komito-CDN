@@ -25,9 +25,18 @@
    * @const {!Array.<string>}
    * @see https://developers.google.com/analytics/devguides/reporting/core/dimsmets
    */
-  var EVENTS_METRICS = ['sessions', 'totalEvents', 'uniqueEvents', 'eventValue',
-                        'sessionsWithEvent', 'avgEventValue',
-                        'eventsPerSessionWithEvent'];
+  var EVENTS_METRICS = ['totalEvents', 'uniqueEvents',
+                        'sessionsWithEvent', 'eventsPerSessionWithEvent'];
+                        // 'eventValue', 'avgEventValue', 'sessions',
+
+  /** @const {number} */ var EVENTS_DIMENSIONS_LENGTH = EVENTS_DIMENSIONS.length;
+  /** @const {number} */ var EVENTS_CATEGORY_INDEX = 0;
+  /** @const {number} */ var EVENTS_ACTION_INDEX = 1;
+  /** @const {number} */ var EVENTS_LABEL_INDEX = 2;
+  /** @const {number} */ var EVENTS_TOTAL_INDEX = EVENTS_DIMENSIONS_LENGTH;
+  /** @const {number} */ var EVENTS_UNIQUE_INDEX = EVENTS_DIMENSIONS_LENGTH + 1;
+  /** @const {number} */ var EVENTS_SESSIONS_INDEX = EVENTS_DIMENSIONS_LENGTH + 2;
+  /** @const {number} */ var EVENTS_PER_SESSIONS_INDEX = EVENTS_DIMENSIONS_LENGTH + 3;
 
   /**
    * List of social dimensions.
@@ -235,7 +244,7 @@
     var other = '';
 
     rows && rows.forEach(function(row) {
-      var category = row['dimensions'][0].split(':')[0];
+      var category = row['dimensions'][EVENTS_CATEGORY_INDEX].split(':')[0];
       tables[category] = tables[category] || [];
       tables[category].push([].concat(row['dimensions'], row['metrics'][0]['values']));
     });
@@ -347,13 +356,18 @@
    */
   function renderScrollEventsWidget_(data) {
     var dimensions = ['Depth'];
-    var metrics = ['Total Events', 'Unique Events', 'Sessions With Event', 'Events Per Session With Event'];
+    var metrics = ['Total Events', 'Unique Events', 'Sessions With Event', 'Events Per Session'];
     var filtered = [];
 
     data.forEach(function(row) {
-      /** @type {number} */ var value = parseInt(row[2], 10);
+      /** @type {number} */ var value = parseInt(row[EVENTS_LABEL_INDEX], 10);
+
       (value >= 25 && value <= 100) && filtered.push([
-        row[2], row[4], row[5], row[7], (+row[9]).toFixed(2)
+        row[EVENTS_LABEL_INDEX],
+        row[EVENTS_TOTAL_INDEX],
+        row[EVENTS_UNIQUE_INDEX],
+        row[EVENTS_SESSIONS_INDEX],
+        (+row[EVENTS_PER_SESSIONS_INDEX]).toFixed(2)
       ]);
     });
 
