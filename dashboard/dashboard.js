@@ -371,7 +371,8 @@
     });
 
     filtered.sort(function(a, b) {
-      return a[EVENTS_LABEL_INDEX] > b[EVENTS_LABEL_INDEX];
+      return parseInt(a[EVENTS_LABEL_INDEX], 10) >
+             parseInt(b[EVENTS_LABEL_INDEX], 10);
     });
 
     setWidgetContent_(
