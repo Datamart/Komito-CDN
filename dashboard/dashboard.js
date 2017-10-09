@@ -355,9 +355,14 @@
    * @private
    */
   function renderScrollEventsWidget_(data) {
-    var dimensions = ['Depth'];
-    var metrics = ['Total Events', 'Unique Events', 'Sessions With Event', 'Events Per Session'];
-    var filtered = [];
+    /** @type {!Array.<Array>} */ var filtered = [];
+    /** @type {!Array.<string>} */ var dimensions = ['Depth'];
+    /** @type {!Array.<string>} */ var metrics = [
+      EVENTS_METRICS[EVENTS_TOTAL_INDEX],
+      EVENTS_METRICS[EVENTS_UNIQUE_INDEX],
+      EVENTS_METRICS[EVENTS_SESSIONS_INDEX],
+      EVENTS_METRICS[EVENTS_PER_SESSIONS_INDEX]
+    ];
 
     data.forEach(function(row) {
       /** @type {number} */ var value = parseInt(row[EVENTS_LABEL_INDEX], 10);
@@ -369,6 +374,10 @@
         row[EVENTS_SESSIONS_INDEX],
         (+row[EVENTS_PER_SESSIONS_INDEX]).toFixed(2)
       ]);
+    });
+
+    filtered.sort(function(a, b) {
+      return a[EVENTS_LABEL_INDEX] > b[EVENTS_LABEL_INDEX];
     });
 
     setWidgetContent_(
