@@ -14,3 +14,30 @@
   height: 225px;
   width: 225px;
 }
+
+table.data-table {}
+table.data-table caption {}
+table.data-table thead tr th {}
+table.data-table thead tr th span {}
+table.data-table tbody tr td {}
+table.data-table tfoot tr td {}
+table.data-table tr.data-row-even {}
+table.data-table tr.data-row-odd {
+  background-color: rgba(200, 200, 200, .2);
+}
+table.data-table thead tr th.data-cell-text {}
+table.data-table thead tr th.data-cell-date {}
+table.data-table thead tr th.data-cell-bool {}
+table.data-table thead tr th.data-cell-number,
+table.data-table tfoot tr td.data-cell-number {
+  text-align: right;
+}
+table.data-table tbody tr td.data-cell-text {}
+table.data-table tbody tr td.data-cell-date {}
+table.data-table tbody tr td.data-cell-bool {}
+table.data-table tbody tr td.data-cell-number {}
+table.data-table tfoot tr td.data-cell-text {}
+table.data-table tfoot tr td.data-cell-date {}
+table.data-table tfoot tr td.data-cell-bool {}
+table.data-table thead th.data-sort-asc {}
+table.data-table thead th.data-sort-desc {}

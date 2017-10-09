@@ -382,7 +382,7 @@
       ['Depth'].concat(EVENTS_METRICS.map(function(name) {
         return {'label': toLabel_(name), 'type': 'number', 'name': name}
       }))
-    ].concat(filtered));
+    ].concat(filtered), {'footer': false});
 
     data = [[], []];
     filtered.forEach(function(row) {
