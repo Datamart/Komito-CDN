@@ -356,7 +356,6 @@
    */
   function renderScrollEventsWidget_(data) {
     /** @type {!Array.<Array>} */ var filtered = [];
-    /** @type {!Array.<string>} */ var dimensions = ['Depth'];
 
     data.forEach(function(row) {
       /** @type {number} */ var value = parseInt(row[EVENTS_LABEL_INDEX], 10);
@@ -373,9 +372,6 @@
     filtered.sort(function(a, b) {
       return parseInt(a[0], 10) > parseInt(b[0], 10);
     });
-
-    // setWidgetContent_(
-    //     'events-scroll', getEventsGrid_(filtered, dimensions));
 
     var table = new charts.DataTable('report-events-scroll-table-container');
     table.draw([
