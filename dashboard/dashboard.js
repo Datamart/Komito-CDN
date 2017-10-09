@@ -312,11 +312,14 @@
   /**
    * Gets HTML table markup for Events data grid.
    * @param {!Array.<Array.<string>} data List of data rows.
+   * @param {!Array.<string>=} opt_dimensions Optional list of dimensions.
+   * @param {!Array.<string>=} opt_metrics Optional list of metrics.
    * @return {string} Returns HTML table markup.
    * @private
    */
-  function getEventsGrid_(data) {
-    return getSimpleGrid_(data, EVENTS_DIMENSIONS, EVENTS_METRICS);
+  function getEventsGrid_(data, opt_dimensions, opt_metrics) {
+    return getSimpleGrid_(
+      data, opt_dimensions || EVENTS_DIMENSIONS, opt_metrics || EVENTS_METRICS);
   }
 
   /**
@@ -329,9 +332,25 @@
     return getSimpleGrid_(data, SOCIAL_DIMENSIONS, SOCIAL_METRICS);
   }
 
+  /**
+   * Renders scroll events widget.
+   * @param {!Array.<Array.<string>} data List of data rows.
+   * @private
+   */
+  function renderScrollEventsWidget_(data) {
+    var dimensions = ['Depth'];
+    var metrics = ['Total Events', 'Unique Events', 'Sessions With Event', 'Events Per Session With Event'];
+    var filtered = [];
 
-  function renderScrollEventsWidget_(table) {
-    setWidgetContent_('events-scroll', getEventsGrid_(table));
+    data.forEach(function(row) {
+      /** @type {number} */ var value = parseInt(row[2], 10);
+      (value >= 25 && value <= 100) && filtered.push([
+        row[2], row[4], row[5], row[7], (+row[9]).toFixed(2)
+      ]);
+    });
+
+    setWidgetContent_(
+        'events-scroll', getEventsGrid_(filtered, dimensions, metrics));
   }
 
   function renderOutboundEventsWidget_(table) {
