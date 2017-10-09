@@ -381,7 +381,7 @@
     (new charts.DataTable('report-events-scroll-table-container')).draw([
       ['Depth'].concat(EVENTS_METRICS.map(function(name) {
         return {'label': toLabel_(name), 'type': 'number', 'name': name}
-      }), [{'label': '%', 'name': 'presents', 'format': format, 'width': '20%'}])
+      }), [{'label': '%', 'name': 'presents', 'format': format}])
     ].concat(filtered), {'footer': false});
 
     data = [[], []];

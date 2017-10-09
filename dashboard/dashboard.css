@@ -20,6 +20,10 @@
   border: 0;
 }
 
+.kmt-parameter table.data-table tr th {
+  width: '';
+}
+
 table.data-table {}
 table.data-table caption {}
 table.data-table thead tr th {}
