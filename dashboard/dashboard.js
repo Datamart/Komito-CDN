@@ -382,12 +382,14 @@
         (row[1] / total * 100).toFixed(2)+'%</div>');
     });
 
-    var format = ''; // <div class="bar"><span style="width:{{ value }}%"></span>{{ value }}%</div>';
+    setWidgetContent_('events-scroll',
+      '<div id="report-events-scroll-chart-container" class="chart-container"></div>' +
+      '<div id="report-events-scroll-table-container"></div>');
 
     (new charts.DataTable('report-events-scroll-table-container')).draw([
       ['Depth'].concat(EVENTS_METRICS.map(function(name) {
         return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '14%'}
-      }), [{'label': '%', 'name': 'presents', 'format': format, 'width': '30%'}])
+      }), [{'label': '%', 'name': 'presents', 'width': '30%'}])
     ].concat(filtered), {'footer': false});
 
     data = [[], []];
