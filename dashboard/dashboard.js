@@ -374,12 +374,14 @@
       return parseInt(a[0], 10) > parseInt(b[0], 10);
     });
 
-    setWidgetContent_(
-        'events-scroll', getEventsGrid_(filtered, dimensions));
+    // setWidgetContent_(
+    //     'events-scroll', getEventsGrid_(filtered, dimensions));
 
     var table = new charts.DataTable('report-events-scroll-table-container');
     table.draw([
-      ['Depth'].concat(EVENTS_METRICS)
+      ['Depth'].concat(EVENTS_METRICS.map(function(name) {
+        return {'label': toLabel_(name), 'type': 'number', 'name': name}
+      }))
     ].concat(filtered));
 
     data = [[], []];
