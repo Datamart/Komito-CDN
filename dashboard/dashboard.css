@@ -62,6 +62,7 @@ table.data-table thead th.data-sort-asc {}
 table.data-table thead th.data-sort-desc {}
 
 .data-table .bar {
+  white-space: nowrap;
   width: 90%;
 }
 

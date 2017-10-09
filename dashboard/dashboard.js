@@ -357,12 +357,14 @@
   function renderScrollEventsWidget_(data) {
     /** @type {!Array.<Array>} */ var filtered = [];
     /** @type {number} */ var max = 0;
+    /** @type {number} */ var total = 0;
 
     data.forEach(function(row) {
       /** @type {number} */ var value = parseInt(row[EVENTS_LABEL_INDEX], 10);
 
       if (value >= 25 && value <= 100) {
-        max = Math.max(max, row[EVENTS_TOTAL_INDEX]);
+        max = Math.max(max, +row[EVENTS_TOTAL_INDEX]);
+        total += +row[EVENTS_TOTAL_INDEX];
         filtered.push([
           row[EVENTS_LABEL_INDEX],
           row[EVENTS_TOTAL_INDEX],
@@ -374,9 +376,13 @@
     });
 
     filtered.sort(function(a, b) {return parseInt(a[0], 10) > parseInt(b[0], 10);});
-    filtered.forEach(function(row) { row.push((row[1] / max * 100).toFixed(2)); });
 
-    var format = '<div class="bar"><span style="width:{{ value }}%"></span>{{ value }}%</div>';
+    filtered.forEach(function(row) {
+      row.push('<div class="bar"><span style="width:' + (row[1] / max * 100 - 10) + '%"></span>' +
+        (row[1] / total * 100).toFixed(2)+'%</div>');
+    });
+
+    var format = ''; // <div class="bar"><span style="width:{{ value }}%"></span>{{ value }}%</div>';
 
     (new charts.DataTable('report-events-scroll-table-container')).draw([
       ['Depth'].concat(EVENTS_METRICS.map(function(name) {
