@@ -371,12 +371,14 @@
     });
 
     filtered.sort(function(a, b) {
-      return parseInt(a[EVENTS_LABEL_INDEX], 10) >
-             parseInt(b[EVENTS_LABEL_INDEX], 10);
+      return parseInt(a[0], 10) > parseInt(b[0], 10);
     });
 
     setWidgetContent_(
         'events-scroll', getEventsGrid_(filtered, dimensions));
+
+    filtered.unshift(dimensions.concat(EVENTS_METRICS));
+    (new charts.DonutChart('report-events-scroll-chart-container')).draw(filtered);
   }
 
   function renderOutboundEventsWidget_(table) {
