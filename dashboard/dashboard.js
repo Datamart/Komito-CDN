@@ -73,6 +73,11 @@
                  'social-pageview', 'social-outbound', 'social-other'];
 
   /**
+   * @const {string}
+   */
+  var NO_DATA = 'No data';
+
+  /**
    * Initializes dashboard.
    * @see https://developers.google.com/analytics/devguides/reporting/embed/v1/core-methods-reference#ready
    * @private
@@ -222,7 +227,7 @@
    * @private
    */
   function displayResults_(response) {
-    setWidgetsContent_('No data');
+    setWidgetsContent_(NO_DATA);
 
     var reports = response['result'] && response['result']['reports'];
     if (reports) {
@@ -270,7 +275,7 @@
       }
     });
 
-    setWidgetContent_('events-other', other);
+    setWidgetContent_('events-other', other || NO_DATA);
     console.log('renderEventsReports_', tables);
   }
 
@@ -300,7 +305,7 @@
       }
     });
 
-    setWidgetContent_('social-other', other);
+    setWidgetContent_('social-other', other || NO_DATA);
     console.log('renderSocialReports_', tables);
   }
 
