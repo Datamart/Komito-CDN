@@ -444,20 +444,21 @@
       max = Math.max(max, +row[SOCIAL_INTERACTIONS_INDEX]);
       total += +row[SOCIAL_INTERACTIONS_INDEX];
       filtered.push([
-          row[SOCIAL_NETWORK_INDEX],
+          parseInt(row[SOCIAL_NETWORK_INDEX], 10),
           row[SOCIAL_INTERACTIONS_INDEX],
           row[SOCIAL_UNIQUE_INDEX],
           (+row[SOCIAL_PER_SESSIONS_INDEX]).toFixed(2)
       ]);
     });
 
+    filtered.sort(function(a, b) { return a[1] > b[1]; });
     filtered.forEach(function(row) { row.push(getBar_(row[1], max, total)); });
 
     (new charts.DataTable(id)).draw([
       ['Network'].concat(SOCIAL_METRICS.map(function(name) {
         return {'label': toLabel_(name), 'name': name, 'width': '14%', 'type': 'number'}
       }), [{'label': '%', 'name': 'presents', 'width': '30%'}])
-    ].concat(filtered), {'footer': false, 'sort': {'column': 1, 'dir': 'asc'}});
+    ].concat(filtered), {'footer': false});
   }
 
   function renderSocialOutboundWidget_(table) {
