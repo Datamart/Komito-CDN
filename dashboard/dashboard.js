@@ -396,8 +396,14 @@
   function renderCtaEventsWidget_(data) {
     /** @type {!Array.<Array>} */ var filtered = [];
     /** @type {number} */ var index = 2; // value index
+    /** @type {!Array.<!Object>} */ var columns = [
+      {'label': 'Category', 'width': '10%'},
+      {'label': 'Action', 'width': '20%'}
+    ].concat(EVENTS_METRICS.map(function(name) {
+      return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '10%'}
+    }), [{'label': '%', 'name': 'presents', 'width': '30%'}]);
 
-    filtered = renderEventWidget_(data, index, function(row, callback) {
+    filtered = renderEventWidget_(data, 'events-cta', index, columns, function(row, callback) {
       var value = +row[EVENTS_TOTAL_INDEX];
       var result = [
         row[EVENTS_CATEGORY_INDEX].slice(4), // 'cta:'
@@ -409,20 +415,14 @@
       ];
       callback(result, value);
     });
-
-    setWidgetContent_('events-cta', '<div id="report-events-cta-table-container"></div>');
-
-    (new charts.DataTable('report-events-cta-table-container')).draw([
-      [{'label': 'Category', 'width': '10%'}, 'Action'].concat(EVENTS_METRICS.map(function(name) {
-        return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '10%'}
-      }), [{'label': '%', 'name': 'presents', 'width': '30%'}])
-    ].concat(filtered), {'footer': false});
   }
 
-  function renderEventWidget_(data, index, iterator, opt_comparator) {
+  function renderEventWidget_(data, widget, index, columns, iterator, opt_comparator) {
     /** @type {!Array.<Array>} */ var filtered = [];
     /** @type {number} */ var max = 0;
     /** @type {number} */ var total = 0;
+    /** @type {string} */ var container = 'report-' + widget + '-table-container';
+    /** @type {!Object} */ var options =  {'footer': false};
 
     data.forEach(function(row) {
       iterator(row, function(row, value) {
@@ -442,7 +442,9 @@
       row.push(getBar_(row[index], max, total));
     });
 
-    return filtered;
+    setWidgetContent_(widget, '<div id="' + container + '"></div>');
+
+    (new charts.DataTable(container)).draw([columns].concat(filtered), options);
   }
 
 
