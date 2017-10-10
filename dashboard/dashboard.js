@@ -385,7 +385,7 @@
     ].concat(filtered), {'footer': false});
   }
 
-  function renderCtaEventsWidget_(table) {
+  function renderCtaEventsWidget_(data) {
     /** @type {!Array.<Array>} */ var filtered = [];
     /** @type {number} */ var max = 0;
     /** @type {number} */ var total = 0;
