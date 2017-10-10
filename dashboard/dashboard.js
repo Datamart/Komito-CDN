@@ -456,7 +456,7 @@
     (new charts.DataTable(id)).draw([
       ['Network'].concat(SOCIAL_METRICS.map(function(name) {
         return {'label': toLabel_(name), 'name': name, 'width': '14%', 'type': 'number'}
-      }), [{'label': '%', 'name': 'presents', 'width': '30%'}])
+      }), [{'label': '% ' + toLabel_(SOCIAL_METRICS[0]), 'name': 'presents', 'width': '30%'}])
     ].concat(filtered), {'footer': false});
   }
 
@@ -471,7 +471,7 @@
     }
 
     return '<div class="bar">' +
-           '<span style="width:' + width + '%"></span>' +
+           '<span style="width:' + Math.max(1, width) + '%"></span>' +
            presents.toFixed(2) + '%</div>';
   }
 
