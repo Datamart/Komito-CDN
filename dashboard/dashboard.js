@@ -164,6 +164,8 @@
     var endDate = new Date;
     var startDate = new Date;
     startDate.setMonth(startDate.getMonth() - 1);
+
+    document.getElementById('reports').style.display = 'block';
     setWidgetsContent_('Loading...');
 
     window['gapi']['client']['request']({
