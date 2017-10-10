@@ -439,9 +439,10 @@
   function renderSocialPageviewsWidget_(data) {
     /** @type {number} */ var max = 0;
     /** @type {number} */ var total = 0;
+    /** @type {string} */ var id = 'report-social-pageview-table-container';
     /** @type {Array} */ var columns = [].concat(SOCIAL_DIMENSIONS, SOCIAL_METRICS);
 
-    setWidgetContent_('social-pageview', '<div id="report-social-pageview-table-container"></div>');
+    setWidgetContent_('social-pageview', '<div id="' + id + '"></div>');
 
     data.forEach(function(row) {
       max = Math.max(max, +row[SOCIAL_INTERACTIONS_INDEX]);
@@ -454,11 +455,11 @@
         (row[1] / total * 100).toFixed(2)+'%</div>');
     });
 
-    (new charts.DataTable('report-social-pageview-table-container')).draw([
+    (new charts.DataTable(id)).draw([
       [].concat(columns.map(function(name) {
         return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '14%'}
       }), [{'label': '%', 'name': 'presents', 'width': '30%'}])
-    ].concat(filtered), {'footer': false});
+    ].concat(data), {'footer': false});
   }
 
   function renderSocialOutboundWidget_(table) {
