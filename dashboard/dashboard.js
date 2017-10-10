@@ -246,6 +246,29 @@
     }
   }
 
+  function renderReports_(report, type, iterator) {
+    /** @type {!Object.<string, Array>} */ var tables = {};
+    /** @type {Array} */ var rows = report['data']['rows'];
+    /** @type {string} */ var other = '';
+    var index = 'events' === type ? EVENTS_CATEGORY_INDEX : SOCIAL_ACTION_INDEX;
+
+    rows && rows.forEach(function(row) {
+      var dimension = row['dimensions'][index].split(':')[0];
+      tables[dimension] = tables[dimension] || [];
+      tables[dimension].push([].concat(row['dimensions'], row['metrics'][0]['values']));
+    });
+
+    Object.keys(tables).forEach(function(dimension) {
+      if (!iterator(dimension, tables[dimension])) {
+        other += getEventsGrid_(tables[dimension]);
+        console.log('[WARN] UNKNOWN DIMENSION:', dimension);
+      }
+    });
+
+    setWidgetContent_(type + '-other', other || NO_DATA);
+    console.log('renderReports_', type, tables);
+  }
+
   /**
    * Renders Events reports.
    * @param {!Object} report The report object.
@@ -253,32 +276,20 @@
    * @private
    */
   function renderEventsReports_(report) {
-    var tables = {};
-    var rows = report['data']['rows'];
-    var other = '';
+    renderReports_(report, 'events', function(key, data) {
+      /** @type {boolean} */ var result = true;
 
-    rows && rows.forEach(function(row) {
-      var category = row['dimensions'][EVENTS_CATEGORY_INDEX].split(':')[0];
-      tables[category] = tables[category] || [];
-      tables[category].push([].concat(row['dimensions'], row['metrics'][0]['values']));
+      if ('scroll' === key) renderScrollEventsWidget_(data);
+      else if ('outbound' === key) renderOutboundEventsWidget_(data);
+      else if ('cta' === key) renderCtaEventsWidget_(data);
+      else if ('download' === key) renderDownloadEventsWidget_(data);
+      else if ('form' === key) renderFormEventsWidget_(data);
+      else if ('print' === key) renderPrintEventsWidget_(data);
+      else if ('video' === key) renderVideoEventsWidget_(data);
+      else result = false;
+
+      return result;
     });
-
-    Object.keys(tables).forEach(function(category) {
-      if ('scroll' === category) renderScrollEventsWidget_(tables[category]);
-      else if ('outbound' === category) renderOutboundEventsWidget_(tables[category]);
-      else if ('cta' === category) renderCtaEventsWidget_(tables[category]);
-      else if ('download' === category) renderDownloadEventsWidget_(tables[category]);
-      else if ('form' === category) renderFormEventsWidget_(tables[category]);
-      else if ('print' === category) renderPrintEventsWidget_(tables[category]);
-      else if ('video' === category) renderVideoEventsWidget_(tables[category]);
-      else {
-        other += getEventsGrid_(tables[category]);
-        console.log('[WARN] UNKNOWN EVENT CATEGORY:', category);
-      }
-    });
-
-    setWidgetContent_('events-other', other || NO_DATA);
-    console.log('renderEventsReports_', tables);
   }
 
   /**
@@ -288,27 +299,15 @@
    * @private
    */
   function renderSocialReports_(report) {
-    var tables = {};
-    var rows = report['data']['rows'];
-    var other = '';
+    renderReports_(report, 'social', function(key, data) {
+      /** @type {boolean} */ var result = true;
 
-    rows && rows.forEach(function(row) {
-      var action = row['dimensions'][1].split(':')[0];
-      tables[action] = tables[action] || [];
-      tables[action].push([].concat(row['dimensions'], row['metrics'][0]['values']));
+      if ('pageview' === key) renderSocialPageviewsWidget_(data);
+      else if ('outbound' === key) renderSocialOutboundWidget_(data);
+      else result = false;
+
+      return result;
     });
-
-    Object.keys(tables).forEach(function(action) {
-      if ('pageview' === action) renderSocialPageviewsWidget_(tables[action]);
-      else if ('outbound' === action) renderSocialOutboundWidget_(tables[action]);
-      else {
-        other += getEventsGrid_(tables[action]);
-        console.log('[WARN] UNKNOWN SOCIAL ACTION:', action);
-      }
-    });
-
-    setWidgetContent_('social-other', other || NO_DATA);
-    console.log('renderSocialReports_', tables);
   }
 
   /**
