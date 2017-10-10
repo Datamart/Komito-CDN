@@ -390,7 +390,7 @@
     filtered.forEach(function(row) { row.push(getBar_(row[1], max, total)); });
 
     setWidgetContent_('events-scroll',
-      '<div id="report-events-scroll-chart-container" class="chart-container"></div>' +
+      //'<div id="report-events-scroll-chart-container" class="chart-container"></div>' +
       '<div id="report-events-scroll-table-container"></div>');
 
     (new charts.DataTable('report-events-scroll-table-container')).draw([
