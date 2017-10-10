@@ -444,8 +444,8 @@
       max = Math.max(max, +row[SOCIAL_INTERACTIONS_INDEX]);
       total += +row[SOCIAL_INTERACTIONS_INDEX];
       filtered.push([
-          parseInt(row[SOCIAL_NETWORK_INDEX], 10),
-          row[SOCIAL_INTERACTIONS_INDEX],
+          row[SOCIAL_NETWORK_INDEX],
+          +row[SOCIAL_INTERACTIONS_INDEX],
           row[SOCIAL_UNIQUE_INDEX],
           (+row[SOCIAL_PER_SESSIONS_INDEX]).toFixed(2)
       ]);
