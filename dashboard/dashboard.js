@@ -222,7 +222,7 @@
    * @private
    */
   function displayResults_(response) {
-    setWidgetsContent_('');
+    setWidgetsContent_('No data');
 
     var reports = response['result'] && response['result']['reports'];
     if (reports) {
