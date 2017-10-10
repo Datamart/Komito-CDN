@@ -383,11 +383,7 @@
     });
 
     filtered.sort(function(a, b) {return parseInt(a[0], 10) > parseInt(b[0], 10);});
-
-    filtered.forEach(function(row) {
-      row.push('<div class="bar"><span style="width:' + (row[1] / max * 100 - 20) + '%"></span>' +
-        (row[1] / total * 100).toFixed(2)+'%</div>');
-    });
+    filtered.forEach(function(row) { row.push(getBar_(row[1], max, total)); });
 
     setWidgetContent_('events-scroll',
       '<div id="report-events-scroll-chart-container" class="chart-container"></div>' +
@@ -437,33 +433,41 @@
    * @private
    */
   function renderSocialPageviewsWidget_(data) {
+    /** @type {!Array.<Array>} */ var filtered = [];
     /** @type {number} */ var max = 0;
     /** @type {number} */ var total = 0;
     /** @type {string} */ var id = 'report-social-pageview-table-container';
-    /** @type {Array} */ var columns = [].concat(SOCIAL_DIMENSIONS, SOCIAL_METRICS);
 
     setWidgetContent_('social-pageview', '<div id="' + id + '"></div>');
 
     data.forEach(function(row) {
       max = Math.max(max, +row[SOCIAL_INTERACTIONS_INDEX]);
       total += +row[SOCIAL_INTERACTIONS_INDEX];
-      row[SOCIAL_PER_SESSIONS_INDEX] = (+row[SOCIAL_PER_SESSIONS_INDEX]).toFixed(2);
+      filtered.push([
+          row[SOCIAL_NETWORK_INDEX],
+          row[SOCIAL_INTERACTIONS_INDEX],
+          row[SOCIAL_UNIQUE_INDEX],
+          (+row[SOCIAL_PER_SESSIONS_INDEX]).toFixed(2)
+      ]);
     });
 
-    data.forEach(function(row) {
-      row.push('<div class="bar"><span style="width:' + (row[1] / max * 100 - 20) + '%"></span>' +
-        (row[1] / total * 100).toFixed(2)+'%</div>');
-    });
+    data.forEach(function(row) { row.push(getBar_(row[1], max, total)); });
 
     (new charts.DataTable(id)).draw([
-      [].concat(columns.map(function(name) {
-        return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '14%'}
+      ['Network'].concat(SOCIAL_METRICS.map(function(name) {
+        return {'label': toLabel_(name), 'name': name, 'width': '14%', 'type': 'number'}
       }), [{'label': '%', 'name': 'presents', 'width': '30%'}])
     ].concat(data), {'footer': false});
   }
 
   function renderSocialOutboundWidget_(table) {
     setWidgetContent_('social-outbound', getSocialGrid_(table));
+  }
+
+  function getBar_(value, max, total) {
+    return '<div class="bar">' +
+           '<span style="width:' + (value / max * 100 - 20) + '%"></span>' +
+           (value / total * 100).toFixed(2) + '%</div>';
   }
 
   // Initializing dashboard.
