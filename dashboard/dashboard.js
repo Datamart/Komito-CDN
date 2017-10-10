@@ -406,7 +406,7 @@
       total += +row[EVENTS_TOTAL_INDEX];
       filtered.push([
         row[EVENTS_CATEGORY_INDEX].slice(4), // 'cta:'
-        '<a href="'+row[EVENTS_LABEL_INDEX]+'">'+row[EVENTS_ACTION_INDEX]+'</a>',
+        row[EVENTS_ACTION_INDEX],
         row[EVENTS_TOTAL_INDEX],
         row[EVENTS_UNIQUE_INDEX],
         row[EVENTS_SESSIONS_INDEX],
@@ -420,11 +420,10 @@
     setWidgetContent_('events-cta', '<div id="report-events-cta-table-container"></div>');
 
     (new charts.DataTable('report-events-cta-table-container')).draw([
-      ['Category', 'Action'].concat(EVENTS_METRICS.map(function(name) {
-        return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '14%'}
+      [{'label': 'Category', 'width': '10%'}, 'Action'].concat(EVENTS_METRICS.map(function(name) {
+        return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '10%'}
       }), [{'label': '%', 'name': 'presents', 'width': '30%'}])
     ].concat(filtered), {'footer': false});
-    //setWidgetContent_('events-cta', getSimpleGrid_(table));
   }
 
   function renderOutboundEventsWidget_(table) {
