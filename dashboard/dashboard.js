@@ -398,7 +398,7 @@
       /** @type {number} */ var value = +row[EVENTS_TOTAL_INDEX];
       callback(value, [
           row[EVENTS_CATEGORY_INDEX].slice(4), // 'cta:'
-          row[EVENTS_ACTION_INDEX],
+          row[EVENTS_ACTION_INDEX].slice(0, 50),
           value,
           row[EVENTS_UNIQUE_INDEX],
           row[EVENTS_SESSIONS_INDEX],
