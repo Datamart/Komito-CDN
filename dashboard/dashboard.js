@@ -56,6 +56,13 @@
   var SOCIAL_METRICS = ['socialInteractions', 'uniqueSocialInteractions',
                         'socialInteractionsPerSession']; // 'sessions',
 
+  /** @const {number} */ var SOCIAL_DIMENSIONS_LENGTH = SOCIAL_DIMENSIONS.length;
+  /** @const {number} */ var SOCIAL_NETWORK_INDEX = 0;
+  /** @const {number} */ var SOCIAL_ACTION_INDEX = 1;
+  /** @const {number} */ var SOCIAL_INTERACTIONS_INDEX = SOCIAL_DIMENSIONS_LENGTH;
+  /** @const {number} */ var SOCIAL_UNIQUE_INDEX = SOCIAL_DIMENSIONS_LENGTH + 1;
+  /** @const {number} */ var SOCIAL_PER_SESSIONS_INDEX = EVENTS_DIMENSIONS_LENGTH + 2;
+
   /**
    * List of widgets Ids.
    * @const {!Array.<string>}
@@ -424,8 +431,34 @@
     setWidgetContent_('events-video', getEventsGrid_(table));
   }
 
-  function renderSocialPageviewsWidget_(table) {
-    setWidgetContent_('social-pageview', getSocialGrid_(table));
+  /**
+   * Renders social pageviews widget.
+   * @param {!Array.<Array.<string>} data List of data rows.
+   * @private
+   */
+  function renderSocialPageviewsWidget_(data) {
+    /** @type {number} */ var max = 0;
+    /** @type {number} */ var total = 0;
+    /** @type {Array} */ var columns = [].concat(SOCIAL_DIMENSIONS, SOCIAL_METRICS);
+
+    setWidgetContent_('social-pageview', '<div id="report-social-pageview-table-container"></div>');
+
+    data.forEach(function(row) {
+      max = Math.max(max, +row[SOCIAL_INTERACTIONS_INDEX]);
+      total += +row[SOCIAL_INTERACTIONS_INDEX];
+      row[SOCIAL_PER_SESSIONS_INDEX] = (+row[SOCIAL_PER_SESSIONS_INDEX]).toFixed(2);
+    });
+
+    data.forEach(function(row) {
+      row.push('<div class="bar"><span style="width:' + (row[1] / max * 100 - 20) + '%"></span>' +
+        (row[1] / total * 100).toFixed(2)+'%</div>');
+    });
+
+    (new charts.DataTable('report-social-pageview-table-container')).draw([
+      [].concat(columns.map(function(name) {
+        return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '14%'}
+      }), [{'label': '%', 'name': 'presents', 'width': '30%'}])
+    ].concat(filtered), {'footer': false});
   }
 
   function renderSocialOutboundWidget_(table) {
