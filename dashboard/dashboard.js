@@ -363,6 +363,7 @@
     /** @type {!Array.<Array>} */ var filtered = [];
     /** @type {number} */ var max = 0;
     /** @type {number} */ var total = 0;
+    /** @type {number} */ var index = 1; // value index
 
     data.forEach(function(row) {
       /** @type {number} */ var value = parseInt(row[EVENTS_LABEL_INDEX], 10);
@@ -381,7 +382,7 @@
     });
 
     filtered.sort(function(a, b) {return parseInt(a[0], 10) > parseInt(b[0], 10);});
-    filtered.forEach(function(row) { row.push(getBar_(row[1], max, total)); });
+    filtered.forEach(function(row) { row.push(getBar_(row[index], max, total)); });
 
     setWidgetContent_('events-scroll', '<div id="report-events-scroll-table-container"></div>');
 
@@ -396,6 +397,7 @@
     /** @type {!Array.<Array>} */ var filtered = [];
     /** @type {number} */ var max = 0;
     /** @type {number} */ var total = 0;
+    /** @type {number} */ var index = 2; // value index
 
     data.forEach(function(row) {
       /** @type {number} */ var value = parseInt(row[EVENTS_LABEL_INDEX], 10);
@@ -403,7 +405,7 @@
       max = Math.max(max, +row[EVENTS_TOTAL_INDEX]);
       total += +row[EVENTS_TOTAL_INDEX];
       filtered.push([
-        row[EVENTS_CATEGORY_INDEX],
+        row[EVENTS_CATEGORY_INDEX].slice(4), // 'cta:'
         '<a href="'+row[EVENTS_LABEL_INDEX]+'">'+row[EVENTS_ACTION_INDEX]+'</a>',
         row[EVENTS_TOTAL_INDEX],
         row[EVENTS_UNIQUE_INDEX],
@@ -412,8 +414,8 @@
       ]);
     });
 
-    filtered.sort(function(a, b) {return parseInt(a[0], 10) > parseInt(b[0], 10);});
-    filtered.forEach(function(row) { row.push(getBar_(row[1], max, total)); });
+    filtered.sort(function(a, b) { return b[index] - a[index]; });
+    filtered.forEach(function(row) { row.push(getBar_(row[index], max, total)); });
 
     setWidgetContent_('events-cta', '<div id="report-events-cta-table-container"></div>');
 
@@ -468,6 +470,7 @@
     /** @type {!Array.<Array>} */ var filtered = [];
     /** @type {number} */ var max = 0;
     /** @type {number} */ var total = 0;
+    /** @type {number} */ var index = 1; // value index
     /** @type {string} */ var id = 'report-social-' + widget + '-table-container';
 
     setWidgetContent_('social-' + widget, '<div id="' + id + '"></div>');
@@ -483,8 +486,8 @@
       ]);
     });
 
-    filtered.sort(function(a, b) { return b[1] - a[1]; });
-    filtered.forEach(function(row) { row.push(getBar_(row[1], max, total)); });
+    filtered.sort(function(a, b) { return b[index] - a[index]; });
+    filtered.forEach(function(row) { row.push(getBar_(row[index], max, total)); });
 
     (new charts.DataTable(id)).draw([
       ['Network'].concat(SOCIAL_METRICS.map(function(name) {
