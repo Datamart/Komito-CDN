@@ -360,42 +360,28 @@
    * @private
    */
   function renderScrollEventsWidget_(data) {
-    /** @type {!Array.<Array>} */ var filtered = [];
-    /** @type {number} */ var max = 0;
-    /** @type {number} */ var total = 0;
-    /** @type {number} */ var index = 1; // value index
+    /** @type {number} */ var index = 1; // Sort index.
+    /** @type {!Array.<!Object>} */ var columns = ['Depth'].concat(EVENTS_METRICS.map(function(name) {
+      return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '14%'}
+    }));
 
-    data.forEach(function(row) {
+    renderEventWidget_(data, 'events-scroll', index, columns, function(row, callback) {
       /** @type {number} */ var value = parseInt(row[EVENTS_LABEL_INDEX], 10);
-
       if (value >= 25 && value <= 100) {
-        max = Math.max(max, +row[EVENTS_TOTAL_INDEX]);
-        total += +row[EVENTS_TOTAL_INDEX];
-        filtered.push([
-          row[EVENTS_LABEL_INDEX],
-          row[EVENTS_TOTAL_INDEX],
-          row[EVENTS_UNIQUE_INDEX],
-          row[EVENTS_SESSIONS_INDEX],
-          (+row[EVENTS_PER_SESSIONS_INDEX]).toFixed(2)
+        value = +row[EVENTS_TOTAL_INDEX];
+        callback(value,
+            row[EVENTS_LABEL_INDEX],
+            value,
+            row[EVENTS_UNIQUE_INDEX],
+            row[EVENTS_SESSIONS_INDEX],
+            (+row[EVENTS_PER_SESSIONS_INDEX]).toFixed(2)
         ]);
       }
     });
-
-    filtered.sort(function(a, b) {return parseInt(a[0], 10) > parseInt(b[0], 10);});
-    filtered.forEach(function(row) { row.push(getBar_(row[index], max, total)); });
-
-    setWidgetContent_('events-scroll', '<div id="report-events-scroll-table-container"></div>');
-
-    (new charts.DataTable('report-events-scroll-table-container')).draw([
-      ['Depth'].concat(EVENTS_METRICS.map(function(name) {
-        return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '14%'}
-      }), [{'label': '%', 'name': 'presents', 'width': '30%'}])
-    ].concat(filtered), {'footer': false});
   }
 
   function renderCtaEventsWidget_(data) {
-    /** @type {!Array.<Array>} */ var filtered = [];
-    /** @type {number} */ var index = 2; // value index
+    /** @type {number} */ var index = 2; // Sort index.
     /** @type {!Array.<!Object>} */ var columns = [
       {'label': 'Category', 'width': '10%'},
       {'label': 'Action', 'width': '20%'}
@@ -404,7 +390,7 @@
     }));
 
     renderEventWidget_(data, 'events-cta', index, columns, function(row, callback) {
-      var value = +row[EVENTS_TOTAL_INDEX];
+      /** @type {number} */ var value = +row[EVENTS_TOTAL_INDEX];
       callback(value, [
           row[EVENTS_CATEGORY_INDEX].slice(4), // 'cta:'
           row[EVENTS_ACTION_INDEX],
