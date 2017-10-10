@@ -347,16 +347,6 @@
   }
 
   /**
-   * Gets HTML table markup for Social data grid.
-   * @param {!Array.<Array.<string>} data List of data rows.
-   * @return {string} Returns HTML table markup.
-   * @private
-   */
-  function getSocialGrid_(data) {
-    return getSimpleGrid_(data, SOCIAL_DIMENSIONS, SOCIAL_METRICS);
-  }
-
-  /**
    * Renders scroll events widget.
    * @param {!Array.<Array.<string>} data List of data rows.
    * @private
@@ -433,12 +423,21 @@
    * @private
    */
   function renderSocialPageviewsWidget_(data) {
+    renderSocialWidget_('pageview', data);
+  }
+
+  function renderSocialOutboundWidget_(data) {
+    renderSocialWidget_('outbound', data);
+  }
+
+
+  function renderSocialWidget_(widget, data) {
     /** @type {!Array.<Array>} */ var filtered = [];
     /** @type {number} */ var max = 0;
     /** @type {number} */ var total = 0;
-    /** @type {string} */ var id = 'report-social-pageview-table-container';
+    /** @type {string} */ var id = 'report-social-' + widget + '-table-container';
 
-    setWidgetContent_('social-pageview', '<div id="' + id + '"></div>');
+    setWidgetContent_('social-' + widget, '<div id="' + id + '"></div>');
 
     data.forEach(function(row) {
       max = Math.max(max, +row[SOCIAL_INTERACTIONS_INDEX]);
@@ -459,10 +458,6 @@
         return {'label': toLabel_(name), 'name': name, 'width': '14%', 'type': 'number'}
       }), [{'label': '%', 'name': 'presents', 'width': '30%'}])
     ].concat(filtered), {'footer': false});
-  }
-
-  function renderSocialOutboundWidget_(table) {
-    setWidgetContent_('social-outbound', getSocialGrid_(table));
   }
 
 
