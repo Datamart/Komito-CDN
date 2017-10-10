@@ -395,27 +395,20 @@
 
   function renderCtaEventsWidget_(data) {
     /** @type {!Array.<Array>} */ var filtered = [];
-    /** @type {number} */ var max = 0;
-    /** @type {number} */ var total = 0;
     /** @type {number} */ var index = 2; // value index
 
-    data.forEach(function(row) {
-      /** @type {number} */ var value = parseInt(row[EVENTS_LABEL_INDEX], 10);
-
-      max = Math.max(max, +row[EVENTS_TOTAL_INDEX]);
-      total += +row[EVENTS_TOTAL_INDEX];
-      filtered.push([
+    filtered = renderEventWidget_(data, index, function(row, callback) {
+      var value = +row[EVENTS_TOTAL_INDEX];
+      var result = [
         row[EVENTS_CATEGORY_INDEX].slice(4), // 'cta:'
         row[EVENTS_ACTION_INDEX],
-        row[EVENTS_TOTAL_INDEX],
+        value,
         row[EVENTS_UNIQUE_INDEX],
         row[EVENTS_SESSIONS_INDEX],
         (+row[EVENTS_PER_SESSIONS_INDEX]).toFixed(2)
-      ]);
+      ];
+      callback(result, value);
     });
-
-    filtered.sort(function(a, b) { return b[index] - a[index]; });
-    filtered.forEach(function(row) { row.push(getBar_(row[index], max, total)); });
 
     setWidgetContent_('events-cta', '<div id="report-events-cta-table-container"></div>');
 
@@ -425,6 +418,33 @@
       }), [{'label': '%', 'name': 'presents', 'width': '30%'}])
     ].concat(filtered), {'footer': false});
   }
+
+  function renderEventWidget_(data, index, iterator, opt_comparator) {
+    /** @type {!Array.<Array>} */ var filtered = [];
+    /** @type {number} */ var max = 0;
+    /** @type {number} */ var total = 0;
+
+    data.forEach(function(row) {
+      iterator(row, function(row, value) {
+        if (row) {
+          max = Math.max(max, value);
+          total += value;
+          filtered.push(row);
+        }
+      });
+    });
+
+    filtered.sort(opt_comparator || function(a, b) {
+      return b[index] - a[index];
+    });
+
+    filtered.forEach(function(row) {
+      row.push(getBar_(row[index], max, total));
+    });
+
+    return filtered;
+  }
+
 
   function renderOutboundEventsWidget_(table) {
     setWidgetContent_('events-outbound', getSimpleGrid_(table));
