@@ -258,7 +258,8 @@
     /** @type {!Object.<string, Array>} */ var tables = {};
     /** @type {Array} */ var rows = report['data']['rows'];
     /** @type {string} */ var other = '';
-    var index = 'events' === type ? EVENTS_CATEGORY_INDEX : SOCIAL_ACTION_INDEX;
+    /** @type {boolean} */ var isEvents = 'events' === type;
+    var index = isEvents ? EVENTS_CATEGORY_INDEX : SOCIAL_ACTION_INDEX;
 
     rows && rows.forEach(function(row) {
       var dimension = row['dimensions'][index].split(':')[0];
@@ -268,7 +269,10 @@
 
     Object.keys(tables).forEach(function(dimension) {
       if (!iterator(dimension, tables[dimension])) {
-        other += getSimpleGrid_(tables[dimension]);
+        other += getSimpleGrid_(
+            tables[dimension],
+            isEvents ? EVENTS_DIMENSIONS : SOCIAL_DIMENSIONS,
+            isEvents ? EVENTS_METRICS : SOCIAL_METRICS);
         console.log('[WARN] UNKNOWN DIMENSION:', dimension);
       }
     });
@@ -321,15 +325,18 @@
   /**
    * Gets HTML table markup.
    * @param {!Array.<Array.<string>} data List of data rows.
-   * @param {!Array.<string>} dimensions List of dimensions.
-   * @param {!Array.<string>} metrics List of metrics.
+   * @param {!Array.<string>=} opt_dimensions Optional list of dimensions.
+   * @param {!Array.<string>=} opt_metrics Optional list of metrics.
    * @return {string} Returns HTML table markup.
    * @private
    */
-  function getSimpleGrid_(data, dimensions, metrics) {
+  function getSimpleGrid_(data, opt_dimensions, opt_metrics) {
+    opt_dimensions = opt_dimensions || EVENTS_DIMENSIONS;
+    opt_metrics = opt_metrics || EVENTS_METRICS;
+
     return '<table border=1><thead><tr>' +
-           '<th>' + dimensions.map(toLabel_).join('</th><th>') + '</th>' +
-           '<th>' + metrics.map(toLabel_).join('</th><th>') + '</th>' +
+           '<th>' + opt_dimensions.map(toLabel_).join('</th><th>') + '</th>' +
+           '<th>' + opt_metrics.map(toLabel_).join('</th><th>') + '</th>' +
            '</tr></thead><tbody><tr>' + data.map(function(row) {
              return '<td>' + row.join('</td><td>') + '</td>';
            }).join('</tr><tr>') + '</tr></tbody></table>';
