@@ -457,17 +457,26 @@
       ['Network'].concat(SOCIAL_METRICS.map(function(name) {
         return {'label': toLabel_(name), 'name': name, 'width': '14%', 'type': 'number'}
       }), [{'label': '%', 'name': 'presents', 'width': '30%'}])
-    ].concat(filtered), {'footer': false});
+    ].concat(filtered), {'footer': false, 'sort': {'column': 1, 'dir': 'asc'}});
   }
 
   function renderSocialOutboundWidget_(table) {
     setWidgetContent_('social-outbound', getSocialGrid_(table));
   }
 
+
   function getBar_(value, max, total) {
+    /** @type {number} */ var presents = value / total * 100;
+    /** @type {number} */ var padding = 20;
+    /** @type {number} */ var width = value / max * 100 - padding;
+
+    if (0 >= width) {
+      width = presents;
+    }
+
     return '<div class="bar">' +
-           '<span style="width:' + (value / max * 100 - 20) + '%"></span>' +
-           (value / total * 100).toFixed(2) + '%</div>';
+           '<span style="width:' + width + '%"></span>' +
+           presents.toFixed(2) + '%</div>';
   }
 
   // Initializing dashboard.
