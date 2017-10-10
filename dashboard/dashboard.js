@@ -429,7 +429,7 @@
     });
 
     columns.push({
-      'label': '% ' + toLabel_(isEvents ? (EVENTS_METRICS : SOCIAL_METRICS)[0]),
+      'label': '% ' + toLabel_((isEvents ? EVENTS_METRICS : SOCIAL_METRICS)[0]),
       'name': 'presents', 'width': '30%'
     });
 
