@@ -78,6 +78,11 @@
   var NO_DATA = 'No data';
 
   /**
+   * @const {number}
+   */
+  var MAX_ROWS = 5;
+
+  /**
    * Initializes dashboard.
    * @see https://developers.google.com/analytics/devguides/reporting/embed/v1/core-methods-reference#ready
    * @private
@@ -435,7 +440,8 @@
 
     setWidgetContent_(widget, '<div id="' + container + '"></div>');
 
-    (new charts.DataTable(container)).draw([columns].concat(filtered), options);
+    (new charts.DataTable(container)).draw(
+        [columns].concat(filtered.slice(0, MAX_ROWS)), options);
   }
 
   function renderOutboundEventsWidget_(table) {
@@ -492,7 +498,6 @@
       ]);
     });
   }
-
 
   function getBar_(value, max, total) {
     /** @type {number} */ var presents = value / total * 100;
