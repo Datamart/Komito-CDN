@@ -401,19 +401,18 @@
       {'label': 'Action', 'width': '20%'}
     ].concat(EVENTS_METRICS.map(function(name) {
       return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '10%'}
-    }), [{'label': '%', 'name': 'presents', 'width': '30%'}]);
+    });
 
-    filtered = renderEventWidget_(data, 'events-cta', index, columns, function(row, callback) {
+    renderEventWidget_(data, 'events-cta', index, columns, function(row, callback) {
       var value = +row[EVENTS_TOTAL_INDEX];
-      var result = [
+      callback(value, [
         row[EVENTS_CATEGORY_INDEX].slice(4), // 'cta:'
         row[EVENTS_ACTION_INDEX],
         value,
         row[EVENTS_UNIQUE_INDEX],
         row[EVENTS_SESSIONS_INDEX],
         (+row[EVENTS_PER_SESSIONS_INDEX]).toFixed(2)
-      ];
-      callback(result, value);
+      ]);
     });
   }
 
@@ -425,7 +424,7 @@
     /** @type {!Object} */ var options =  {'footer': false};
 
     data.forEach(function(row) {
-      iterator(row, function(row, value) {
+      iterator(row, function(value, row) {
         if (row) {
           max = Math.max(max, value);
           total += value;
@@ -441,6 +440,8 @@
     filtered.forEach(function(row) {
       row.push(getBar_(row[index], max, total));
     });
+
+    columns.push({'label': '%', 'name': 'presents', 'width': '30%'});
 
     setWidgetContent_(widget, '<div id="' + container + '"></div>');
 
