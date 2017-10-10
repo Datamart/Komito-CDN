@@ -365,11 +365,11 @@
       return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '14%'}
     }));
 
-    renderEventWidget_(data, 'events-scroll', index, columns, function(row, callback) {
+    renderWidget_(data, 'events-scroll', index, columns, function(row, callback) {
       /** @type {number} */ var value = parseInt(row[EVENTS_LABEL_INDEX], 10);
       if (value >= 25 && value <= 100) {
         value = +row[EVENTS_TOTAL_INDEX];
-        callback(value,
+        callback(value, [
             row[EVENTS_LABEL_INDEX],
             value,
             row[EVENTS_UNIQUE_INDEX],
@@ -389,7 +389,7 @@
       return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '10%'};
     }));
 
-    renderEventWidget_(data, 'events-cta', index, columns, function(row, callback) {
+    renderWidget_(data, 'events-cta', index, columns, function(row, callback) {
       /** @type {number} */ var value = +row[EVENTS_TOTAL_INDEX];
       callback(value, [
           row[EVENTS_CATEGORY_INDEX].slice(4), // 'cta:'
@@ -402,12 +402,13 @@
     });
   }
 
-  function renderEventWidget_(data, widget, index, columns, iterator, opt_comparator) {
+  function renderWidget_(data, widget, index, columns, iterator, opt_comparator) {
     /** @type {!Array.<Array>} */ var filtered = [];
     /** @type {number} */ var max = 0;
     /** @type {number} */ var total = 0;
     /** @type {string} */ var container = 'report-' + widget + '-table-container';
     /** @type {!Object} */ var options =  {'footer': false};
+    /** @type {boolean} */ var isEvents = !widget.indexOf('events');
 
     data.forEach(function(row) {
       iterator(row, function(value, row) {
@@ -427,13 +428,15 @@
       row.push(getBar_(row[index], max, total));
     });
 
-    columns.push({'label': '%', 'name': 'presents', 'width': '30%'});
+    columns.push({
+      'label': '% ' + toLabel_(isEvents ? (EVENTS_METRICS : SOCIAL_METRICS)[0]),
+      'name': 'presents', 'width': '30%'
+    });
 
     setWidgetContent_(widget, '<div id="' + container + '"></div>');
 
     (new charts.DataTable(container)).draw([columns].concat(filtered), options);
   }
-
 
   function renderOutboundEventsWidget_(table) {
     setWidgetContent_('events-outbound', getSimpleGrid_(table));
@@ -473,35 +476,21 @@
     renderSocialWidget_('outbound', data);
   }
 
-
   function renderSocialWidget_(widget, data) {
-    /** @type {!Array.<Array>} */ var filtered = [];
-    /** @type {number} */ var max = 0;
-    /** @type {number} */ var total = 0;
-    /** @type {number} */ var index = 1; // value index
-    /** @type {string} */ var id = 'report-social-' + widget + '-table-container';
+    /** @type {number} */ var index = 1; // Sort index.
+    /** @type {!Array.<!Object>} */ var columns =  ['Network'].concat(SOCIAL_METRICS.map(function(name) {
+      return {'label': toLabel_(name), 'name': name, 'width': '14%', 'type': 'number'}
+    }));
 
-    setWidgetContent_('social-' + widget, '<div id="' + id + '"></div>');
-
-    data.forEach(function(row) {
-      max = Math.max(max, +row[SOCIAL_INTERACTIONS_INDEX]);
-      total += +row[SOCIAL_INTERACTIONS_INDEX];
-      filtered.push([
+    renderWidget_(data, 'social-' + widget, index, columns, function(row, callback) {
+      /** @type {number} */ var value = +row[SOCIAL_INTERACTIONS_INDEX];
+      callback(value, [
           row[SOCIAL_NETWORK_INDEX],
-          +row[SOCIAL_INTERACTIONS_INDEX],
+          value,
           row[SOCIAL_UNIQUE_INDEX],
           (+row[SOCIAL_PER_SESSIONS_INDEX]).toFixed(2)
       ]);
     });
-
-    filtered.sort(function(a, b) { return b[index] - a[index]; });
-    filtered.forEach(function(row) { row.push(getBar_(row[index], max, total)); });
-
-    (new charts.DataTable(id)).draw([
-      ['Network'].concat(SOCIAL_METRICS.map(function(name) {
-        return {'label': toLabel_(name), 'name': name, 'width': '14%', 'type': 'number'}
-      }), [{'label': '% ' + toLabel_(SOCIAL_METRICS[0]), 'name': 'presents', 'width': '30%'}])
-    ].concat(filtered), {'footer': false});
   }
 
 
