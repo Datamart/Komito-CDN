@@ -246,6 +246,14 @@
     }
   }
 
+  /**
+   * Renders reports.
+   * @param {!Object} report The report object.
+   * @param {string} type The report type.
+   * @param {function(string, Array):boolean} iterator The widget iterator.
+   * @see https://developers.google.com/analytics/devguides/reporting/core/v4/rest/v4/reports/batchGet#Report
+   * @private
+   */
   function renderReports_(report, type, iterator) {
     /** @type {!Object.<string, Array>} */ var tables = {};
     /** @type {Array} */ var rows = report['data']['rows'];
@@ -391,12 +399,12 @@
       }), [{'label': '%', 'name': 'presents', 'width': '30%'}])
     ].concat(filtered), {'footer': false});
 
-    data = [[], []];
-    filtered.forEach(function(row) {
-      data[0].push(row[0]);
-      data[1].push(+row[1]);
-    });
-    (new charts.DonutChart('report-events-scroll-chart-container')).draw(data);
+    // data = [[], []];
+    // filtered.forEach(function(row) {
+    //   data[0].push(row[0]);
+    //   data[1].push(+row[1]);
+    // });
+    // (new charts.DonutChart('report-events-scroll-chart-container')).draw(data);
   }
 
   function renderOutboundEventsWidget_(table) {
@@ -432,6 +440,11 @@
     renderSocialWidget_('pageview', data);
   }
 
+  /**
+   * Renders social outbounds widget.
+   * @param {!Array.<Array.<string>} data List of data rows.
+   * @private
+   */
   function renderSocialOutboundWidget_(data) {
     renderSocialWidget_('outbound', data);
   }
