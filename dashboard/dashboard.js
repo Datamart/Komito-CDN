@@ -61,7 +61,7 @@
   /** @const {number} */ var SOCIAL_ACTION_INDEX = 1;
   /** @const {number} */ var SOCIAL_INTERACTIONS_INDEX = SOCIAL_DIMENSIONS_LENGTH;
   /** @const {number} */ var SOCIAL_UNIQUE_INDEX = SOCIAL_DIMENSIONS_LENGTH + 1;
-  /** @const {number} */ var SOCIAL_PER_SESSIONS_INDEX = EVENTS_DIMENSIONS_LENGTH + 2;
+  /** @const {number} */ var SOCIAL_PER_SESSIONS_INDEX = SOCIAL_DIMENSIONS_LENGTH + 2;
 
   /**
    * List of widgets Ids.
@@ -451,13 +451,13 @@
       ]);
     });
 
-    data.forEach(function(row) { row.push(getBar_(row[1], max, total)); });
+    filtered.forEach(function(row) { row.push(getBar_(row[1], max, total)); });
 
     (new charts.DataTable(id)).draw([
       ['Network'].concat(SOCIAL_METRICS.map(function(name) {
         return {'label': toLabel_(name), 'name': name, 'width': '14%', 'type': 'number'}
       }), [{'label': '%', 'name': 'presents', 'width': '30%'}])
-    ].concat(data), {'footer': false});
+    ].concat(filtered), {'footer': false});
   }
 
   function renderSocialOutboundWidget_(table) {
