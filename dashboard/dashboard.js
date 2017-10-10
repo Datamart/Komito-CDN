@@ -450,7 +450,7 @@
       ]);
     });
 
-    filtered.sort(function(a, b) { return a[1] > b[1]; });
+    filtered.sort(function(a, b) { return b[1] - a[1]; });
     filtered.forEach(function(row) { row.push(getBar_(row[1], max, total)); });
 
     (new charts.DataTable(id)).draw([
