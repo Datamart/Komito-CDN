@@ -268,7 +268,7 @@
 
     Object.keys(tables).forEach(function(dimension) {
       if (!iterator(dimension, tables[dimension])) {
-        other += getEventsGrid_(tables[dimension]);
+        other += getSimpleGrid_(tables[dimension]);
         console.log('[WARN] UNKNOWN DIMENSION:', dimension);
       }
     });
@@ -348,19 +348,6 @@
   }
 
   /**
-   * Gets HTML table markup for Events data grid.
-   * @param {!Array.<Array.<string>} data List of data rows.
-   * @param {!Array.<string>=} opt_dimensions Optional list of dimensions.
-   * @param {!Array.<string>=} opt_metrics Optional list of metrics.
-   * @return {string} Returns HTML table markup.
-   * @private
-   */
-  function getEventsGrid_(data, opt_dimensions, opt_metrics) {
-    return getSimpleGrid_(
-      data, opt_dimensions || EVENTS_DIMENSIONS, opt_metrics || EVENTS_METRICS);
-  }
-
-  /**
    * Renders scroll events widget.
    * @param {!Array.<Array.<string>} data List of data rows.
    * @private
@@ -389,46 +376,66 @@
     filtered.sort(function(a, b) {return parseInt(a[0], 10) > parseInt(b[0], 10);});
     filtered.forEach(function(row) { row.push(getBar_(row[1], max, total)); });
 
-    setWidgetContent_('events-scroll',
-      //'<div id="report-events-scroll-chart-container" class="chart-container"></div>' +
-      '<div id="report-events-scroll-table-container"></div>');
+    setWidgetContent_('events-scroll', '<div id="report-events-scroll-table-container"></div>');
 
     (new charts.DataTable('report-events-scroll-table-container')).draw([
       ['Depth'].concat(EVENTS_METRICS.map(function(name) {
         return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '14%'}
       }), [{'label': '%', 'name': 'presents', 'width': '30%'}])
     ].concat(filtered), {'footer': false});
-
-    // data = [[], []];
-    // filtered.forEach(function(row) {
-    //   data[0].push(row[0]);
-    //   data[1].push(+row[1]);
-    // });
-    // (new charts.DonutChart('report-events-scroll-chart-container')).draw(data);
-  }
-
-  function renderOutboundEventsWidget_(table) {
-    setWidgetContent_('events-outbound', getEventsGrid_(table));
   }
 
   function renderCtaEventsWidget_(table) {
-    setWidgetContent_('events-cta', getEventsGrid_(table));
+    /** @type {!Array.<Array>} */ var filtered = [];
+    /** @type {number} */ var max = 0;
+    /** @type {number} */ var total = 0;
+
+    data.forEach(function(row) {
+      /** @type {number} */ var value = parseInt(row[EVENTS_LABEL_INDEX], 10);
+
+      max = Math.max(max, +row[EVENTS_TOTAL_INDEX]);
+      total += +row[EVENTS_TOTAL_INDEX];
+      filtered.push([
+        row[EVENTS_CATEGORY_INDEX],
+        '<a href="'+row[EVENTS_LABEL_INDEX]+'">'+row[EVENTS_ACTION_INDEX]+'</a>',
+        row[EVENTS_TOTAL_INDEX],
+        row[EVENTS_UNIQUE_INDEX],
+        row[EVENTS_SESSIONS_INDEX],
+        (+row[EVENTS_PER_SESSIONS_INDEX]).toFixed(2)
+      ]);
+    });
+
+    filtered.sort(function(a, b) {return parseInt(a[0], 10) > parseInt(b[0], 10);});
+    filtered.forEach(function(row) { row.push(getBar_(row[1], max, total)); });
+
+    setWidgetContent_('events-cta', '<div id="report-events-cta-table-container"></div>');
+
+    (new charts.DataTable('report-events-cta-table-container')).draw([
+      ['Category', 'Action'].concat(EVENTS_METRICS.map(function(name) {
+        return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '14%'}
+      }), [{'label': '%', 'name': 'presents', 'width': '30%'}])
+    ].concat(filtered), {'footer': false});
+    //setWidgetContent_('events-cta', getSimpleGrid_(table));
+  }
+
+  function renderOutboundEventsWidget_(table) {
+    setWidgetContent_('events-outbound', getSimpleGrid_(table));
   }
 
   function renderDownloadEventsWidget_(table) {
-    setWidgetContent_('events-download', getEventsGrid_(table));
+    setWidgetContent_('events-download', getSimpleGrid_(table));
   }
 
   function renderFormEventsWidget_(table) {
-    setWidgetContent_('events-form', getEventsGrid_(table));
+    setWidgetContent_('events-form', getSimpleGrid_(table));
   }
 
   function renderPrintEventsWidget_(table) {
-    setWidgetContent_('events-print', getEventsGrid_(table));
+    setWidgetContent_('events-print', getSimpleGrid_(table));
   }
 
   function renderVideoEventsWidget_(table) {
-    setWidgetContent_('events-video', getEventsGrid_(table));
+    setWidgetContent_('events-video', getSimpleGrid_(table));
   }
 
   /**
