@@ -627,6 +627,7 @@
     dimensions && setWidgetContent_(type + '-other', '');
 
     dimensions.forEach(function(dimension) {
+      parent.appendChild(document.createElement('H4')).innerHTML = dimension;
       var div = parent.appendChild(document.createElement('DIV'));
       div.id = container + '-' + dimension + '-table-container';
 
@@ -642,10 +643,13 @@
           return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '10%'};
         }));
 
+      columns.shift();
       renderWidget_(data, widget, index, columns, function(row, callback) {
         var index = isEvents ? EVENTS_PER_SESSIONS_INDEX : SOCIAL_PER_SESSIONS_INDEX;
         row[index] = (+row[index]).toFixed(2);
-        callback(+row[EVENTS_TOTAL_INDEX], row);
+        row.shift();
+        index = isEvents ? EVENTS_TOTAL_INDEX : SOCIAL_INTERACTIONS_INDEX;
+        callback(+row[index - 1], row);
       });
     });
   }
