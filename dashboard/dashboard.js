@@ -429,7 +429,7 @@
       map[domain] = map[domain] || ['', domain, '', 0, 0, 0, 0];
       map[domain][EVENTS_ACTION_INDEX] = domain;
       row.forEach(function(value, index) {
-        if (index > 2) {
+        if (index >= EVENTS_DIMENSIONS_LENGTH) {
           map[domain][index] += +value;
         }
       });
@@ -439,7 +439,7 @@
     renderWidget_(data, 'events-outbound', index, columns, function(row, callback) {
       /** @type {number} */ var value = +row[EVENTS_TOTAL_INDEX];
       callback(value, [
-          row[EVENTS_CATEGORY_INDEX],
+          row[EVENTS_ACTION_INDEX],
           value,
           row[EVENTS_UNIQUE_INDEX],
           row[EVENTS_SESSIONS_INDEX],
