@@ -200,7 +200,7 @@
       var error = response && response['result'] && response['result']['error'];
       if (error) {
         alert(error['message'] || error);
-        setWidgetsContent_(error['message'] || error);
+        setWidgetsContent_(NO_DATA);
       }
       console.log('[ERROR]', response);
     });
