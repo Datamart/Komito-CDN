@@ -198,7 +198,10 @@
       }
     })['then'](displayResults_, function(response) {
       var error = response && response['result'] && response['result']['error'];
-      error && alert(error['message'] || error);
+      if (error) {
+        alert(error['message'] || error);
+        setWidgetsContent_(error['message'] || error);
+      }
       console.log('[ERROR]', response);
     });
   }
