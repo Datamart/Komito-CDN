@@ -436,22 +436,7 @@
    * @private
    */
   function renderOutboundEventsWidget_(data) {
-    /** @type {number} */ var index = 1; // Sort index.
-    /** @type {!Array.<!Object>} */ var columns = ['Domain'].concat(EVENTS_METRICS.map(function(name) {
-      return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '14%'};
-    }));
-
-    data = aggregateBy_(data, EVENTS_ACTION_INDEX);
-    renderWidget_(data, 'events-outbound', index, columns, function(row, callback) {
-      /** @type {number} */ var value = +row[EVENTS_TOTAL_INDEX];
-      callback(value, [
-          row[EVENTS_ACTION_INDEX],
-          value,
-          row[EVENTS_UNIQUE_INDEX],
-          row[EVENTS_SESSIONS_INDEX],
-          (+row[EVENTS_PER_SESSIONS_INDEX]).toFixed(2)
-      ]);
-    });
+    renderAggregatedEventWidget_(data, 'Domain', 'events-outbound');
   }
 
   /**
@@ -460,13 +445,51 @@
    * @private
    */
   function renderDownloadEventsWidget_(data) {
+    renderAggregatedEventWidget_(data, 'File', 'events-download');
+  }
+
+  /**
+   * Renders print events widget.
+   * @param {!Array.<Array.<string>} data List of data rows.
+   * @private
+   */
+  function renderPrintEventsWidget_(data) {
+    renderAggregatedEventWidget_(data, 'Page', 'events-print');
+  }
+
+  /**
+   * Renders forms events widget.
+   * @param {!Array.<Array.<string>} data List of data rows.
+   * @private
+   */
+  function renderFormEventsWidget_(data) {
+    setWidgetContent_('events-form', getSimpleGrid_(data));
+  }
+
+  /**
+   * Renders video events widget.
+   * @param {!Array.<Array.<string>} data List of data rows.
+   * @private
+   */
+  function renderVideoEventsWidget_(data) {
+    setWidgetContent_('events-video', getSimpleGrid_(data));
+  }
+
+  /**
+   * Renders print events widget.
+   * @param {!Array.<Array.<string>} data List of data rows.
+   * @param {string} column The aggregated column name.
+   * @param {string} widget The widget Id.
+   * @private
+   */
+  function renderAggregatedEventWidget_(data, column, widget) {
     /** @type {number} */ var index = 1; // Sort index.
-    /** @type {!Array.<!Object>} */ var columns = ['File'].concat(EVENTS_METRICS.map(function(name) {
+    /** @type {!Array.<!Object>} */ var columns = [column].concat(EVENTS_METRICS.map(function(name) {
       return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '14%'};
     }));
 
     data = aggregateBy_(data, EVENTS_ACTION_INDEX);
-    renderWidget_(data, 'events-download', index, columns, function(row, callback) {
+    renderWidget_(data, widget, index, columns, function(row, callback) {
       /** @type {number} */ var value = +row[EVENTS_TOTAL_INDEX];
       callback(value, [
           row[EVENTS_ACTION_INDEX],
@@ -479,25 +502,36 @@
   }
 
   /**
-   * Renders print events widget.
+   * Renders social pageviews widget.
    * @param {!Array.<Array.<string>} data List of data rows.
    * @private
    */
-  function renderPrintEventsWidget_(data) {
+  function renderSocialPageviewsWidget_(data) {
+    renderSocialWidget_('pageview', data);
+  }
+
+  /**
+   * Renders social outbounds widget.
+   * @param {!Array.<Array.<string>} data List of data rows.
+   * @private
+   */
+  function renderSocialOutboundWidget_(data) {
+    renderSocialWidget_('outbound', data);
+  }
+
+  function renderSocialWidget_(widget, data) {
     /** @type {number} */ var index = 1; // Sort index.
-    /** @type {!Array.<!Object>} */ var columns = ['Page'].concat(EVENTS_METRICS.map(function(name) {
-      return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '14%'};
+    /** @type {!Array.<!Object>} */ var columns =  ['Network'].concat(SOCIAL_METRICS.map(function(name) {
+      return {'label': toLabel_(name), 'name': name, 'width': '14%', 'type': 'number'}
     }));
 
-    data = aggregateBy_(data, EVENTS_ACTION_INDEX);
-    renderWidget_(data, 'events-print', index, columns, function(row, callback) {
-      /** @type {number} */ var value = +row[EVENTS_TOTAL_INDEX];
+    renderWidget_(data, 'social-' + widget, index, columns, function(row, callback) {
+      /** @type {number} */ var value = +row[SOCIAL_INTERACTIONS_INDEX];
       callback(value, [
-          row[EVENTS_ACTION_INDEX],
+          row[SOCIAL_NETWORK_INDEX],
           value,
-          row[EVENTS_UNIQUE_INDEX],
-          row[EVENTS_SESSIONS_INDEX],
-          (+row[EVENTS_PER_SESSIONS_INDEX]).toFixed(2)
+          row[SOCIAL_UNIQUE_INDEX],
+          (+row[SOCIAL_PER_SESSIONS_INDEX]).toFixed(2)
       ]);
     });
   }
@@ -537,49 +571,6 @@
 
     (new charts.DataTable(container)).draw(
         [columns].concat(filtered.slice(0, MAX_ROWS)), options);
-  }
-
-  function renderFormEventsWidget_(table) {
-    setWidgetContent_('events-form', getSimpleGrid_(table));
-  }
-
-  function renderVideoEventsWidget_(table) {
-    setWidgetContent_('events-video', getSimpleGrid_(table));
-  }
-
-  /**
-   * Renders social pageviews widget.
-   * @param {!Array.<Array.<string>} data List of data rows.
-   * @private
-   */
-  function renderSocialPageviewsWidget_(data) {
-    renderSocialWidget_('pageview', data);
-  }
-
-  /**
-   * Renders social outbounds widget.
-   * @param {!Array.<Array.<string>} data List of data rows.
-   * @private
-   */
-  function renderSocialOutboundWidget_(data) {
-    renderSocialWidget_('outbound', data);
-  }
-
-  function renderSocialWidget_(widget, data) {
-    /** @type {number} */ var index = 1; // Sort index.
-    /** @type {!Array.<!Object>} */ var columns =  ['Network'].concat(SOCIAL_METRICS.map(function(name) {
-      return {'label': toLabel_(name), 'name': name, 'width': '14%', 'type': 'number'}
-    }));
-
-    renderWidget_(data, 'social-' + widget, index, columns, function(row, callback) {
-      /** @type {number} */ var value = +row[SOCIAL_INTERACTIONS_INDEX];
-      callback(value, [
-          row[SOCIAL_NETWORK_INDEX],
-          value,
-          row[SOCIAL_UNIQUE_INDEX],
-          (+row[SOCIAL_PER_SESSIONS_INDEX]).toFixed(2)
-      ]);
-    });
   }
 
   function getBar_(value, max, total) {
