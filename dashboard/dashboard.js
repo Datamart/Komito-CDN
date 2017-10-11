@@ -428,12 +428,12 @@
       /** @type {string} */ var domain = row[EVENTS_ACTION_INDEX];
       map[domain] = map[domain] || new Array(EVENTS_DIMENSIONS_LENGTH + EVENTS_METRICS.length);
       map[domain][EVENTS_ACTION_INDEX] = domain;
-      row.forEach(function(value, index)) {
+      row.forEach(function(value, index) {
         if (parseFloat(value)) {
           map[domain][index] = map[domain][index] || 0;
           map[domain][index] += +value;
         }
-      }
+      });
     });
     data = Object.values(map);
 
