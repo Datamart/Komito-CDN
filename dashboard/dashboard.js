@@ -625,7 +625,7 @@
     var cell = document.getElementById(container).lastElementChild;
     var dimensions = Object.keys(map);
 
-    dimensions && setWidgetContent_(type + '-other', '');
+    setWidgetContent_(type + '-other', dimensions.length ? '' : NO_DATA);
 
     dimensions.forEach(function(dimension) {
       var suffix = dimension.toLowerCase().replace(/\W+/g, '-');
