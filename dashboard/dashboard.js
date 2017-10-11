@@ -365,7 +365,6 @@
     data.forEach(function(row) {
       /** @type {string} */ var dimension = row[column];
       map[dimension] = map[dimension] || ['', dimension, '', 0, 0, 0, 0];
-      map[dimension][column] = dimension;
 
       row.forEach(function(value, index) {
         if (index >= EVENTS_DIMENSIONS_LENGTH) {
@@ -493,7 +492,41 @@
    * @private
    */
   function renderVideoEventsWidget_(data) {
-    setWidgetContent_('events-video', getSimpleGrid_(data));
+    /** @type {!Object.<string, !Array>} */ var map = {};
+
+    data.forEach(function(row) {
+      /** @type {string} */ var dimension = row[0] + '-' + row[1];
+      map[dimension] = map[dimension] || [row[0], row[1], '', 0, 0, 0, 0];
+
+      row.forEach(function(value, index) {
+        if (index >= EVENTS_DIMENSIONS_LENGTH) {
+          map[dimension][index] += +value;
+        }
+      });
+    });
+
+    data = Object.values(map);
+
+    /** @type {number} */ var index = 2; // Sort index.
+    /** @type {!Array.<!Object>} */ var columns = [
+      {'label': 'Type', 'width': '15%'},
+      {'label': 'Action', 'width': '15%'}
+    ].concat(EVENTS_METRICS.map(function(name) {
+      return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '10%'};
+    }));
+
+    renderWidget_(data, 'events-video', index, columns, function(row, callback) {
+      /** @type {number} */ var value = +row[EVENTS_TOTAL_INDEX];
+      /** @type {!Array} */ var field = row[EVENTS_LABEL_INDEX].split(':');
+      callback(value, [
+          row[EVENTS_CATEGORY_INDEX].slice(6), // video:
+          row[EVENTS_ACTION_INDEX],
+          value,
+          row[EVENTS_UNIQUE_INDEX],
+          row[EVENTS_SESSIONS_INDEX],
+          (+row[EVENTS_PER_SESSIONS_INDEX]).toFixed(2)
+      ]);
+    });
   }
 
   /**
