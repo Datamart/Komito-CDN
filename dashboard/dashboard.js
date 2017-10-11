@@ -268,7 +268,7 @@
     /** @type {!Object.<string, Array>} */ var tables = {};
     /** @type {Array} */ var rows = report['data']['rows'];
     /** @type {boolean} */ var isEvents = 'events' === type;
-    var index = isEvents ? EVENTS_CATEGORY_INDEX : SOCIAL_ACTION_INDEX;
+    var index = isEvents ? EVENTS_CATEGORY_INDEX : SOCIAL_NETWORK_INDEX;
 
     rows && rows.forEach(function(row) {
       var dimension = row['dimensions'][index].split(':')[0];
