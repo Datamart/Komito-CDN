@@ -463,7 +463,28 @@
    * @private
    */
   function renderFormEventsWidget_(data) {
-    setWidgetContent_('events-form', getSimpleGrid_(data));
+    /** @type {number} */ var index = 3; // Sort index.
+    /** @type {!Array.<!Object>} */ var columns = [
+      {'label': 'Form', 'width': '10%'},
+      {'label': 'Field', 'width': '10%'},
+      {'label': 'Type', 'width': '10%'}
+    ].concat(EVENTS_METRICS.map(function(name) {
+      return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '10%'};
+    }));
+
+    renderWidget_(data, 'events-form', index, columns, function(row, callback) {
+      /** @type {number} */ var value = +row[EVENTS_TOTAL_INDEX];
+      /** @type {!Array} */ var field = row[EVENTS_LABEL_INDEX].split(':');
+      callback(value, [
+          row[EVENTS_ACTION_INDEX],
+          field[0],
+          field[1],
+          value,
+          row[EVENTS_UNIQUE_INDEX],
+          row[EVENTS_SESSIONS_INDEX],
+          (+row[EVENTS_PER_SESSIONS_INDEX]).toFixed(2)
+      ]);
+    });
   }
 
   /**
