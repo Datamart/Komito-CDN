@@ -172,6 +172,8 @@
 
     document.getElementById('reports').style.display = 'block';
     setWidgetsContent_('Loading...');
+    otherEvents_ = {};
+    otherSocial_ = {};
 
     window['gapi']['client']['request']({
       'path': '/v4/reports:batchGet',
