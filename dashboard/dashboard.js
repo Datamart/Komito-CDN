@@ -619,12 +619,12 @@
 
   function renderOther_(isEvents) {
     var map = isEvents ? otherEvents_ : otherSocial_;
-    var container = isEvents ? 'events-other' : 'social-other';
-    var parent = document.getElementById(container);
+    var container = isEvents ? 'events' : 'social';
+    var parent = document.getElementById('report-' + container + '-other');
 
     Object.keys(map).forEach(function(dimension) {
       var div = parent.appendChild(document.createElement('DIV'));
-      div.id = 'report-' + dimension + '-table-container';
+      div.id = parent.id + '-' + dimension + '-table-container';
 
       var data = map[dimension];
 
