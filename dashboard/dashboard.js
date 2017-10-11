@@ -625,15 +625,16 @@
     dimensions && setWidgetContent_(type + '-other', '');
 
     dimensions.forEach(function(dimension) {
-      var  parent = cell.appendChild(document.createElement('DIV'));
+      var suffix = dimension.toLowerCase().replace(/\W+/g, '-');
+      var parent = cell.appendChild(document.createElement('DIV'));
       parent.className = 'kmt-parameter';
 
       parent.appendChild(document.createElement('H4')).innerHTML = toLabel_(dimension);
       var div = parent.appendChild(document.createElement('DIV'));
-      div.id = container + '-' + dimension + '-table-container';
+      div.id = container + '-' + suffix + '-table-container';
 
       var data = map[dimension];
-      var widget = type + '-other-' + dimension;
+      var widget = type + '-other-' + suffix;
 
       /** @type {number} */ var index = isEvents ? 3 : 2; // Sort index.
       /** @type {!Array.<!Object>} */ var columns = [].concat(
