@@ -385,6 +385,11 @@
     });
   }
 
+  /**
+   * Renders CTA events widget.
+   * @param {!Array.<Array.<string>} data List of data rows.
+   * @private
+   */
   function renderCtaEventsWidget_(data) {
     /** @type {number} */ var index = 2; // Sort index.
     /** @type {!Array.<!Object>} */ var columns = [
@@ -399,6 +404,43 @@
       callback(value, [
           row[EVENTS_CATEGORY_INDEX].slice(4), // 'cta:'
           row[EVENTS_ACTION_INDEX].slice(0, 50),
+          value,
+          row[EVENTS_UNIQUE_INDEX],
+          row[EVENTS_SESSIONS_INDEX],
+          (+row[EVENTS_PER_SESSIONS_INDEX]).toFixed(2)
+      ]);
+    });
+  }
+
+  /**
+   * Renders outbound events widget.
+   * @param {!Array.<Array.<string>} data List of data rows.
+   * @private
+   */
+  function renderOutboundEventsWidget_(data) {
+    /** @type {number} */ var index = 1; // Sort index.
+    /** @type {!Array.<!Object>} */ var columns = ['Domain'].concat(EVENTS_METRICS.map(function(name) {
+      return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '14%'};
+    }));
+
+    /** @type {!Object.<string, !Array>} */ var map = {};
+    data.forEach(function(row) {
+      /** @type {string} */ var domain = row[EVENTS_ACTION_INDEX];
+      map[domain] = map[domain] || new Array(EVENTS_DIMENSIONS_LENGTH + EVENTS_METRICS.length);
+      map[domain][EVENTS_ACTION_INDEX] = domain;
+      row.forEach(function(value, index)) {
+        if (parseFloat(value)) {
+          map[domain][index] = map[domain][index] || 0;
+          map[domain][index] += +value;
+        }
+      }
+    });
+    data = Object.values(map);
+
+    renderWidget_(data, 'events-outbound', index, columns, function(row, callback) {
+      /** @type {number} */ var value = +row[EVENTS_TOTAL_INDEX];
+      callback(value, [
+          row[EVENTS_CATEGORY_INDEX],
           value,
           row[EVENTS_UNIQUE_INDEX],
           row[EVENTS_SESSIONS_INDEX],
@@ -442,10 +484,6 @@
 
     (new charts.DataTable(container)).draw(
         [columns].concat(filtered.slice(0, MAX_ROWS)), options);
-  }
-
-  function renderOutboundEventsWidget_(table) {
-    setWidgetContent_('events-outbound', getSimpleGrid_(table));
   }
 
   function renderDownloadEventsWidget_(table) {
