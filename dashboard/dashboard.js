@@ -627,7 +627,10 @@
     dimensions && setWidgetContent_(type + '-other', '');
 
     dimensions.forEach(function(dimension) {
-      parent.appendChild(document.createElement('H4')).innerHTML = dimension;
+      parent = parent.appendChild(document.createElement('DIV'));
+      parent.className = 'kmt-parameter';
+
+      parent.appendChild(document.createElement('H4')).innerHTML = toLabel_(dimension);
       var div = parent.appendChild(document.createElement('DIV'));
       div.id = container + '-' + dimension + '-table-container';
 
