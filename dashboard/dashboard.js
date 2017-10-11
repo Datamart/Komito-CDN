@@ -621,13 +621,13 @@
     var map = isEvents ? otherEvents_ : otherSocial_;
     var type = isEvents ? 'events' : 'social';
     var container = 'report-' + type + '-other';
-    var parent = document.getElementById(container).lastElementChild;
+    var cell = document.getElementById(container).lastElementChild;
     var dimensions = Object.keys(map);
 
     dimensions && setWidgetContent_(type + '-other', '');
 
     dimensions.forEach(function(dimension) {
-      parent = parent.appendChild(document.createElement('DIV'));
+      var  parent = cell.appendChild(document.createElement('DIV'));
       parent.className = 'kmt-parameter';
 
       parent.appendChild(document.createElement('H4')).innerHTML = toLabel_(dimension);
