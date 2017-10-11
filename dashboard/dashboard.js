@@ -650,13 +650,13 @@
           return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '10%'};
         }));
 
-      columns.shift();
+      isEvents && columns.shift();
       renderWidget_(data, widget, index, columns, function(row, callback) {
         var index = isEvents ? EVENTS_PER_SESSIONS_INDEX : SOCIAL_PER_SESSIONS_INDEX;
         row[index] = (+row[index]).toFixed(2);
-        row.shift();
-        index = isEvents ? EVENTS_TOTAL_INDEX : SOCIAL_INTERACTIONS_INDEX;
-        callback(+row[index - 1], row);
+        isEvents && row.shift();
+        index = isEvents ? EVENTS_TOTAL_INDEX - 1 : SOCIAL_INTERACTIONS_INDEX;
+        callback(+row[index], row);
       });
     });
   }
