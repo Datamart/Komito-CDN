@@ -628,7 +628,7 @@
 
     dimensions.forEach(function(dimension) {
       var div = parent.appendChild(document.createElement('DIV'));
-      div.id = parent.id + '-' + dimension + '-table-container';
+      div.id = container + '-' + dimension + '-table-container';
 
       var data = map[dimension];
       var widget = type + '-other-' + dimension;
