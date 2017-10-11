@@ -627,13 +627,14 @@
       div.id = parent.id + '-' + dimension + '-table-container';
 
       var data = map[dimension];
+      var widget = container + '-other-' + dimension;
 
       /** @type {number} */ var index = 3; // Sort index.
       /** @type {!Array.<!Object>} */ var columns = [].concat(EVENTS_DIMENSIONS, EVENTS_METRICS.map(function(name) {
         return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '10%'};
       }));
 
-      renderWidget_(data, dimension, index, columns, function(row, callback) {
+      renderWidget_(data, widget, index, columns, function(row, callback) {
         callback(+row[EVENTS_TOTAL_INDEX], row);
       });
     });
