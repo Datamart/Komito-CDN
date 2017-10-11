@@ -619,22 +619,32 @@
 
   function renderOther_(isEvents) {
     var map = isEvents ? otherEvents_ : otherSocial_;
-    var container = isEvents ? 'events' : 'social';
-    var parent = document.getElementById('report-' + container + '-other');
+    var type = isEvents ? 'events' : 'social';
+    var container = 'report-' + type + '-other';
+    var parent = document.getElementById(container).lastElementChild;
+    var dimensions = Object.keys(map);
 
-    Object.keys(map).forEach(function(dimension) {
+    dimensions && setWidgetContent_(type + '-other', '');
+
+    dimensions.forEach(function(dimension) {
       var div = parent.appendChild(document.createElement('DIV'));
       div.id = parent.id + '-' + dimension + '-table-container';
 
       var data = map[dimension];
-      var widget = container + '-other-' + dimension;
+      var widget = type + '-other-' + dimension;
 
-      /** @type {number} */ var index = 3; // Sort index.
-      /** @type {!Array.<!Object>} */ var columns = [].concat(EVENTS_DIMENSIONS, EVENTS_METRICS.map(function(name) {
-        return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '10%'};
-      }));
+      /** @type {number} */ var index = isEvents ? 3 : 2; // Sort index.
+      /** @type {!Array.<!Object>} */ var columns = [].concat(
+        (isEvents ? EVENTS_DIMENSIONS : SOCIAL_DIMENSIONS).map(function(name) {
+          return {'label': toLabel_(name)};
+        }),
+        (isEvents ? EVENTS_METRICS : SOCIAL_METRICS).map(function(name) {
+          return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '10%'};
+        }));
 
       renderWidget_(data, widget, index, columns, function(row, callback) {
+        var index = isEvents ? EVENTS_PER_SESSIONS_INDEX : SOCIAL_PER_SESSIONS_INDEX;
+        row[index] = (+row[index]).toFixed(2);
         callback(+row[EVENTS_TOTAL_INDEX], row);
       });
     });
