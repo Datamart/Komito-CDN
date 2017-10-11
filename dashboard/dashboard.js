@@ -274,12 +274,10 @@
     Object.keys(tables).forEach(function(dimension) {
       if (!iterator(dimension, tables[dimension])) {
         (isEvents ? otherEvents_ : otherSocial_)[dimension] = tables[dimension];
-        console.log('[WARN] UNKNOWN DIMENSION:', dimension);
       }
     });
 
     renderOther_(isEvents);
-    // console.log('renderReports_', type, tables);
   }
 
   /**
