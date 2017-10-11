@@ -454,6 +454,54 @@
     });
   }
 
+  /**
+   * Renders download events widget.
+   * @param {!Array.<Array.<string>} data List of data rows.
+   * @private
+   */
+  function renderDownloadEventsWidget_(data) {
+    /** @type {number} */ var index = 1; // Sort index.
+    /** @type {!Array.<!Object>} */ var columns = ['File'].concat(EVENTS_METRICS.map(function(name) {
+      return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '14%'};
+    }));
+
+    data = aggregateBy_(data, EVENTS_ACTION_INDEX);
+    renderWidget_(data, 'events-download', index, columns, function(row, callback) {
+      /** @type {number} */ var value = +row[EVENTS_TOTAL_INDEX];
+      callback(value, [
+          row[EVENTS_ACTION_INDEX],
+          value,
+          row[EVENTS_UNIQUE_INDEX],
+          row[EVENTS_SESSIONS_INDEX],
+          (+row[EVENTS_PER_SESSIONS_INDEX]).toFixed(2)
+      ]);
+    });
+  }
+
+  /**
+   * Renders print events widget.
+   * @param {!Array.<Array.<string>} data List of data rows.
+   * @private
+   */
+  function renderPrintEventsWidget_(data) {
+    /** @type {number} */ var index = 1; // Sort index.
+    /** @type {!Array.<!Object>} */ var columns = ['Page'].concat(EVENTS_METRICS.map(function(name) {
+      return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '14%'};
+    }));
+
+    data = aggregateBy_(data, EVENTS_ACTION_INDEX);
+    renderWidget_(data, 'events-print', index, columns, function(row, callback) {
+      /** @type {number} */ var value = +row[EVENTS_TOTAL_INDEX];
+      callback(value, [
+          row[EVENTS_ACTION_INDEX],
+          value,
+          row[EVENTS_UNIQUE_INDEX],
+          row[EVENTS_SESSIONS_INDEX],
+          (+row[EVENTS_PER_SESSIONS_INDEX]).toFixed(2)
+      ]);
+    });
+  }
+
   function renderWidget_(data, widget, index, columns, iterator, opt_comparator) {
     /** @type {!Array.<Array>} */ var filtered = [];
     /** @type {number} */ var max = 0;
@@ -491,16 +539,8 @@
         [columns].concat(filtered.slice(0, MAX_ROWS)), options);
   }
 
-  function renderDownloadEventsWidget_(table) {
-    setWidgetContent_('events-download', getSimpleGrid_(table));
-  }
-
   function renderFormEventsWidget_(table) {
     setWidgetContent_('events-form', getSimpleGrid_(table));
-  }
-
-  function renderPrintEventsWidget_(table) {
-    setWidgetContent_('events-print', getSimpleGrid_(table));
   }
 
   function renderVideoEventsWidget_(table) {
