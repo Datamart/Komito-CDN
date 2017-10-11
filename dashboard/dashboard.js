@@ -262,7 +262,6 @@
   function renderReports_(report, type, iterator) {
     /** @type {!Object.<string, Array>} */ var tables = {};
     /** @type {Array} */ var rows = report['data']['rows'];
-    /** @type {string} */ var other = '';
     /** @type {boolean} */ var isEvents = 'events' === type;
     var index = isEvents ? EVENTS_CATEGORY_INDEX : SOCIAL_ACTION_INDEX;
 
@@ -274,16 +273,13 @@
 
     Object.keys(tables).forEach(function(dimension) {
       if (!iterator(dimension, tables[dimension])) {
-        other += getSimpleGrid_(
-            tables[dimension],
-            isEvents ? EVENTS_DIMENSIONS : SOCIAL_DIMENSIONS,
-            isEvents ? EVENTS_METRICS : SOCIAL_METRICS);
+        (isEvents ? otherEvents_ : otherSocial_)[dimension] = tables[dimension];
         console.log('[WARN] UNKNOWN DIMENSION:', dimension);
       }
     });
 
-    setWidgetContent_(type + '-other', other || NO_DATA);
-    console.log('renderReports_', type, tables);
+    renderOther_(isEvents);
+    // console.log('renderReports_', type, tables);
   }
 
   /**
@@ -325,26 +321,6 @@
 
       return result;
     });
-  }
-
-  /**
-   * Gets HTML table markup.
-   * @param {!Array.<Array.<string>} data List of data rows.
-   * @param {!Array.<string>=} opt_dimensions Optional list of dimensions.
-   * @param {!Array.<string>=} opt_metrics Optional list of metrics.
-   * @return {string} Returns HTML table markup.
-   * @private
-   */
-  function getSimpleGrid_(data, opt_dimensions, opt_metrics) {
-    opt_dimensions = opt_dimensions || EVENTS_DIMENSIONS;
-    opt_metrics = opt_metrics || EVENTS_METRICS;
-
-    return '<table border=1><thead><tr>' +
-           '<th>' + opt_dimensions.map(toLabel_).join('</th><th>') + '</th>' +
-           '<th>' + opt_metrics.map(toLabel_).join('</th><th>') + '</th>' +
-           '</tr></thead><tbody><tr>' + data.map(function(row) {
-             return '<td>' + row.join('</td><td>') + '</td>';
-           }).join('</tr><tr>') + '</tr></tbody></table>';
   }
 
   /**
@@ -640,6 +616,40 @@
            '<span style="width:' + Math.max(1, width) + '%"></span>' +
            presents.toFixed(2) + '%</div>';
   }
+
+  function renderOther_(isEvents) {
+    var map = isEvents ? otherEvents_ : otherSocial_;
+    var container = isEvents ? 'events-other' : 'social-other';
+    var parent = document.getElementById(container);
+
+    Object.keys(map).forEach(function(dimension) {
+      var div = parent.appendChild(document.createElement('DIV'));
+      div.id = 'report-' + dimension + '-table-container';
+
+      var data = map[dimension];
+
+      /** @type {number} */ var index = 3; // Sort index.
+      /** @type {!Array.<!Object>} */ var columns = [].concat(EVENTS_DIMENSIONS, EVENTS_METRICS.map(function(name) {
+        return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '10%'};
+      }));
+
+      renderWidget_(data, dimension, index, columns, function(row, callback) {
+        callback(+row[EVENTS_TOTAL_INDEX], row);
+      });
+    });
+  }
+
+  /**
+   * @type {!Object.<string, Object>}
+   * @private
+   */
+  var otherEvents_ = {};
+
+  /**
+   * @type {!Object.<string, Object>}
+   * @private
+   */
+  var otherSocial_ = {};
 
   // Initializing dashboard.
   init_();
