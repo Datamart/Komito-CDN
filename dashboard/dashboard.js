@@ -359,6 +359,24 @@
     return first + text.replace(/([A-Z])/g, ' $1').slice(1);
   }
 
+  function aggregateBy_(data, column) {
+    /** @type {!Object.<string, !Array>} */ var map = {};
+
+    data.forEach(function(row) {
+      /** @type {string} */ var dimension = row[column];
+      map[dimension] = map[dimension] || ['', dimension, '', 0, 0, 0, 0];
+      map[dimension][column] = dimension;
+
+      row.forEach(function(value, index) {
+        if (index >= EVENTS_DIMENSIONS_LENGTH) {
+          map[dimension][index] += +value;
+        }
+      });
+    });
+
+    return Object.values(map);
+  }
+
   /**
    * Renders scroll events widget.
    * @param {!Array.<Array.<string>} data List of data rows.
@@ -423,19 +441,7 @@
       return {'label': toLabel_(name), 'type': 'number', 'name': name, 'width': '14%'};
     }));
 
-    /** @type {!Object.<string, !Array>} */ var map = {};
-    data.forEach(function(row) {
-      /** @type {string} */ var domain = row[EVENTS_ACTION_INDEX];
-      map[domain] = map[domain] || ['', domain, '', 0, 0, 0, 0];
-      map[domain][EVENTS_ACTION_INDEX] = domain;
-      row.forEach(function(value, index) {
-        if (index >= EVENTS_DIMENSIONS_LENGTH) {
-          map[domain][index] += +value;
-        }
-      });
-    });
-    data = Object.values(map);
-
+    data = aggregateBy_(data, EVENTS_ACTION_INDEX);
     renderWidget_(data, 'events-outbound', index, columns, function(row, callback) {
       /** @type {number} */ var value = +row[EVENTS_TOTAL_INDEX];
       callback(value, [
