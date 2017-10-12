@@ -488,7 +488,8 @@ code:last-child {
   top: -.5em;
 }
 
-.urchin {
+.urchin,
+.webalytics  {
   top: .35em;
 }
 
@@ -721,6 +722,7 @@ code:last-child {
     padding-left: 0;
     padding-right: 0;
     text-align: center;
+    top: 0;
     width: 100%;
   }
 
