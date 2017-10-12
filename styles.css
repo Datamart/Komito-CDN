@@ -81,6 +81,12 @@ h4 {
   text-transform: uppercase;
 }
 
+hr {
+  border: 0;
+  border-top: 1px solid rgba(200,200,200,.5);
+  margin: 2em 0;
+}
+
 .thin-font {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
