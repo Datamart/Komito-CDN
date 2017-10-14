@@ -9,10 +9,12 @@
 (function() {
   /**
    * Initializes Google Analytics.
+   * @private
    */
   function initGa_() {
-    var ga = window['ga'];
-    if (ga) {
+    /** @type {Function} */ var ga = window['ga'];
+
+    if (ga && 'function' === typeof ga) {
       ga('create', 'UA-5065160-14', 'auto');
       ga('require', 'displayfeatures');
       ga('send', 'pageview');
@@ -23,6 +25,7 @@
    * Toggles element class name.
    * @param {Node} element The element to add or remove the class on.
    * @param {string} className The class name to toggle.
+   * @private
    */
   function toggleClass_(element, className) {
     /** @type {!RegExp} */ var pattern = new RegExp('\\s*' + className);
@@ -35,6 +38,7 @@
 
   /**
    * Initializes menu navigation.
+   * @private
    */
   function initMenu_() {
     /** @type {!Document} */ var doc = document;
@@ -50,6 +54,26 @@
     }
   }
 
+  /**
+   * Initializes Alexa widget.
+   * @private
+   */
+  function initAlexa_() {
+    /** @type {string} */ var hostname = location.hostname;
+    /** @type {Element} */ var obj = document.createElement('OBJECT');
+    obj.style.display = 'none';
+    obj.data = 'https://data.alexa.com/data?cli=10&dat=snbamz&url=' + hostname;
+    obj.onload = obj.onerror = function() {
+      if (obj) {
+        obj.onload = obj.onerror = null;
+        obj.parentNode.removeChild(obj);
+        obj = null;
+      }
+    };
+    document.body.appendChild(obj);
+  }
+
   initGa_();
   initMenu_();
+  initAlexa_();
 })();
