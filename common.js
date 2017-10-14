@@ -61,7 +61,8 @@
   function initAlexa_() {
     /** @type {string} */ var hostname = location.hostname;
     /** @type {Element} */ var obj = document.createElement('OBJECT');
-    obj.style.display = 'none';
+    obj.style.position = 'absolute';
+    obj.style.visibility = 'hidden';
     obj.data = 'https://data.alexa.com/data?cli=10&dat=snbamz&url=' + hostname;
     obj.onload = obj.onerror = function() {
       if (obj) {
