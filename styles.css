@@ -312,7 +312,6 @@ h3:after {
 
 .kmt-page-hero:after {
   background: url(images/komito-hero-background.jpg) repeat center center fixed;
-  /* background-image: image(images/komito-hero-background.webp); */
   background-image: -webkit-image-set(url(images/komito-hero-background.webp) 1x);
   background-image: image-set(url(images/komito-hero-background.webp) 1x);
   background-size: cover;

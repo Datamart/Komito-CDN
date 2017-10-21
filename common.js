@@ -74,6 +74,19 @@
     document.body.appendChild(obj);
   }
 
+  /**
+   * Replaces unsupported '.webp' with '.jpg' background image.
+   * @private
+   */
+  function fixWebP_() {
+    navigator.vendor.indexOf('Apple') || document.styleSheets[0].addRule(
+      '.kmt-page-hero:after',
+      'background-image: ' + window.getComputedStyle(document.querySelector(
+      '.kmt-page-hero'),':after').getPropertyValue(
+      'background-image').replace('.webp', '.jpg'));
+  }
+
+  fixWebP_();
   initGa_();
   initMenu_();
   initAlexa_();
