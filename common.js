@@ -79,11 +79,19 @@
    * @private
    */
   function fixWebP_() {
-    navigator.vendor.indexOf('Apple') || document.styleSheets[0].addRule(
-      '.kmt-page-hero:after',
-      'background-image: ' + window.getComputedStyle(document.querySelector(
-      '.kmt-page-hero'),':after').getPropertyValue(
-      'background-image').replace('.webp', '.jpg'));
+    var bgImage = window.getComputedStyle(document.querySelector(
+        '.kmt-page-hero'),':after').getPropertyValue('background-image');
+
+    function callback(result) {
+      result || document.styleSheets[0].addRule(
+          '.kmt-page-hero:after',
+          'background-image: ' + bgImage.replace('.webp', '.jpg'));
+    }
+
+    var img = new Image;
+    img.onload = function () { callback(img.width > 0 && img.height > 0); };
+    img.onerror = function () { callback(false); };
+    img.src = bgImage.split('url(')[1].split(')')[0].replace(/"/g,'');
   }
 
   fixWebP_();
