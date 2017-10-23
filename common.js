@@ -90,6 +90,7 @@
         result || document.styleSheets[0].addRule(
             selector + ':after',
             'background-image: ' + bgImage.replace('.webp', '.jpg'));
+        node.onload = node.onerror = null;
         node = null;
       }
 
