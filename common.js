@@ -79,19 +79,25 @@
    * @private
    */
   function fixWebP_() {
-    var bgImage = window.getComputedStyle(document.querySelector(
-        '.kmt-page-hero'),':after').getPropertyValue('background-image');
+    var selector = '.kmt-page-hero';
+    var node = document.querySelector(selector);
 
-    function callback(result) {
-      result || document.styleSheets[0].addRule(
-          '.kmt-page-hero:after',
-          'background-image: ' + bgImage.replace('.webp', '.jpg'));
+    if (node) {
+      var bgImage = window.getComputedStyle(
+          node,':after').getPropertyValue('background-image');
+
+      function callback(result) {
+        result || document.styleSheets[0].addRule(
+            selector + ':after',
+            'background-image: ' + bgImage.replace('.webp', '.jpg'));
+        node = null;
+      }
+
+      node = new Image;
+      node.onload = function () {callback(node.width > 0 && node.height > 0);};
+      node.onerror = function () {callback(false);};
+      node.src = bgImage.split('url(')[1].split(')')[0].replace(/"/g,'');
     }
-
-    var img = new Image;
-    img.onload = function () { callback(img.width > 0 && img.height > 0); };
-    img.onerror = function () { callback(false); };
-    img.src = bgImage.split('url(')[1].split(')')[0].replace(/"/g,'');
   }
 
   fixWebP_();
