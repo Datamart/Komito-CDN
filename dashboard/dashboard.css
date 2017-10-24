@@ -8,6 +8,16 @@
   display: block;
 }
 
+#header-auth {
+  text-align: center;
+}
+
+.kmt-page-footer {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+
 .chart-container {
   font-size: 20px;
   height: 225px;
