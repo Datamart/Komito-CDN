@@ -88,8 +88,6 @@
    * @private
    */
   function init_() {
-    onResize_();
-
     window['gapi'] = window['gapi'] || {};
     window['gapi']['analytics'] = {
       'q': [],
@@ -103,13 +101,6 @@
     script.onload = function() { window['gapi']['load']('analytics'); };
 
     window['gapi']['analytics']['ready'](onReady_);
-  }
-
-  function onResize_() {
-    var element = document.getElementById('header-auth').parentNode;
-    element.style.height = (document.documentElement.offsetHeight - (
-        element.offsetTop + (element.offsetHeight || 30) +
-        document.querySelector('.kmt-page-footer').offsetHeight)) + 'px';
   }
 
   /**
@@ -129,14 +120,12 @@
       document.getElementById('header-sign-out').onclick = function() { auth['signOut'](); }
 
       initViewSelector_();
-      onResize_();
       console.log('onReady_:', auth['getUserProfile']());
     });
 
     auth['on']('signOut', function() {
       body.classList.remove('is-authorized');
       body.classList.add('is-needingAuthorization');
-      onResize_();
     });
 
     auth['once']('needsAuthorization', function() {

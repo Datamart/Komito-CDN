@@ -9,6 +9,7 @@
 }
 
 #header-auth {
+  min-height: 7em;
   text-align: center;
 }
 
