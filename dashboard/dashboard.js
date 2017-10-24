@@ -567,16 +567,20 @@
     Object.keys(socialAction_).forEach(function(key) {
       data.push.apply(data, socialAction_[key]);
     });
-    renderSocialWidget_('actions', data);
+
+    renderSocialWidget_('actions', data, function(row) {
+      return row[SOCIAL_NETWORK_INDEX] + ' / ' + row[SOCIAL_ACTION_INDEX];
+    });
   }
 
   /**
    * Renders social widget.
    * @param {string} widget The widget name.
    * @param {!Array.<Array.<string>} data List of data rows.
+   * @param {function(Array):string=} opt_dimensionFn Optional dimension function.
    * @private
    */
-  function renderSocialWidget_(widget, data) {
+  function renderSocialWidget_(widget, data, opt_dimensionFn) {
     /** @type {number} */ var index = 1; // Sort index.
     /** @type {!Array.<!Object>} */ var columns =  ['Network'].concat(SOCIAL_METRICS.map(function(name) {
       return {'label': toLabel_(name), 'name': name, 'width': '14%', 'type': 'number'}
@@ -585,7 +589,7 @@
     renderWidget_(data, 'social-' + widget, index, columns, function(row, callback) {
       /** @type {number} */ var value = +row[SOCIAL_INTERACTIONS_INDEX];
       callback(value, [
-          row[SOCIAL_NETWORK_INDEX],
+          opt_dimensionFn ? opt_dimensionFn(row) : row[SOCIAL_NETWORK_INDEX],
           value,
           row[SOCIAL_UNIQUE_INDEX],
           (+row[SOCIAL_PER_SESSIONS_INDEX]).toFixed(2)
