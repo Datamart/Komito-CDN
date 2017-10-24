@@ -255,7 +255,7 @@
         }
       });
     }
-    renderOther_(false, socialAction_, 'social-actions');
+    renderSocialActionsWidget_();
   }
 
   /**
@@ -558,6 +558,24 @@
     renderSocialWidget_('outbound', data);
   }
 
+  /**
+   * Renders social actions widget.
+   * @private
+   */
+  function renderSocialActionsWidget_() {
+    /** @type {!Array.<Array.<string>} */ var data = [];
+    Object.keys(socialAction_).forEach(function(key) {
+      data.push(socialAction_[key]);
+    });
+    renderSocialWidget_('actions', data);
+  }
+
+  /**
+   * Renders social widget.
+   * @param {string} widget The widget name.
+   * @param {!Array.<Array.<string>} data List of data rows.
+   * @private
+   */
   function renderSocialWidget_(widget, data) {
     /** @type {number} */ var index = 1; // Sort index.
     /** @type {!Array.<!Object>} */ var columns =  ['Network'].concat(SOCIAL_METRICS.map(function(name) {
@@ -626,9 +644,9 @@
            presents.toFixed(2) + '%</div>';
   }
 
-  function renderOther_(isEvents, opt_map, opt_type) {
-    var map = opt_map || (isEvents ? otherEvents_ : otherSocial_);
-    var type = opt_type || (isEvents ? 'events' : 'social');
+  function renderOther_(isEvents) {
+    var map = isEvents ? otherEvents_ : otherSocial_;
+    var type = isEvents ? 'events' : 'social';
     var container = 'report-' + type + '-other';
     var cell = document.getElementById(container).lastElementChild;
     var dimensions = Object.keys(map);
