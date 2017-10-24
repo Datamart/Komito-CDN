@@ -90,7 +90,7 @@
   function init_() {
     var element = document.getElementById('embed-api-auth-container');
     element.style.height = (document.documentElement.offsetHeight - (
-        element.offsetTop + document.querySelector(
+        element.offsetTop - element.offsetHeight + document.querySelector(
         '.kmt-page-footer').offsetHeight)) + 'px';
 
     window['gapi'] = window['gapi'] || {};
