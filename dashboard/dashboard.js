@@ -70,7 +70,8 @@
   var WIDGETS = ['events-scroll', 'events-outbound', 'events-cta',
                  'events-download', 'events-form', 'events-print',
                  'events-video', 'events-other',
-                 'social-pageview', 'social-outbound', 'social-other'];
+                 'social-pageview', 'social-outbound', 'social-actions',
+                 'social-other'];
 
   /**
    * @const {string}
