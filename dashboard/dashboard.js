@@ -174,6 +174,7 @@
     setWidgetsContent_('Loading...');
     otherEvents_ = {};
     otherSocial_ = {};
+    socialAction_ = {};
 
     window['gapi']['client']['request']({
       'path': '/v4/reports:batchGet',
@@ -254,6 +255,7 @@
         }
       });
     }
+    renderOther_(false, socialAction_, 'social-actions');
   }
 
   /**
@@ -320,6 +322,10 @@
 
       if ('pageview' === key) renderSocialPageviewsWidget_(data);
       else if ('outbound' === key) renderSocialOutboundWidget_(data);
+      else if ('like' === key || 'message' === key || 'share' === key ||
+        'follow' === key || 'intent-tweet' === key || 'tweet' === key) {
+        socialAction_[key] = data;
+      }
       else result = false;
 
       return result;
@@ -620,9 +626,9 @@
            presents.toFixed(2) + '%</div>';
   }
 
-  function renderOther_(isEvents) {
-    var map = isEvents ? otherEvents_ : otherSocial_;
-    var type = isEvents ? 'events' : 'social';
+  function renderOther_(isEvents, opt_map, opt_type) {
+    var map = opt_map || isEvents ? otherEvents_ : otherSocial_;
+    var type = opt_type || isEvents ? 'events' : 'social';
     var container = 'report-' + type + '-other';
     var cell = document.getElementById(container).lastElementChild;
     var dimensions = Object.keys(map);
@@ -672,6 +678,12 @@
    * @private
    */
   var otherSocial_ = {};
+
+  /**
+   * @type {!Object.<string, Object>}
+   * @private
+   */
+  var socialAction_ = {};
 
   // Initializing dashboard.
   init_();
