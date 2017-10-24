@@ -569,7 +569,7 @@
     });
 
     renderSocialWidget_('actions', data, function(row) {
-      return row[SOCIAL_NETWORK_INDEX] + ' / ' + row[SOCIAL_ACTION_INDEX];
+      return row[SOCIAL_NETWORK_INDEX] + ' / ' + toLabel_(row[SOCIAL_ACTION_INDEX]);
     });
   }
 
