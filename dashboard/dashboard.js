@@ -88,8 +88,8 @@
    * @private
    */
   function init_() {
-    var element = document.getElementById('header-auth');
-    element.style.height = (screen.availHeight - (
+    var element = document.getElementById('embed-api-auth-container');
+    element.style.height = (document.documentElement.offsetHeight - (
         element.offsetTop + document.querySelector(
         '.kmt-page-footer').offsetHeight)) + 'px';
 
