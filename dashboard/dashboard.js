@@ -108,8 +108,8 @@
   function onResize_() {
     var element = document.getElementById('embed-api-auth-container');
     element.style.height = (document.documentElement.offsetHeight - (
-        element.offsetTop + element.offsetHeight + document.querySelector(
-        '.kmt-page-footer').offsetHeight)) + 'px';
+        element.offsetTop + (element.offsetHeight || 30) +
+        document.querySelector('.kmt-page-footer').offsetHeight)) + 'px';
   }
 
   /**
