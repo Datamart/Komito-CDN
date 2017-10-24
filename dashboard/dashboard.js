@@ -627,8 +627,8 @@
   }
 
   function renderOther_(isEvents, opt_map, opt_type) {
-    var map = opt_map || isEvents ? otherEvents_ : otherSocial_;
-    var type = opt_type || isEvents ? 'events' : 'social';
+    var map = opt_map || (isEvents ? otherEvents_ : otherSocial_);
+    var type = opt_type || (isEvents ? 'events' : 'social');
     var container = 'report-' + type + '-other';
     var cell = document.getElementById(container).lastElementChild;
     var dimensions = Object.keys(map);
