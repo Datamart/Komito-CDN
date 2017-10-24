@@ -569,10 +569,13 @@
       data.push.apply(data, socialAction_[key]);
     });
 
-    setWidgetContent_('social-actions', data.length ? '' : NO_DATA);
-    renderSocialWidget_('actions', data, function(row) {
-      return row[SOCIAL_NETWORK_INDEX] + ' / ' + toLabel_(row[SOCIAL_ACTION_INDEX]);
-    });
+    if (data.length) {
+      renderSocialWidget_('actions', data, function(row) {
+        return row[SOCIAL_NETWORK_INDEX] + ' / ' + toLabel_(row[SOCIAL_ACTION_INDEX]);
+      });
+    } else {
+      setWidgetContent_('social-actions', NO_DATA);
+    }
   }
 
   /**
