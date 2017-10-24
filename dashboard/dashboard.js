@@ -88,10 +88,7 @@
    * @private
    */
   function init_() {
-    var element = document.getElementById('embed-api-auth-container');
-    element.style.height = (document.documentElement.offsetHeight - (
-        element.offsetTop - element.offsetHeight + document.querySelector(
-        '.kmt-page-footer').offsetHeight)) + 'px';
+    onResize_();
 
     window['gapi'] = window['gapi'] || {};
     window['gapi']['analytics'] = {
@@ -106,6 +103,13 @@
     script.onload = function() { window['gapi']['load']('analytics'); };
 
     window['gapi']['analytics']['ready'](onReady_);
+  }
+
+  function onResize_() {
+    var element = document.getElementById('embed-api-auth-container');
+    element.style.height = (document.documentElement.offsetHeight - (
+        element.offsetTop + element.offsetHeight + document.querySelector(
+        '.kmt-page-footer').offsetHeight)) + 'px';
   }
 
   /**
