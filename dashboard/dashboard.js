@@ -88,6 +88,11 @@
    * @private
    */
   function init_() {
+    var element = document.getElementById('header-auth');
+    element.style.height = (screen.availHeight - (
+        element.offsetTop + document.querySelector(
+        '.kmt-page-footer').offsetHeight)) + 'px';
+
     window['gapi'] = window['gapi'] || {};
     window['gapi']['analytics'] = {
       'q': [],
