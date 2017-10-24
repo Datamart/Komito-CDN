@@ -565,7 +565,7 @@
   function renderSocialActionsWidget_() {
     /** @type {!Array.<Array.<string>} */ var data = [];
     Object.keys(socialAction_).forEach(function(key) {
-      data.push(socialAction_[key]);
+      data.push.apply(data, socialAction_[key]);
     });
     renderSocialWidget_('actions', data);
   }
