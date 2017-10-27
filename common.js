@@ -101,8 +101,36 @@
     }
   }
 
-  fixWebP_();
-  initGa_();
-  initMenu_();
-  initAlexa_();
+  /**
+   * Initializes service worker.
+   * @private
+   */
+  function initServiceWorker_() {
+    if ('serviceWorker' in navigator && ~location.search.indexOf('pwa')) {
+      window.addEventListener('load', function() {
+        function onSuccess(registration) {
+          console.log('Registration successful with scope: ', registration.scope);
+        }
+        function onFail(error) {
+          console.log('Registration failed: ', error);
+        }
+        navigator.serviceWorker.register('/worker.js').then(onSuccess, onFail);
+      });
+    }
+  }
+
+  /**
+   * Initializes application.
+   * @private
+   */
+  function init_() {
+    fixWebP_();
+    initGa_();
+    initMenu_();
+    initAlexa_();
+    initServiceWorker_();
+  }
+
+  // Initializing application.
+  init_();
 })();
