@@ -27,7 +27,7 @@
   "lang": "en",
   "background_color": "#FFFFFF",
   "theme_color": "#222",
-  "start_url": "/dashboard",
+  "start_url": "/dashboard/",
   "display": "standalone",
   "orientation": "portrait"
 }
