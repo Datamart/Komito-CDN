@@ -20,24 +20,38 @@
   '/dashboard/dashboard.js'
 ];
 
-var SHOW_ALERT = ~location.search.indexOf('alert');
-
 self.addEventListener('install', function(event) {
-  (SHOW_ALERT ? alert : console.log)('worker:install');
+  log_('worker:install');
   event.waitUntil(caches.open(CACHE_NAME).then(function(cache) {
-    (SHOW_ALERT ? alert : console.log)('worker:install:cache');
+    log_('worker:install:cache');
     return cache.addAll(CACHE_URLS);
   }));
 });
 
 self.addEventListener('activate', function(event) {
-  (SHOW_ALERT ? alert : console.log)('worker:activate');
+  log_('worker:activate');
 });
 
 self.addEventListener('fetch', function(event) {
-  (SHOW_ALERT ? alert : console.log)('worker:fetch');
+  log_('worker:fetch');
   event.respondWith(caches.match(event.request).then(function(response) {
-  (SHOW_ALERT ? alert : console.log)('worker:fetch:match');
+    log_('worker:fetch:match');
     return response || fetch(event.request);
   }));
 });
+
+self.addEventListener('beforeinstallprompt', function(event) {
+  log_('worker:beforeinstallprompt');
+  event.userChoice.then(function(choice) {
+    log_(choice.outcome);
+    if ('dismissed' === choice.outcome) {
+      log_('User canceled home screen install');
+    } else {
+      log_('User added to home screen');
+    }
+  });
+});
+
+function log_(message) {
+  (~location.search.indexOf('alert') ? alert : console.log)(message);
+}
