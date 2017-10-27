@@ -4,6 +4,11 @@
   "description": "Komito Analytics is an enhancement for the most popular web analytics software.",
   "icons": [
     {
+      "src": "/images/komito-logo-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
       "src": "/images/komito-logo-192x192.svg",
       "sizes": "192x192",
       "type": "image/svg+xml"
