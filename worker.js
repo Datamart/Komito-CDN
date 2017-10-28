@@ -10,14 +10,14 @@
 /** @const {string} */ var CACHE_NAME = 'komito-cache-v1';
 
 /** @const {Array.<string>} */ var CACHE_URLS = [
-  '/',
-  '/demo/',
-  '/integration/',
-  '/styles.css',
-  '/common.js',
-  '/dashboard/',
-  '/dashboard/dashboard.css',
-  '/dashboard/dashboard.js'
+  // '/',
+  // '/demo/',
+  // '/integration/',
+  // '/styles.css',
+  // '/common.js',
+  // '/dashboard/',
+  // '/dashboard/dashboard.css',
+  // '/dashboard/dashboard.js'
 ];
 
 self.addEventListener('install', function(event) {
@@ -28,16 +28,23 @@ self.addEventListener('install', function(event) {
   }));
 });
 
-self.addEventListener('activate', function(event) {
-  log_('worker:activate');
-});
-
 self.addEventListener('fetch', function(event) {
   log_('worker:fetch');
   event.respondWith(caches.match(event.request).then(function(response) {
     log_('worker:fetch:match');
-    return response || fetch(event.request);
+    return response || fetch(event.request.clone()).then(function(response) {
+      if (response && 200 === response.status && 'basic' === response.type) {
+        caches.open(CACHE_NAME).then(function(cache) {
+          cache.put(event.request, response.clone());
+        });
+      }
+      return response;
+    });
   }));
+});
+
+self.addEventListener('activate', function(event) {
+  log_('worker:activate');
 });
 
 self.addEventListener('beforeinstallprompt', function(event) {

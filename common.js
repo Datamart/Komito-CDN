@@ -119,32 +119,11 @@
     }
   }
 
-  function noCache_() {
-    if (~location.search.indexOf('nocache')) {
-      var links = document.getElementsByTagName('LINK');
-      var length = links.length;
-      var i = 0;
-
-      for (; i < length; i++) {
-        var rel = links[i].getAttribute('rel');
-        if ('stylesheet' === rel) {
-          var link = document.createElement('LINK');
-          link.rel = rel;
-          link.href = links[i].href + '?ts=' + +new Date;
-          links[i].parentNode.appendChild(link);
-          links[i].parentNode.removeChild(links[i]);
-        }
-      }
-    }
-  }
-
   /**
    * Initializes application.
    * @private
    */
   function init_() {
-    noCache_();
-
     fixWebP_();
     initGa_();
     initMenu_();
