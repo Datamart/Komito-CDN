@@ -116,6 +116,17 @@
         }
         navigator.serviceWorker.register('/worker.js').then(onSuccess, onFail);
       });
+
+      window.addEventListener('beforeinstallprompt', function(event) {
+        event.userChoice.then(function(choice) {
+          console.log('choice.outcome: ', choice.outcome);
+          if ('dismissed' === choice.outcome) {
+            console.log('User canceled home screen install.');
+          } else {
+            console.log('User added to home screen.');
+          }
+        });
+      });
     }
   }
 

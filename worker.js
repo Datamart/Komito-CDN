@@ -57,18 +57,6 @@ self.addEventListener('activate', function(event) {
   }));
 });
 
-self.addEventListener('beforeinstallprompt', function(event) {
-  log_('worker:beforeinstallprompt');
-  event.userChoice.then(function(choice) {
-    log_(choice.outcome);
-    if ('dismissed' === choice.outcome) {
-      log_('User canceled home screen install');
-    } else {
-      log_('User added to home screen');
-    }
-  });
-});
-
 function log_(message) {
   (~location.search.indexOf('alert') ? alert : console.log)(message);
 }
