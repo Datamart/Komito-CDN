@@ -4,7 +4,6 @@
  * @see http://google.github.io/styleguide/javascriptguide.xml
  * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
  * @see https://developers.google.com/web/fundamentals/primers/service-workers/
- * @see https://developers.google.com/web/fundamentals/app-install-banners/
  */
 
 /** @const {string} */ var CACHE_NAME = 'komito-cache-v1';

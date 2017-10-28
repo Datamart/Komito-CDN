@@ -116,17 +116,40 @@
         }
         navigator.serviceWorker.register('/worker.js').then(onSuccess, onFail);
       });
+    }
+  }
+
+  /**
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/BeforeInstallPromptEvent
+   * @see https://developers.google.com/web/fundamentals/app-install-banners/
+   * @private
+   */
+  function initInstallPrompt_() {
+    if (window.BeforeInstallPromptEvent) {
+      /** @type {BeforeInstallPromptEvent} */ var promptEvent;
+      /** @type {string} */ var btnId = 'install-prompt-button';
+      /** @type {Element} */ var btn = document.getElementById(btnId);
 
       window.addEventListener('beforeinstallprompt', function(event) {
-        event.userChoice.then(function(choice) {
-          console.log('choice.outcome: ', choice.outcome);
-          if ('dismissed' === choice.outcome) {
-            console.log('User canceled home screen install.');
-          } else {
-            console.log('User added to home screen.');
-          }
-        });
+        event.preventDefault();
+        promptEvent = event;
+        return false;
       });
+
+      window['installWebApp'] = function() {
+        if (promptEvent) {
+          promptEvent.prompt();
+          promptEvent.userChoice.then(function(choice) {
+            alert('The application is ' + choice.outcome);
+            promptEvent = null;
+          });
+        }
+      };
+
+      if (btn) {
+        btn.onclick = window['installWebApp'];
+        btn.style.display = 'inline';
+      }
     }
   }
 
@@ -140,6 +163,7 @@
     initMenu_();
     initAlexa_();
     initServiceWorker_();
+    initInstallPrompt_();
   }
 
   // Initializing application.
