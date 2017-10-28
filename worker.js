@@ -34,8 +34,9 @@ self.addEventListener('fetch', function(event) {
     log_('worker:fetch:match');
     return response || fetch(event.request.clone()).then(function(response) {
       if (response && 200 === response.status && 'basic' === response.type) {
+        var clone = response.clone();
         caches.open(CACHE_NAME).then(function(cache) {
-          cache.put(event.request, response.clone());
+          cache.put(event.request, clone);
         });
       }
       return response;
