@@ -7,6 +7,7 @@
  */
 
 /** @const {string} */ var CACHE_NAME = 'komito-cache-v1';
+/** @const {string} */ var SCOPE_URL = 'https://komito.net/';
 
 /** @const {Array.<string>} */ var CACHE_URLS = [
   // '/',
@@ -20,23 +21,22 @@
 ];
 
 self.addEventListener('install', function(event) {
-  log_('worker:install');
   event.waitUntil(caches.open(CACHE_NAME).then(function(cache) {
-    log_('worker:install:cache');
     return cache.addAll(CACHE_URLS);
   }));
 });
 
 self.addEventListener('fetch', function(event) {
-  log_('worker:fetch');
-  event.respondWith(caches.match(event.request).then(function(response) {
-    log_('worker:fetch:match');
+  /** @type {string} */ var url = event.request.url;
+  event.respondWith(caches.match(url).then(function(response) {
     return response || fetch(event.request.clone()).then(function(response) {
-      if (response && 200 === response.status && 'basic' === response.type) {
-        var clone = response.clone();
-        caches.open(CACHE_NAME).then(function(cache) {
-          cache.put(event.request, clone);
-        });
+      if (SCOPE_URL === url.slice(0, 19)) {
+        if (response && 200 === response.status && 'basic' === response.type) {
+          var clone = response.clone();
+          caches.open(CACHE_NAME).then(function(cache) {
+            cache.put(url, clone);
+          });
+        }
       }
       return response;
     });
@@ -44,7 +44,6 @@ self.addEventListener('fetch', function(event) {
 });
 
 self.addEventListener('activate', function(event) {
-  log_('worker:activate');
   var whitelist = [CACHE_NAME];
 
   event.waitUntil(caches.keys().then(function(cacheNames) {
@@ -55,7 +54,3 @@ self.addEventListener('activate', function(event) {
     }));
   }));
 });
-
-function log_(message) {
-  (~location.search.indexOf('alert') ? alert : console.log)(message);
-}
