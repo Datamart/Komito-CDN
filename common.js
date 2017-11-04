@@ -116,7 +116,9 @@
         function onFail(error) {
           console.log('Registration failed: ', error);
         }
-        navigator.serviceWorker.register('/worker.js').then(onSuccess, onFail);
+        navigator.serviceWorker.register('/worker.js', {
+          'scope': '/'
+        }).then(onSuccess, onFail);
       });
     }
   }
@@ -131,12 +133,17 @@
       /** @type {BeforeInstallPromptEvent} */ var promptEvent;
       /** @type {string} */ var btnId = 'install-prompt-button';
       /** @type {Element} */ var btn = document.getElementById(btnId);
+      /** @type {number} */ var debug = ~location.search.indexOf('debug=');
 
       window.addEventListener('beforeinstallprompt', function(event) {
-        ~location.search.indexOf('debug=') && alert('onBeforeInstallPromptEvent');
+        debug && alert('onBeforeInstallPromptEvent');
         event.preventDefault();
         promptEvent = event;
         return false;
+      });
+
+      window.addEventListener('appinstalled', function() {
+        debug && alert('onAppInstalled');
       });
 
       window['installWebApp'] = function() {
@@ -147,11 +154,11 @@
             promptEvent = null;
           });
         } else {
-          alert('No saved BeforeInstallPromptEvent');
+          debug && alert('No saved BeforeInstallPromptEvent');
         }
       };
 
-      if (btn && ~location.search.indexOf('debug=')) {
+      if (btn && debug) {
         btn.onclick = window['installWebApp'];
         btn.style.display = 'inline';
       }
