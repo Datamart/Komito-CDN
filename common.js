@@ -59,19 +59,21 @@
    * @private
    */
   function initAlexa_() {
-    /** @type {string} */ var hostname = location.hostname;
+    /** @type {string} */ var host = location.hostname;
     /** @type {Element} */ var obj = document.createElement('OBJECT');
-    obj.style.position = 'absolute';
-    obj.style.visibility = 'hidden';
-    obj.data = 'https://data.alexa.com/data?cli=10&dat=snbamz&url=' + hostname;
-    obj.onload = obj.onerror = function() {
-      if (obj) {
-        obj.onload = obj.onerror = null;
-        obj.parentNode.removeChild(obj);
-        obj = null;
-      }
-    };
-    document.body.appendChild(obj);
+    if ('web.archive.org' !== host) {
+      obj.style.position = 'absolute';
+      obj.style.visibility = 'hidden';
+      obj.data = 'https://data.alexa.com/data?cli=10&dat=snbamz&url=' + host;
+      obj.onload = obj.onerror = function() {
+        if (obj) {
+          obj.onload = obj.onerror = null;
+          obj.parentNode.removeChild(obj);
+          obj = null;
+        }
+      };
+      document.body.appendChild(obj);
+    }
   }
 
   /**
