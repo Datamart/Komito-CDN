@@ -133,9 +133,9 @@
       /** @type {Element} */ var btn = document.getElementById(btnId);
 
       window.addEventListener('beforeinstallprompt', function(event) {
+        ~location.search.indexOf('debug=') && alert('onBeforeInstallPromptEvent');
         event.preventDefault();
         promptEvent = event;
-        ~location.search.indexOf('debug=') && alert('onBeforeInstallPromptEvent');
         return false;
       });
 
