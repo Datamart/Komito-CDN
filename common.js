@@ -128,7 +128,6 @@
    */
   function initInstallPrompt_() {
     if ('BeforeInstallPromptEvent' in window) {
-      ~location.search.indexOf('debug=') && alert('BeforeInstallPromptEvent');
       /** @type {BeforeInstallPromptEvent} */ var promptEvent;
       /** @type {string} */ var btnId = 'install-prompt-button';
       /** @type {Element} */ var btn = document.getElementById(btnId);
@@ -136,6 +135,7 @@
       window.addEventListener('beforeinstallprompt', function(event) {
         event.preventDefault();
         promptEvent = event;
+        ~location.search.indexOf('debug=') && alert('onBeforeInstallPromptEvent');
         return false;
       });
 
@@ -146,15 +146,15 @@
             alert('The application is ' + choice.outcome);
             promptEvent = null;
           });
+        } else {
+          alert('No saved BeforeInstallPromptEvent');
         }
       };
 
-      if (btn) {
+      if (btn && ~location.search.indexOf('debug=')) {
         btn.onclick = window['installWebApp'];
         btn.style.display = 'inline';
       }
-    } else {
-      ~location.search.indexOf('debug=') && alert('No BeforeInstallPromptEvent');
     }
   }
 
