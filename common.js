@@ -108,7 +108,7 @@
    * @private
    */
   function initServiceWorker_() {
-    if ('serviceWorker' in navigator && ~location.search.indexOf('pwa')) {
+    if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
         function onSuccess(registration) {
           console.log('Registration successful with scope: ', registration.scope);
@@ -127,7 +127,8 @@
    * @private
    */
   function initInstallPrompt_() {
-    if (window.BeforeInstallPromptEvent) {
+    if ('BeforeInstallPromptEvent' in window) {
+      ~location.search.indexOf('debug=') && alert('BeforeInstallPromptEvent');
       /** @type {BeforeInstallPromptEvent} */ var promptEvent;
       /** @type {string} */ var btnId = 'install-prompt-button';
       /** @type {Element} */ var btn = document.getElementById(btnId);
@@ -152,6 +153,8 @@
         btn.onclick = window['installWebApp'];
         btn.style.display = 'inline';
       }
+    } else {
+      ~location.search.indexOf('debug=') && alert('No BeforeInstallPromptEvent');
     }
   }
 
