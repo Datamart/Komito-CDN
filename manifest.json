@@ -2,6 +2,12 @@
   "name": "Komito Analytics",
   "short_name": "Komito",
   "description": "Komito Analytics is an enhancement for the most popular web analytics software.",
+  "start_url": "/dashboard/?utm_source=pwa&utm_medium=manifest",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#222222",
+  "background_color": "#ffffff",
+  "lang": "en",
   "icons": [
     {
       "src": "/images/komito-logo-144x144.png",
@@ -29,11 +35,5 @@
       "type": "image/png"
     }
   ],
-  "lang": "en",
-  "background_color": "#FFFFFF",
-  "theme_color": "#222",
-  "start_url": "/dashboard/",
-  "display": "standalone",
-  "orientation": "portrait",
   "related_applications": [{ "platform": "web" }]
 }

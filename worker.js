@@ -27,20 +27,22 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-  /** @type {string} */ var url = event.request.url;
-  event.respondWith(caches.match(url).then(function(response) {
-    return response || fetch(event.request.clone()).then(function(response) {
-      if (SCOPE_URL === url.slice(0, 19)) {
-        if (response && 200 === response.status && 'basic' === response.type) {
-          var clone = response.clone();
-          caches.open(CACHE_NAME).then(function(cache) {
-            cache.put(url, clone);
-          });
+  if ('GET' === event.request.method) {
+    /** @type {string} */ var url = event.request.url;
+    event.respondWith(caches.match(url).then(function(response) {
+      return response || fetch(event.request.clone()).then(function(response) {
+        if (SCOPE_URL === url.slice(0, 19)) {
+          if (response && 200 === response.status && 'basic' == response.type) {
+            var clone = response.clone();
+            caches.open(CACHE_NAME).then(function(cache) {
+              cache.put(url, clone);
+            });
+          }
         }
-      }
-      return response;
-    });
-  }));
+        return response;
+      });
+    }));
+  }
 });
 
 self.addEventListener('activate', function(event) {
