@@ -7,6 +7,8 @@
 
 
 (function() {
+  /** @const {number} */ var DEBUG = ~location.search.indexOf('debug=');
+
   /**
    * Initializes Google Analytics.
    * @private
@@ -110,15 +112,14 @@
   function initServiceWorker_() {
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
-        function onSuccess(registration) {
-          console.log('Registration successful with scope: ', registration.scope);
-        }
-        function onFail(error) {
-          console.log('Registration failed: ', error);
-        }
         navigator.serviceWorker.register('/worker.js', {
           'scope': '/'
-        }).then(onSuccess, onFail);
+        }).then(function(registration) {
+          DEBUG && alert(
+              'Registration successful with scope: ' + registration.scope);
+        }, function(error) {
+          DEBUG && alert('Registration failed: ' + error);
+        });
       });
     }
   }
@@ -130,38 +131,13 @@
    */
   function initInstallPrompt_() {
     if ('BeforeInstallPromptEvent' in window) {
-      /** @type {BeforeInstallPromptEvent} */ var promptEvent;
-      /** @type {string} */ var btnId = 'install-prompt-button';
-      /** @type {Element} */ var btn = document.getElementById(btnId);
-      /** @type {number} */ var debug = ~location.search.indexOf('debug=');
-
       window.addEventListener('beforeinstallprompt', function(event) {
-        debug && alert('onBeforeInstallPromptEvent');
-        event.preventDefault();
-        promptEvent = event;
-        return false;
+        DEBUG && alert('onBeforeInstallPromptEvent');
       });
 
       window.addEventListener('appinstalled', function() {
-        debug && alert('onAppInstalled');
+        DEBUG && alert('onAppInstalled');
       });
-
-      window['installWebApp'] = function() {
-        if (promptEvent) {
-          promptEvent.prompt();
-          promptEvent.userChoice.then(function(choice) {
-            alert('The application is ' + choice.outcome);
-            promptEvent = null;
-          });
-        } else {
-          debug && alert('No saved BeforeInstallPromptEvent');
-        }
-      };
-
-      if (btn && debug) {
-        btn.onclick = window['installWebApp'];
-        btn.style.display = 'inline';
-      }
     }
   }
 
