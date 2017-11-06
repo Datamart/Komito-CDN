@@ -6,7 +6,7 @@
  * @see https://developers.google.com/web/fundamentals/primers/service-workers/
  */
 
-/** @const {string} */ var CACHE_NAME = 'komito-cache-20171105-1320';
+/** @const {string} */ var CACHE_KEY = 'komito-cache-20171105-1620';
 /** @const {string} */ var SCOPE_URL = 'https://komito.net/';
 
 /** @const {Array.<string>} */ var CACHE_URLS = [
@@ -21,7 +21,7 @@
 ];
 
 self.addEventListener('install', function(event) {
-  event.waitUntil(caches.open(CACHE_NAME).then(function(cache) {
+  event.waitUntil(caches.open(CACHE_KEY).then(function(cache) {
     return cache.addAll(CACHE_URLS);
   }));
 });
@@ -34,7 +34,7 @@ self.addEventListener('fetch', function(event) {
         if (SCOPE_URL === url.slice(0, 19)) {
           if (response && 200 === response.status && 'basic' == response.type) {
             var clone = response.clone();
-            caches.open(CACHE_NAME).then(function(cache) {
+            caches.open(CACHE_KEY).then(function(cache) {
               cache.put(url, clone);
             });
           }
@@ -46,7 +46,7 @@ self.addEventListener('fetch', function(event) {
 });
 
 self.addEventListener('activate', function(event) {
-  var whitelist = [CACHE_NAME];
+  var whitelist = [CACHE_KEY];
 
   event.waitUntil(caches.keys().then(function(cacheNames) {
     return Promise.all(cacheNames.map(function(cacheName) {
