@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://komito.net/sitemap.xml
-Host: komito.net
+Host: https://komito.net
