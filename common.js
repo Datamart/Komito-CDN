@@ -148,7 +148,7 @@
    * @private
    */
   function initFacebookSdk_() {
-    var params = 'version=v2.11&appId=490025408049997&status=1';
+    var params = 'version=v2.11&appId=490025408049997&status=1&cookie=1';
     var script = document.createElement('SCRIPT');
     script.async = 1;
     script.id = 'facebook-jssdk';
