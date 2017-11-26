@@ -144,10 +144,11 @@
   /**
    * Loads and initializes Facebook SDK.
    * @see https://developers.facebook.com/docs/javascript/quickstart
+   * @see https://developers.facebook.com/docs/javascript/reference/FB.init/v2.11
    * @private
    */
   function initFacebookSdk_() {
-    var params = 'xfbml=1&version=v2.3&appId=490025408049997&status=1&cookie=1';
+    var params = 'version=v2.11&appId=490025408049997&status=1';
     var script = document.createElement('SCRIPT');
     script.async = 1;
     script.id = 'facebook-jssdk';
