@@ -142,6 +142,20 @@
   }
 
   /**
+   * Loads and initializes Facebook SDK.
+   * @see https://developers.facebook.com/docs/javascript/quickstart
+   * @private
+   */
+  function initFacebookSdk_() {
+    var params = 'xfbml=1&version=v2.3&appId=490025408049997&status=1&cookie=1';
+    var script = document.createElement('SCRIPT');
+    script.async = 1;
+    script.id = 'facebook-jssdk';
+    script.src = 'https://connect.facebook.net/en_US/sdk.js#' + params;
+    document.body.appendChild(script);
+  }
+
+  /**
    * Initializes application.
    * @private
    */
@@ -152,6 +166,7 @@
     initAlexa_();
     initServiceWorker_();
     initInstallPrompt_();
+    initFacebookSdk_();
   }
 
   // Initializing application.
