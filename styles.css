@@ -140,13 +140,14 @@ body {
 }
 
 .kmt-navigation a,
+.kmt-navigation span,
 .kmt-page-hero,
 .kmt-page-footer {
   color: #fff;
 }
 
 .kmt-navigation a:hover,
-.kmt-current-page  {
+.kmt-navigation span  {
   background-color: rgba(255,255,255,.3);
   border-radius: 2px;
 }
@@ -233,7 +234,8 @@ h3:after {
 }
 
 .button,
-.kmt-navigation li a {
+.kmt-navigation li a,
+.kmt-navigation li span {
   display: inline-block;
   padding: 1em 1em .8em;
   text-transform: uppercase;
@@ -293,10 +295,6 @@ h3:after {
 
 .kmt-navigation {
   float: right;
-}
-
-.kmt-page-header .kmt-current-page {
-  color: #fff;
 }
 /* / Header and main navigation */
 
@@ -559,7 +557,8 @@ code:last-child {
   opacity: .75;
 }
 
-.kmt-page-footer .kmt-navigation a {
+.kmt-page-footer .kmt-navigation a,
+.kmt-page-footer .kmt-navigation span {
   font-size: .8em;
   padding: .3em .6em;
 }
