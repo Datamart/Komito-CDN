@@ -142,9 +142,12 @@ body {
 .kmt-navigation a,
 .kmt-navigation span,
 .kmt-page-hero,
-.kmt-page-footer {
+.kmt-page-footer,
+.kmt-footer-extra p a {
   color: #fff;
 }
+
+.kmt-page-footer a
 
 .kmt-navigation a:hover,
 .kmt-navigation span  {
@@ -242,7 +245,7 @@ h3:after {
 }
 
 .button {
-  background-color: #07d;
+  background-color: #04c;
   border-radius: 2px;
   border: 0 !important;
   color: #fff;
@@ -533,6 +536,10 @@ code:last-child {
 
 .kmt-footer-extra {
   padding: 2em 2%;
+}
+
+.kmt-footer-extra p a {
+  text-decoration: underline;
 }
 
 .kmt-social {
