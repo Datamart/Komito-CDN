@@ -33,6 +33,10 @@
           <body>
             <article>
               <header>
+                <figure>
+                  <img src="https://komito.net/images/komito-logo-600x455.jpg" />
+                  <figcaption>Komito Analytics header image.</figcaption>
+                </figure>
                 <h1>Komito Analytics at a Glance</h1>
                 <h2>Komito Analytics is an enhancement for the most popular web analytics software.</h2>
               </header>
