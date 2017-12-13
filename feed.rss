@@ -46,10 +46,25 @@
               <p>List of Komito Analytics integration and support partners.</p>
 
               <footer>
-                <p>Komito Analytics is subject to the terms and conditions of <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></p>
-                <p>© 2017 <a href="https://www.dtm.io">Datamart Inc.</a></p>
+                <aside>
+                  <p>Komito Analytics is subject to the terms and conditions of <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></p>
+                  <p>© 2017 <a href="https://www.dtm.io">Datamart Inc.</a></p>
+                </aside>
               </footer>
             </article>
+            <figure class="op-tracker">
+              <iframe>
+                <script src="https://www.google-analytics.com/analytics.js"></script>
+                <script>
+                  ga('create','UA-756122-14','auto');
+                  ga('require', 'displayfeatures');
+                  ga('set', 'campaignSource', 'Facebook');
+                  ga('set', 'campaignMedium', 'Social Instant Article');
+                  ga('set', 'title', 'fbia: ' + ia_document.title);
+                  ga('send','pageview');</script>
+                <script src="https://komito.net/komito.js" async></script>
+              </iframe>
+            </figure>
           </body>
         </html>
         ]]>
