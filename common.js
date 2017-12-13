@@ -157,6 +157,30 @@
   }
 
   /**
+   * Initializes lazy images preloader.
+   */
+  function initIntersectionObserver_() {
+    function load(image) { image.src = image.dataset.src; };
+    var images = document.querySelectorAll('img[data-src]');
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.intersectionRatio > 0) {
+            observer.unobserve(entry.target);
+            load(entry.target);
+          }
+        });
+      }, {'rootMargin': '50px 0px', 'threshold': 0.01});
+      images.forEach(function(image) { observer.observe(image); });
+    } else {
+      for (var length = images.length; length;) {
+        load(images[--length]);
+      }
+    }
+  }
+
+  /**
    * Initializes application.
    * @private
    */
@@ -168,6 +192,7 @@
     initServiceWorker_();
     initInstallPrompt_();
     initFacebookSdk_();
+    initIntersectionObserver_();
   }
 
   // Initializing application.
