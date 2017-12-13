@@ -38,7 +38,7 @@ body {
 
 a {
   border: 0;
-  color: #07d;
+  color: #04c;
   text-decoration: none;
 }
 
@@ -157,7 +157,7 @@ body {
 
 h3:after {
   background-color: #f80;
-  /*background-color: #07d;*/
+  /*background-color: #04c;*/
   bottom: -.2em;
   content: '';
   height: 4px;
