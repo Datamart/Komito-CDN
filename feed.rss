@@ -20,7 +20,7 @@
       <description>Komito Analytics is an enhancement for the most popular web analytics software.</description>
       <link>https://komito.net/</link>
       <guid>https://komito.net/</guid>
-      <pubDate>Sat Nov 25 2017 16:00:00 GMT-0800 (PST)</pubDate>
+      <pubDate>Sat Nov 25 2017 16:00:00 GMT-0800</pubDate>
       <content:encoded>
         <![CDATA[
         <!doctype html>
@@ -39,36 +39,70 @@
                 </figure>
                 <h1>Komito Analytics at a Glance</h1>
                 <h2>Komito Analytics is an enhancement for the most popular web analytics software.</h2>
+                <time class="op-modified" datetime="2017-11-25T16:00:00-08:00">2017-11-25T16:00:00-08:00</time>
+                <time class="op-published" datetime="2017-11-25T16:00:00-08:00"></time>
               </header>
               <h1>Advanced Metrics</h1>
               <p>Unlock the power of digital analytics with additional insights about visitor's behavior.</p>
+              <ul>
+                <li><b>Social interaction</b> - Tracks social networks events.</li>
+                <li><b>Form submissions</b> - Tracks submitted forms.</li>
+                <li><b>Media</b> - Tracks HTML5 video, audio, YouTube and Vimeo players events.</li>
+                <li><b>Call to actions</b> - Tracks CTA links (mailto, tel, sms, skype, etc).</li>
+                <li><b>Logged in users</b> - Tracks pageviews by users logged in to social networks.</li>
+                <li><b>Print</b> - Tracks page print actions.</li>
+                <li><b>Downloads</b> - Tracks files download links.</li>
+                <li><b>Outbound links</b> - Tracks outbound links.</li>
+                <li><b>Scroll</b> - Tracks scroll depth.</li>
+              </ul>
 
               <h1>Cross-Compatible</h1>
               <p>Komito Analytics is compatible with most popular web analytics software.</p>
+              <ul>
+                <li><a href="https://www.adobe.com/marketing-cloud/web-analytics.html">Adobe Analytics</a></li>
+                <li><a href="https://tongji.baidu.com/">Baidu Analytics</a></li>
+                <li><a href="https://www.clicktale.com/">Clicktale</a></li>
+                <li><a href="https://www.google.com/analytics/">Google Analytics</a></li>
+                <li><a href="https://support.google.com/urchin">Urchin from Google</a></li>
+              </ul>
+              <p>
+                <a href="https://komito.net/integration/">See integration instruction</a> or
+                <a href="https://github.com/Datamart/Komito/tree/master">Get source code</a>.
+              </p>
 
               <h1>Partners</h1>
               <p>List of Komito Analytics integration and support partners.</p>
+              <ul>
+                <li><a href="http://lametrica.com/analitica-web/">La Metrica</a></li>
+                <li><a href="https://www.lovesdata.com/blog/?tag=Komito+Analytics">Loves Data</a></li>
+                <li><a href="http://webalytics.de/webmarketing/webanalyse/">Webalytics</a></li>
+              </ul>
+
+              <blockquote>
+                Privacy is not a question: Komito Analytics does not store any data.
+                Why? Because it's an extension, not a service.
+              </blockquote>
 
               <footer>
                 <aside>
-                  <p>Komito Analytics is subject to the terms and conditions of <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></p>
+                  <p>Komito Analytics is subject to the terms and conditions of <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></p><p>&nbsp;</p>
                   <p>© 2017 <a href="https://www.dtm.io">Datamart Inc.</a></p>
                 </aside>
               </footer>
+              <figure class="op-tracker">
+                <iframe>
+                  <script src="https://www.google-analytics.com/analytics.js"></script>
+                  <script>
+                    ga('create','UA-756122-14','auto');
+                    ga('require', 'displayfeatures');
+                    ga('set', 'campaignSource', 'Facebook');
+                    ga('set', 'campaignMedium', 'Social Instant Article');
+                    ga('set', 'title', 'fbia: ' + ia_document.title);
+                    ga('send','pageview');</script>
+                  <script src="https://komito.net/komito.js" async></script>
+                </iframe>
+              </figure>
             </article>
-            <figure class="op-tracker">
-              <iframe>
-                <script src="https://www.google-analytics.com/analytics.js"></script>
-                <script>
-                  ga('create','UA-756122-14','auto');
-                  ga('require', 'displayfeatures');
-                  ga('set', 'campaignSource', 'Facebook');
-                  ga('set', 'campaignMedium', 'Social Instant Article');
-                  ga('set', 'title', 'fbia: ' + ia_document.title);
-                  ga('send','pageview');</script>
-                <script src="https://komito.net/komito.js" async></script>
-              </iframe>
-            </figure>
           </body>
         </html>
         ]]>
@@ -82,37 +116,41 @@
           <h1>Komito Analytics</h1>
         </header>
         <h2>Komito Analytics is an enhancement for the most popular web analytics software.</h2>
-        <p>Advanced Metrics:</p>
+
+        <h3>Advanced Metrics</h3>
+        <p>Unlock the power of digital analytics with additional insights about visitor's behavior.</p>
         <ul>
-          <li>SOCIAL INTERACTION</li>
-          <li>FORM SUBMISSIONS</li>
-          <li>MEDIA</li>
-          <li>CALL TO ACTIONS</li>
-          <li>LOGGED IN USERS</li>
-          <li>PRINT</li>
-          <li>DOWNLOADS</li>
-          <li>OUTBOUND LINKS</li>
-          <li>SCROLL</li>
+          <li><b>Social interaction</b> - Tracks social networks events.</li>
+          <li><b>Form submissions</b> - Tracks submitted forms.</li>
+          <li><b>Media</b> - Tracks HTML5 video, audio, YouTube and Vimeo players events.</li>
+          <li><b>Call to actions</b> - Tracks CTA links (mailto, tel, sms, skype, etc).</li>
+          <li><b>Logged in users</b> - Tracks pageviews by users logged in to social networks.</li>
+          <li><b>Print</b> - Tracks page print actions.</li>
+          <li><b>Downloads</b> - Tracks files download links.</li>
+          <li><b>Outbound links</b> - Tracks outbound links.</li>
+          <li><b>Scroll</b> - Tracks scroll depth.</li>
         </ul>
-        <p>Cross-Compatible:</p>
+
+        <h3>Cross-Compatible</h3>
+        <p>Komito Analytics is compatible with most popular web analytics software.</p>
         <ul>
-          <li>Adobe Analytics</li>
-          <li>Baidu Analytics</li>
-          <li>Clicktale</li>
-          <li>Google Analytics</li>
-          <li>Urchin from Google</li>
+          <li><a href="https://www.adobe.com/marketing-cloud/web-analytics.html">Adobe Analytics</a></li>
+          <li><a href="https://tongji.baidu.com/">Baidu Analytics</a></li>
+          <li><a href="https://www.clicktale.com/">Clicktale</a></li>
+          <li><a href="https://www.google.com/analytics/">Google Analytics</a></li>
+          <li><a href="https://support.google.com/urchin">Urchin from Google</a></li>
         </ul>
-        <p>Partners:</p>
+        <p>
+          <a href="https://komito.net/integration/">See integration instruction</a> or
+          <a href="https://github.com/Datamart/Komito/tree/master">Get source code</a>.
+        </p>
+
+        <h3>Partners:</h3>
+        <p>List of Komito Analytics integration and support partners.</p>
         <ul>
-          <li>La Metrica</li>
-          <li>Loves Data</li>
-          <li>Webalytics</li>
-        </ul>
-        <p>Follow us on:</p>
-        <ul>
-          <li>Facebook</li>
-          <li>Instagram</li>
-          <li>Twitter</li>
+          <li><a href="http://lametrica.com/analitica-web/">La Metrica</a></li>
+          <li><a href="https://www.lovesdata.com/blog/?tag=Komito+Analytics">Loves Data</a></li>
+          <li><a href="http://webalytics.de/webmarketing/webanalyse/">Webalytics</a></li>
         </ul>
         ]]>
       </turbo:content>
