@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:yandex="http://news.yandex.ru"
+     xmlns:media="http://search.yahoo.com/mrss/"
+     xmlns:turbo="http://turbo.yandex.ru"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     version="2.0">
+  <!--
+  https://developers.facebook.com/docs/instant-articles/publishing/setup-rss-feed
+  https://yandex.ru/support/webmaster/turbo/feed.html
+  -->
+  <channel>
+    <title>Komito Analytics</title>
+    <description>Komito Analytics is an enhancement for the most popular web analytics software.</description>
+    <link>https://komito.net/</link>
+    <language>en-us</language>
+    <yandex:analytics type="Google" id="UA-5065160-14"></yandex:analytics>
+
+    <item turbo="true">
+      <title>Komito Analytics</title>
+      <description>Komito Analytics is an enhancement for the most popular web analytics software.</description>
+      <link>https://komito.net/</link>
+      <guid>https://komito.net/</guid>
+      <pubDate>Sat Nov 25 2017 16:00:00 GMT-0800 (PST)</pubDate>
+      <content:encoded>
+        <![CDATA[
+        <!doctype html>
+        <html lang="en" prefix="op: http://media.facebook.com/op#">
+          <head>
+            <meta charset="utf-8">
+            <link rel="canonical" href="https://komito.net/">
+            <meta property="op:markup_version" content="v1.0">
+          </head>
+          <body>
+            <article>
+              <header>
+                <h1>Komito Analytics at a Glance</h1>
+                <h2>Komito Analytics is an enhancement for the most popular web analytics software.</h2>
+              </header>
+              <h1>Advanced Metrics</h1>
+              <p>Unlock the power of digital analytics with additional insights about visitor's behavior.</p>
+
+              <h1>Cross-Compatible</h1>
+              <p>Komito Analytics is compatible with most popular web analytics software.</p>
+
+              <h1>Partners</h1>
+              <p>List of Komito Analytics integration and support partners.</p>
+
+              <footer>
+                <p>Komito Analytics is subject to the terms and conditions of <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></p>
+                <p>© 2017 <a href="https://www.dtm.io">Datamart Inc.</a></p>
+              </footer>
+            </article>
+          </body>
+        </html>
+        ]]>
+      </content:encoded>
+      <turbo:content>
+        <![CDATA[
+        <header>
+          <figure>
+            <img src="https://komito.net/images/komito-logo-144x144.png" />
+          </figure>
+          <h1>Komito Analytics</h1>
+        </header>
+        <h2>Komito Analytics is an enhancement for the most popular web analytics software.</h2>
+        <p>Advanced Metrics:</p>
+        <ul>
+          <li>SOCIAL INTERACTION</li>
+          <li>FORM SUBMISSIONS</li>
+          <li>MEDIA</li>
+          <li>CALL TO ACTIONS</li>
+          <li>LOGGED IN USERS</li>
+          <li>PRINT</li>
+          <li>DOWNLOADS</li>
+          <li>OUTBOUND LINKS</li>
+          <li>SCROLL</li>
+        </ul>
+        <p>Cross-Compatible:</p>
+        <ul>
+          <li>Adobe Analytics</li>
+          <li>Baidu Analytics</li>
+          <li>Clicktale</li>
+          <li>Google Analytics</li>
+          <li>Urchin from Google</li>
+        </ul>
+        <p>Partners:</p>
+        <ul>
+          <li>La Metrica</li>
+          <li>Loves Data</li>
+          <li>Webalytics</li>
+        </ul>
+        <p>Follow us on:</p>
+        <ul>
+          <li>Facebook</li>
+          <li>Instagram</li>
+          <li>Twitter</li>
+        </ul>
+        ]]>
+      </turbo:content>
+      <yandex:related>
+        <link url="https://komito.net/integration/">Integration Instructions</link>
+        <link url="https://komito.net/demo/">Demo Page</link>
+      </yandex:related>
+    </item>
+  </channel>
+</rss>
