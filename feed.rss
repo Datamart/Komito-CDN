@@ -153,6 +153,14 @@
           <li><a href="https://www.lovesdata.com/blog/?tag=Komito+Analytics">Loves Data</a></li>
           <li><a href="http://webalytics.de/webmarketing/webanalyse/">Webalytics</a></li>
         </ul>
+
+        <em>
+          Privacy is not a question: Komito Analytics does not store any data.
+          Why? Because it's an extension, not a service.
+        </em>
+
+        <p>Komito Analytics is subject to the terms and conditions of <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></p>
+        <p>© 2017 <a href="https://www.dtm.io">Datamart Inc.</a></p>
         ]]>
       </turbo:content>
       <yandex:related>
