@@ -81,7 +81,10 @@ h4 {
   text-transform: uppercase;
 }
 
-.thin-font {
+/* .thin-font, */
+.kmt-logo span,
+.kmt-page-hero .kmt-section,
+h3 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -109,6 +112,8 @@ h4 {
 }
 
 .kmt-homepage .kmt-section,
+.kmt-support .kmt-section,
+.kmt-integration-wordpress .kmt-section,
 h2,
 h3 + p,
 h3,
@@ -340,6 +345,11 @@ h3:after {
   position: relative;
 }
 
+.kmt-support .kmt-page-content li {
+  vertical-align: top;
+  width: 33%;
+}
+
 li i {
   font-style: normal;
   line-height: 1.4;
@@ -488,7 +498,7 @@ code:last-child {
 }
 
 .urchin,
-.webalytics  {
+.kmt-homepage .webalytics {
   top: .35em;
 }
 
@@ -777,7 +787,8 @@ code:last-child {
     line-height: 3em;
   }
 
-  body .kmt-page-content li {
+  body .kmt-page-content li,
+  .kmt-support .kmt-page-content li {
     min-height: auto;
     padding-left: 0;
     padding-right: 0;
