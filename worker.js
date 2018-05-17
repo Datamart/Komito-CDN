@@ -6,8 +6,9 @@
  * @see https://developers.google.com/web/fundamentals/primers/service-workers/
  */
 
-/** @const {string} */ var CACHE_KEY = 'komito-cache-20180517-1450';
+/** @const {string} */ var CACHE_KEY = 'komito-cache-20180517-1630';
 /** @const {string} */ var SCOPE_URL = 'https://komito.net/';
+/** @const {string} */ var WORKER_JS = 'worker.js';
 
 /** @const {Array.<string>} */ var CACHE_URLS = [
   // '/',
@@ -31,7 +32,8 @@ self.addEventListener('fetch', function(event) {
     /** @type {string} */ var url = event.request.url;
     event.respondWith(caches.match(url).then(function(response) {
       return response || fetch(event.request.clone()).then(function(response) {
-        if (SCOPE_URL === url.slice(0, 19)) {
+        if (SCOPE_URL === url.slice(0, 19) &&
+            WORKER_JS !== url.split('?')[0].split('/').pop()) {
           if (response && 200 === response.status && 'basic' == response.type) {
             var clone = response.clone();
             caches.open(CACHE_KEY).then(function(cache) {
