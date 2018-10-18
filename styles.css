@@ -111,6 +111,11 @@ h3 {
   padding-top: 0;
 }
 
+.page-not-found .kmt-section {
+  min-height: 70vh;
+  text-align: center;
+}
+
 .kmt-homepage .kmt-section,
 .kmt-support .kmt-section,
 .kmt-integration-wordpress .kmt-section,
