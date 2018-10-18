@@ -868,4 +868,8 @@ code:last-child {
   .kmt-footer-extra {
     overflow: hidden;
   }
+
+  .page-not-found .kmt-section > img {
+    width: 50%;
+  }
 }
