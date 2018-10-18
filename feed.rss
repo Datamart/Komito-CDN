@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:yandex="http://news.yandex.ru"
+     xmlns:media="http://search.yahoo.com/mrss/"
+     xmlns:turbo="http://turbo.yandex.ru"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     version="2.0">
+  <!--
+  https://developers.facebook.com/docs/instant-articles/reference/
+  https://yandex.ru/support/webmaster/turbo/feed.html
+  -->
+  <channel>
+    <title>Komito Analytics</title>
+    <description>Komito Analytics is an enhancement for the most popular web analytics software.</description>
+    <link>https://komito.net/</link>
+    <language>en-us</language>
+    <yandex:analytics type="Google" id="UA-5065160-14"></yandex:analytics>
+
+    <item turbo="true">
+      <title>Komito Analytics</title>
+      <description>Komito Analytics is an enhancement for the most popular web analytics software.</description>
+      <link>https://komito.net/</link>
+      <guid>https://komito.net/</guid>
+      <!-- https://www.w3.org/Protocols/rfc822/#z28 -->
+      <pubDate>Sat, 25 Nov 2017 16:00:00 -0800</pubDate>
+      <content:encoded>
+        <![CDATA[
+        <!doctype html>
+        <html lang="en" prefix="op: http://media.facebook.com/op#">
+          <head>
+            <meta charset="utf-8">
+            <link rel="canonical" href="https://komito.net/">
+            <meta property="op:markup_version" content="v1.0">
+          </head>
+          <body>
+            <article>
+              <header>
+                <figure>
+                  <img src="https://komito.net/images/komito-logo-600x455.jpg" />
+                  <figcaption>Komito Analytics header image.</figcaption>
+                </figure>
+                <h1>Komito Analytics at a Glance</h1>
+                <h2>Komito Analytics is an enhancement for the most popular web analytics software.</h2>
+                <time class="op-modified" datetime="2017-11-25T16:00:00-08:00">2017-11-25T16:00:00-08:00</time>
+                <time class="op-published" datetime="2017-11-25T16:00:00-08:00"></time>
+              </header>
+              <h1>Advanced Metrics</h1>
+              <p>Unlock the power of digital analytics with additional insights about visitor's behavior.</p>
+              <ul>
+                <li><b>Social interaction</b> - Tracks social networks events.</li>
+                <li><b>Form submissions</b> - Tracks submitted forms.</li>
+                <li><b>Media</b> - Tracks HTML5 video, audio, YouTube and Vimeo players events.</li>
+                <li><b>Call to actions</b> - Tracks CTA links (mailto, tel, sms, skype, etc).</li>
+                <li><b>Logged in users</b> - Tracks pageviews by users logged in to social networks.</li>
+                <li><b>Print</b> - Tracks page print actions.</li>
+                <li><b>Downloads</b> - Tracks files download links.</li>
+                <li><b>Outbound links</b> - Tracks outbound links.</li>
+                <li><b>Scroll</b> - Tracks scroll depth.</li>
+              </ul>
+
+              <h1>Cross-Compatible</h1>
+              <p>Komito Analytics is compatible with most popular web analytics software.</p>
+              <ul>
+                <li><a href="https://www.adobe.com/marketing-cloud/web-analytics.html">Adobe Analytics</a></li>
+                <li><a href="https://tongji.baidu.com/">Baidu Analytics</a></li>
+                <li><a href="https://www.clicktale.com/">Clicktale</a></li>
+                <li><a href="https://www.google.com/analytics/">Google Analytics</a></li>
+                <li><a href="https://support.google.com/urchin">Urchin from Google</a></li>
+              </ul>
+              <p>
+                <a href="https://komito.net/integration/">See integration instruction</a> or
+                <a href="https://github.com/Datamart/Komito/tree/master">Get source code</a>.
+              </p>
+
+              <h1>Partners</h1>
+              <p>List of Komito Analytics integration and support partners.</p>
+              <ul>
+                <li><a href="http://lametrica.com/analitica-web/">La Metrica</a></li>
+                <li><a href="https://www.lovesdata.com/blog/?tag=Komito+Analytics">Loves Data</a></li>
+                <li><a href="http://webalytics.de/webmarketing/webanalyse/">Webalytics</a></li>
+              </ul>
+
+              <blockquote>
+                Privacy is not a question: Komito Analytics does not store any data.
+                Why? Because it's an extension, not a service.
+              </blockquote>
+
+              <footer>
+                <aside>
+                  <p>Komito Analytics is subject to the terms and conditions of <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></p><p>&nbsp;</p>
+                  <p>© 2017 <a href="https://www.dtm.io">Datamart Inc.</a></p>
+                </aside>
+              </footer>
+              <figure class="op-tracker">
+                <iframe>
+                  <script src="https://www.google-analytics.com/analytics.js"></script>
+                  <script>
+                    ga('create','UA-756122-14','auto');
+                    ga('require', 'displayfeatures');
+                    ga('set', 'campaignSource', 'Facebook');
+                    ga('set', 'campaignMedium', 'Social Instant Article');
+                    ga('set', 'title', 'fbia: ' + ia_document.title);
+                    ga('send','pageview');</script>
+                  <script src="https://komito.net/komito.js" async></script>
+                </iframe>
+              </figure>
+            </article>
+          </body>
+        </html>
+        ]]>
+      </content:encoded>
+      <turbo:content>
+        <![CDATA[
+        <header>
+          <figure>
+            <img src="https://komito.net/images/komito-logo-144x144.png" />
+          </figure>
+          <h1>Komito Analytics</h1>
+        </header>
+        <h2>Komito Analytics is an enhancement for the most popular web analytics software.</h2>
+
+        <h3>Advanced Metrics</h3>
+        <p>Unlock the power of digital analytics with additional insights about visitor's behavior.</p>
+        <ul>
+          <li><b>Social interaction</b> - Tracks social networks events.</li>
+          <li><b>Form submissions</b> - Tracks submitted forms.</li>
+          <li><b>Media</b> - Tracks HTML5 video, audio, YouTube and Vimeo players events.</li>
+          <li><b>Call to actions</b> - Tracks CTA links (mailto, tel, sms, skype, etc).</li>
+          <li><b>Logged in users</b> - Tracks pageviews by users logged in to social networks.</li>
+          <li><b>Print</b> - Tracks page print actions.</li>
+          <li><b>Downloads</b> - Tracks files download links.</li>
+          <li><b>Outbound links</b> - Tracks outbound links.</li>
+          <li><b>Scroll</b> - Tracks scroll depth.</li>
+        </ul>
+
+        <h3>Cross-Compatible</h3>
+        <p>Komito Analytics is compatible with most popular web analytics software.</p>
+        <ul>
+          <li><a href="https://www.adobe.com/marketing-cloud/web-analytics.html">Adobe Analytics</a></li>
+          <li><a href="https://tongji.baidu.com/">Baidu Analytics</a></li>
+          <li><a href="https://www.clicktale.com/">Clicktale</a></li>
+          <li><a href="https://www.google.com/analytics/">Google Analytics</a></li>
+          <li><a href="https://support.google.com/urchin">Urchin from Google</a></li>
+        </ul>
+        <p>
+          <a href="https://komito.net/integration/">See integration instruction</a> or
+          <a href="https://github.com/Datamart/Komito/tree/master">Get source code</a>.
+        </p>
+
+        <h3>Partners:</h3>
+        <p>List of Komito Analytics integration and support partners.</p>
+        <ul>
+          <li><a href="http://lametrica.com/analitica-web/">La Metrica</a></li>
+          <li><a href="https://www.lovesdata.com/blog/?tag=Komito+Analytics">Loves Data</a></li>
+          <li><a href="http://webalytics.de/webmarketing/webanalyse/">Webalytics</a></li>
+        </ul>
+
+        <em>
+          Privacy is not a question: Komito Analytics does not store any data.
+          Why? Because it's an extension, not a service.
+        </em>
+
+        <p>Komito Analytics is subject to the terms and conditions of <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></p>
+        <p>© 2017 <a href="https://www.dtm.io">Datamart Inc.</a></p>
+        ]]>
+      </turbo:content>
+      <yandex:related>
+        <link url="https://komito.net/integration/">Integration Instructions</link>
+        <link url="https://komito.net/demo/">Demo Page</link>
+      </yandex:related>
+    </item>
+  </channel>
+</rss>

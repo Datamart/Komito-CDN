@@ -8,6 +8,8 @@
 
 (function() {
   /** @const {number} */ var DEBUG = ~location.search.indexOf('debug=');
+  /** @const {string} */ var GA_TRACKING_ID = 'UA-5065160-14';
+  /** @const {string} */ var FB_APP_ID = '490025408049997';
 
   /**
    * Initializes Google Analytics.
@@ -17,7 +19,7 @@
     /** @type {Function} */ var ga = window['ga'];
 
     if (ga && 'function' === typeof ga) {
-      ga('create', 'UA-5065160-14', 'auto');
+      ga('create', GA_TRACKING_ID, 'auto');
       ga('require', 'displayfeatures');
       ga('send', 'pageview');
     }
@@ -63,7 +65,7 @@
   function initAlexa_() {
     /** @type {string} */ var host = location.hostname;
     /** @type {Element} */ var obj = document.createElement('OBJECT');
-    if ('web.archive.org' !== host) {
+    if ('web.archive.org' !== host && 'file:' !== location.protocol) {
       obj.style.position = 'absolute';
       obj.style.visibility = 'hidden';
       obj.data = 'https://data.alexa.com/data?cli=10&dat=snbamz&url=' + host;
@@ -142,6 +144,45 @@
   }
 
   /**
+   * Loads and initializes Facebook SDK.
+   * @see https://developers.facebook.com/docs/javascript/quickstart
+   * @see https://developers.facebook.com/docs/javascript/reference/FB.init/v2.11
+   * @private
+   */
+  function initFacebookSdk_() {
+    var params = 'xfbml=1&version=v2.11&appId=' + FB_APP_ID + '&status=1&cookie=1';
+    var script = document.createElement('SCRIPT');
+    script.async = 1;
+    script.id = 'facebook-jssdk';
+    script.src = 'https://connect.facebook.net/en_US/sdk.js#' + params;
+    document.body.appendChild(script);
+  }
+
+  /**
+   * Initializes lazy images preloader.
+   */
+  function initIntersectionObserver_() {
+    function load(image) { image.src = image.dataset.src; };
+    var images = document.querySelectorAll('img[data-src]');
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.intersectionRatio > 0) {
+            observer.unobserve(entry.target);
+            load(entry.target);
+          }
+        });
+      }, {'rootMargin': '50px 0px', 'threshold': 0.01});
+      images.forEach(function(image) { observer.observe(image); });
+    } else {
+      for (var length = images.length; length;) {
+        load(images[--length]);
+      }
+    }
+  }
+
+  /**
    * Initializes application.
    * @private
    */
@@ -152,6 +193,8 @@
     initAlexa_();
     initServiceWorker_();
     initInstallPrompt_();
+    initFacebookSdk_();
+    initIntersectionObserver_();
   }
 
   // Initializing application.
