@@ -214,14 +214,23 @@ h3:after {
   background-color: #666;
 }
 
-.grayscale svg {
-  filter: grayscale(1);
-  opacity: .7;
+@media (pointer: fine) {
+  .grayscale svg {
+    filter: grayscale(1);
+    opacity: .7;
+  }
+
+  .grayscale svg:hover {
+    filter: grayscale(0);
+    opacity: 1;
+  }
 }
 
-.grayscale svg:hover {
-  filter: grayscale(0);
-  opacity: 1;
+@media (pointer: coarse) {
+  .grayscale svg {
+    filter: grayscale(0);
+    opacity: 1;
+  }
 }
 
 /*.kmt-page-header,*/
