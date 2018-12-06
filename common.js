@@ -10,6 +10,7 @@
   /** @const {number} */ var DEBUG = ~location.search.indexOf('debug=');
   /** @const {string} */ var GA_TRACKING_ID = 'UA-5065160-14';
   /** @const {string} */ var FB_APP_ID = '490025408049997';
+  /** @const {string} */ var FB_SDK_VERSION = '3.2';
 
   /**
    * Initializes Google Analytics.
@@ -146,11 +147,12 @@
   /**
    * Loads and initializes Facebook SDK.
    * @see https://developers.facebook.com/docs/javascript/quickstart
-   * @see https://developers.facebook.com/docs/javascript/reference/FB.init/v2.11
+   * @see https://developers.facebook.com/docs/javascript/reference/FB.init/v3.2
    * @private
    */
   function initFacebookSdk_() {
-    var params = 'xfbml=1&version=v2.11&appId=' + FB_APP_ID + '&status=1&cookie=1';
+    var params = 'xfbml=1&version=v' + FB_SDK_VERSION +
+                 '&appId=' + FB_APP_ID + '&status=1&cookie=1';
     var script = document.createElement('SCRIPT');
     script.async = 1;
     script.id = 'facebook-jssdk';
