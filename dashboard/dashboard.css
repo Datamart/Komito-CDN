@@ -3,10 +3,7 @@
 }
 
 /*body.chromeless*/ .chromeless .kmt-page-header,
-/*body.chromeless*/ .chromeless .kmt-page-footer {
-  display: none;
-}
-
+/*body.chromeless*/ .chromeless .kmt-page-footer,
 .is-needingAuthorization .view-selector-container,
 .is-authorized  #embed-api-auth-container,
 #reports {
