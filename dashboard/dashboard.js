@@ -84,6 +84,17 @@
   var MAX_ROWS = 5;
 
   /**
+   * Initializes chromeless view (e.g. Facebook App).
+   * @private
+   */
+  function initChromeless_() {
+    if (~location.search.indexOf('chromeless')) {
+      document.body.classList.add('chromeless');
+    }
+    document.body.classList.remove('hidden');
+  }
+
+  /**
    * Initializes dashboard.
    * @see https://developers.google.com/analytics/devguides/reporting/embed/v1/core-methods-reference#ready
    * @private
@@ -102,6 +113,7 @@
     script.onload = function() { window['gapi']['load']('analytics'); };
 
     window['gapi']['analytics']['ready'](onReady_);
+    initChromeless_();
   }
 
   /**

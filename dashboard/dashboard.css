@@ -1,3 +1,12 @@
+/*body.hidden*/ .hidden .kmt-page {
+  visibility: hidden;
+}
+
+/*body.chromeless*/ .chromeless .kmt-page-header,
+/*body.chromeless*/ .chromeless .kmt-page-footer {
+  display: none;
+}
+
 .is-needingAuthorization .view-selector-container,
 .is-authorized  #embed-api-auth-container,
 #reports {
