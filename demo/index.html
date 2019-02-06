@@ -339,20 +339,20 @@
 // Emulating GA Classic.
 var _gaq = {
   push: function(args) {
-    console.log('GA Classic', '_gaq', args);
+    console.log('GA Classic:', '_gaq', args);
   }
 };
 
 // Emulating Tongji Baidu
 var _hmt = {
   push: function(args) {
-    console.log('Baidu', '_hmt', args);
+    console.log('Baidu:', '_hmt', args);
   }
 };
 
 // Emulating Urchin
 function __utmTrackEvent(category, action, opt_label, opt_value, opt_page) {
-  console.log('Urchin', '__utmTrackEvent:', arguments);
+  console.log('Urchin:', '__utmTrackEvent:', arguments);
 }
 
 // Emulating ClickTale
@@ -367,11 +367,19 @@ s.tl = function(lnk, linkType, linkName) {
   s.lnk = lnk;
   s.linkType = linkType;
   s.linkName = linkName;
-  console.log('Adobe TagLoader', s);
+  console.log('Adobe TagLoader:', s);
 };
 
-// Enabling experimental tracking page views with blocked ads.
-var _komito = _komito || {'trackAdblock': 1};
+// Emulating Yandex Metrica.
+window['yaCounter123456'] = {
+  'extLink': function() { this.$log(arguments) },
+  'params': function() { this.$log(arguments) },
+  'file': function() { this.$log(arguments) },
+  '$log': function(args) {console.log('Yandex Metrica:', args); }
+};
+
+// Enabling experimental trackers.
+var _komito = _komito || {'trackAdblock': 1, 'trackErrorPages': 1, 'sendHeartbeat': 30};
 </script>
 
 <script src="https://www.google-analytics.com/analytics.js"></script>
