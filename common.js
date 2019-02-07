@@ -6,7 +6,7 @@
  */
 
 
-(function() {
+(function(win, doc) {
   /** @const {number} */ var DEBUG = ~location.search.indexOf('debug=');
   /** @const {string} */ var GA_TRACKING_ID = 'UA-5065160-14';
   /** @const {string} */ var FB_APP_ID = '490025408049997';
@@ -17,7 +17,7 @@
    * @private
    */
   function initGa_() {
-    /** @type {Function} */ var ga = window['ga'];
+    /** @type {Function} */ var ga = win['ga'];
 
     if (ga && 'function' === typeof ga) {
       ga('create', GA_TRACKING_ID, 'auto');
@@ -46,7 +46,6 @@
    * @private
    */
   function initMenu_() {
-    /** @type {!Document} */ var doc = document;
     /** @type {Element} */ var hamburger = doc.querySelector('.hamburger');
     /** @type {Element} */ var nav = doc.querySelector('.kmt-navigation');
 
@@ -65,7 +64,7 @@
    */
   function initAlexa_() {
     /** @type {string} */ var host = location.hostname;
-    /** @type {Element} */ var obj = document.createElement('OBJECT');
+    /** @type {Element} */ var obj = doc.createElement('OBJECT');
     if ('web.archive.org' !== host && 'file:' !== location.protocol) {
       obj.style.position = 'absolute';
       obj.style.visibility = 'hidden';
@@ -77,7 +76,7 @@
           obj = null;
         }
       };
-      document.body.appendChild(obj);
+      doc.body.appendChild(obj);
     }
   }
 
@@ -87,14 +86,14 @@
    */
   function fixWebP_() {
     var selector = '.kmt-page-hero';
-    var node = document.querySelector(selector);
+    var node = doc.querySelector(selector);
 
     if (node) {
-      var bgImage = window.getComputedStyle(
+      var bgImage = win.getComputedStyle(
           node,':after').getPropertyValue('background-image');
 
       function callback(result) {
-        result || document.styleSheets[0].addRule(
+        result || doc.styleSheets[0].addRule(
             selector + ':after',
             'background-image: ' + bgImage.replace('.webp', '.jpg'));
         node.onload = node.onerror = null;
@@ -114,12 +113,23 @@
    */
   function initServiceWorker_() {
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
+      win.addEventListener('load', function() {
         navigator.serviceWorker.register('/worker.js', {
           'scope': '/'
         }).then(function(registration) {
-          DEBUG && alert(
-              'Registration successful with scope: ' + registration.scope);
+          registration.addEventListener('updatefound', function() {
+            var newWorker = registration.installing;
+            newWorker.addEventListener('statechange', function() {
+              if ('installed' === newWorker.state) {
+                if (navigator.serviceWorker.controller) {
+                  var toast = doc.body.appendChild(doc.createElement('DIV'));
+                  toast.className = 'toast';
+                  toast.innerHTML = 'A new version is available: <a href="./"' +
+                    'onclick="location.reload(true);return false">Refresh</a>';
+                }
+              }
+            });
+          });
         }, function(error) {
           DEBUG && alert('Registration failed: ' + error);
         });
@@ -133,12 +143,12 @@
    * @private
    */
   function initInstallPrompt_() {
-    if ('BeforeInstallPromptEvent' in window) {
-      window.addEventListener('beforeinstallprompt', function(event) {
+    if ('BeforeInstallPromptEvent' in win) {
+      win.addEventListener('beforeinstallprompt', function(event) {
         DEBUG && alert('onBeforeInstallPromptEvent');
       });
 
-      window.addEventListener('appinstalled', function() {
+      win.addEventListener('appinstalled', function() {
         DEBUG && alert('onAppInstalled');
       });
     }
@@ -153,11 +163,11 @@
   function initFacebookSdk_() {
     var params = 'xfbml=1&version=v' + FB_SDK_VERSION +
                  '&appId=' + FB_APP_ID + '&status=1&cookie=1';
-    var script = document.createElement('SCRIPT');
+    var script = doc.createElement('SCRIPT');
     script.async = 1;
     script.id = 'facebook-jssdk';
     script.src = 'https://connect.facebook.net/en_US/sdk.js#' + params;
-    document.body.appendChild(script);
+    doc.body.appendChild(script);
   }
 
   /**
@@ -165,9 +175,9 @@
    */
   function initIntersectionObserver_() {
     function load(image) { image.src = image.dataset.src; };
-    var images = document.querySelectorAll('img[data-src]');
+    var images = doc.querySelectorAll('img[data-src]');
 
-    if ('IntersectionObserver' in window) {
+    if ('IntersectionObserver' in win) {
       var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           if (entry.intersectionRatio > 0) {
@@ -201,4 +211,4 @@
 
   // Initializing application.
   init_();
-})();
+})(window, document);
