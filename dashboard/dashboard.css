@@ -137,9 +137,8 @@ table.data-table thead th.data-sort-desc {}
 @media screen and (max-width: 700px) {
 
   .view-selector-container table {
-    margin-bottom: .5em;
-    margin-left: 0;
-    width: 100%;
+    display: block;
+    margin: 0 auto .5em auto;
   }
 
 }
