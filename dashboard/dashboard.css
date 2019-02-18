@@ -140,14 +140,15 @@ table.data-table thead th.data-sort-desc {}
 
 @media screen and (max-width: 700px) {
 
-  .view-selector-container table {
-    display: block;
+  body .view-selector-container table {
+    display: table;
     margin: 0 auto .5em auto;
+    width: 100%;
   }
 
-}
+  body .kmt-parameter td {
 
-@media screen and (max-width: 700px) {
+  }
 
   body h3 + p {
     margin-bottom: 1em;
