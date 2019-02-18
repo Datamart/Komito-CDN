@@ -140,7 +140,7 @@ table.data-table thead th.data-sort-desc {}
 
 @media screen and (max-width: 700px) {
 
-  #header-auth .view-selector-container table {
+  #hview-selector table {
     display: table;
     margin: 0 auto .5em auto;
     width: 100%;
