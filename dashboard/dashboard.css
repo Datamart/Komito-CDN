@@ -8,8 +8,12 @@
 .is-needingAuthorization .view-selector-container,
 .is-authorized  #embed-api-auth-container,
 #reports,
-.is-authorized .icon-dashboard {
+.icon-dashboard {
   display: none;
+}
+
+.is-needingAuthorization .icon-dashboard {
+  display: block;
 }
 
 .is-authorized .view-selector-container,
@@ -124,7 +128,7 @@ table.data-table thead th.data-sort-desc {}
   margin-left: 0;
 }
 
-.shr-a-shr-nc-shr-oc .shr-a-shr-fc-shr-fb-shr-cb {
+.is-authorized .shr-a-shr-nc-shr-oc .shr-a-shr-fc-shr-fb-shr-cb {
   text-align: left;
   width: 100%;
 }
