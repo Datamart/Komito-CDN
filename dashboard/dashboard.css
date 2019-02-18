@@ -105,9 +105,9 @@ table.data-table thead th.data-sort-desc {}
   min-height: 76vh;
 }
 
-.is-authorized .kmt-page-content .kmt-section {
+.is-authorized .kmt-page-content > .kmt-section {
   background-color: rgba(216,216,216,.2);
-  box-shadow: 0 2px 8px rgba(100,100,100,.3);
+  box-shadow: 0 2px 8px rgba(100,100,100,.4);
 }
 
 .is-authorized #header-auth {
