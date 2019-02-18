@@ -1,4 +1,5 @@
-/*body.hidden*/ .hidden .kmt-page {
+/*body.hidden*/
+.hidden .kmt-page {
   visibility: hidden;
 }
 
@@ -11,7 +12,7 @@
 }
 
 .is-authorized .view-selector-container {
-  display: block;
+  text-align: center;
 }
 
 #header-auth {
@@ -89,3 +90,38 @@ table.data-table thead th.data-sort-desc {}
   transition: width 2s;
   width: 0;
 }
+
+/**/
+
+.icon-dashboard,
+.view-selector-container {
+  text-align: center;
+}
+
+.is-needingAuthorization .kmt-page-content,
+.is-authorized .kmt-page-content {
+  min-height: 76vh;
+}
+
+.is-authorized .kmt-page-content .kmt-section {
+  background-color: rgba(216,216,216,.2);
+  box-shadow: 0 2px 8px rgba(100,100,100,.3);
+}
+
+.is-authorized #header-auth {
+  min-height: 0;
+}
+
+.view-selector-container table {
+  display: inline-block;
+  margin-left: 1em;
+}
+
+.view-selector-container table:first-child {
+  margin-left: 0;
+}
+
+
+
+
+
