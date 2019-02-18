@@ -96,6 +96,10 @@ table.data-table thead th.data-sort-desc {}
 
 /**/
 
+.icon-dashboard {
+  margin-bottom: 1em;
+}
+
 .is-needingAuthorization .kmt-page-content,
 .is-authorized .kmt-page-content {
   min-height: 76vh;
@@ -112,11 +116,17 @@ table.data-table thead th.data-sort-desc {}
 
 .view-selector-container table {
   display: inline-block;
+  height: auto;
   margin-left: 1em;
 }
 
 .view-selector-container table:first-child {
   margin-left: 0;
+}
+
+.shr-a-shr-nc-shr-oc .shr-a-shr-fc-shr-fb-shr-cb {
+  text-align: left;
+  width: 100%;
 }
 
 
