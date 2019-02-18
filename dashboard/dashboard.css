@@ -7,11 +7,14 @@
 /*body.chromeless*/ .chromeless .kmt-page-footer,
 .is-needingAuthorization .view-selector-container,
 .is-authorized  #embed-api-auth-container,
-#reports {
+#reports,
+.is-authorized .icon-dashboard {
   display: none;
 }
 
-.is-authorized .view-selector-container {
+.is-authorized .view-selector-container,
+.icon-dashboard,
+.view-selector-container {
   text-align: center;
 }
 
@@ -92,11 +95,6 @@ table.data-table thead th.data-sort-desc {}
 }
 
 /**/
-
-.icon-dashboard,
-.view-selector-container {
-  text-align: center;
-}
 
 .is-needingAuthorization .kmt-page-content,
 .is-authorized .kmt-page-content {
