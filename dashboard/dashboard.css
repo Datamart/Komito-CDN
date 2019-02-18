@@ -138,6 +138,10 @@ table.data-table thead th.data-sort-desc {}
   width: 100%;
 }
 
+.gapi-analytics-auth-styles-signinbutton {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 700px) {
 
   #view-selector table {
