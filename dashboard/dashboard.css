@@ -114,6 +114,11 @@ table.data-table thead th.data-sort-desc {}
   min-height: 0;
 }
 
+.is-authorized .button {
+  font-size: .8em;
+  min-width: 7em;
+}
+
 .view-selector-container table {
   display: inline-block;
   height: auto !important;
@@ -129,4 +134,20 @@ table.data-table thead th.data-sort-desc {}
   width: 100%;
 }
 
+@media screen and (max-width: 700px) {
 
+  .view-selector-container table {
+    margin-bottom: .5em;
+    margin-left: 0;
+    width: 100%;
+  }
+
+}
+
+@media screen and (max-width: 700px) {
+
+  body h3 + p {
+    margin-bottom: 1em;
+  }
+
+}
