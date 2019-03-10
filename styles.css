@@ -735,6 +735,16 @@ code:last-child {
   color: #eee;
 }
 
+iframe.header,
+iframe.footer {
+  border: 0;
+  height: 5em;
+  width: 100%;
+}
+
+iframe.footer {
+  height: 9.5em;
+}
 
 @media screen and (max-width: 860px) {
 
