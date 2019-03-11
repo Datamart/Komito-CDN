@@ -34,6 +34,7 @@
     '         rel="nofollow">Enterprise</a></li>' +
     '  <li><a href="https://github.com/Datamart/Komito/tree/master"' +
     '         title="Get Komito Analytics Source Code."' +
+    '         rel="nofollow">Get source code</a></li>' +
     '</ul>' +
     '</div>';
   }
