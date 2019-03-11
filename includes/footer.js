@@ -44,10 +44,11 @@
     '    <br>' +
     '    <span itemprop="publisher" itemscope' +
     '          itemtype="http://schema.org/Organization">' +
+    '      <a href="tel:+14157997500" itemprop="telephone">+1 (415) 799-7500</a> •' +
+    '      <a href="mailto:support@komito.net" itemprop="email">support@komito.net</a> •' +
     '      © ' + (new Date).getFullYear() +
     '      <a itemprop="url" href="https://www.dtm.io"' +
     '         title="Datamart Inc."><span itemprop="name">Datamart Inc.</span></a>' +
-    '      <meta itemprop="telephone" content="+14157997500">' +
     '      <meta itemprop="address" content="2100 Geng Road, Suite 210, Palo Alto, CA 94303">' +
     '      <link itemprop="logo" href="https://www.dtm.io/images/datamart-logo-512x512.png">' +
     '      <link itemprop="sameAs" href="https://plus.google.com/103753969968292534269">' +
