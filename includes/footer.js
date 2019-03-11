@@ -23,11 +23,11 @@
     '  </ul>' +
     '  <ul class="kmt-navigation">' +
     '    <li><a title="Komito Analytics overview page."' +
-    '           href="../">Overview</a></li>' +
+    '           href="/">Overview</a></li>' +
     '    <li><a title="Step-by-step Komito Analytics integration instructions."' +
-    '           href="../integration/">Integration</a></li>' +
+    '           href="/integration/">Integration</a></li>' +
     '    <li><a title="See Komito Analytics in action!"' +
-    '           href="../demo/">Demo</a></li>' +
+    '           href="/demo/">Demo</a></li>' +
     '    <li><a href="https://github.com/Datamart/Komito/tree/master"' +
     '           title="Get Komito Analytics Source Code."' +
     '           rel="nofollow">Get source code</a></li>' +
