@@ -735,18 +735,10 @@ code:last-child {
   color: #eee;
 }
 
-iframe.header,
-iframe.footer {
-  border: 0;
-  height: 5em;
-  width: 100%;
-}
-
-iframe.footer {
-  height: 9.5em;
-}
-
 @media screen and (max-width: 860px) {
+  .kmt-page-hero {
+    min-height: 15em;
+  }
 
   .kmt-navigation {
     display: none;
@@ -767,11 +759,9 @@ iframe.footer {
   .kmt-footer-extra {
     padding: 1em 2%;
   }
-
 }
 
 @media screen and (max-width: 700px) {
-
   body h1 {
     font-size: 2em;
   }
@@ -887,7 +877,6 @@ iframe.footer {
     margin-top: 2em;
     width: 75%;
   }
-
 }
 
 @media screen and (min-width: 1900px) {
@@ -897,7 +886,6 @@ iframe.footer {
 }
 
 @media screen and (max-width: 414px) {
-
   body .kmt-section {
     padding: .5em 2.5%;
   }
@@ -910,5 +898,4 @@ iframe.footer {
   .kmt-footer-extra {
     overflow: hidden;
   }
-
 }
