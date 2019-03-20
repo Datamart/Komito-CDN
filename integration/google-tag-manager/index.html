@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" itemscope
+      itemtype="http://schema.org/Article" lang="en">
+<head>
+<meta itemprop="dateModified" content="2019-03-20">
+<meta itemprop="datePublished" content="2019-03-20">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#222">
+<link rel="manifest" href="/manifest.json">
+
+<title>How to integrate Komito Analytics using Google Tag Manager</title>
+<link rel="canonical" href="https://komito.net/integration/google-tag-manager/">
+<meta name="description" content="There are two options to integrate Komito Analytics, and both are simple and easy.">
+<meta name="publisher" content="Datamart">
+<meta name="author" content="Valentin Podkamennyi">
+
+<meta itemprop="name" content="How to integrate Komito Analytics using Google Tag Manager">
+<meta itemprop="headline" content="How to integrate Komito Analytics using Google Tag Manager">
+<link itemprop="url" href="https://komito.net/integration/google-tag-manager/">
+<meta itemprop="description" content="There are two options to integrate Komito Analytics, and both are simple and easy.">
+<meta itemprop="image" content="https://komito.net/posts/track-scroll-depth/track-scroll-depth.jpg">
+<meta itemprop="publisher" content="Datamart">
+<meta itemprop="author" content="Valentin Podkamennyi">
+
+<meta property="og:title" content="How to integrate Komito Analytics using Google Tag Manager">
+<meta property="og:url" content="https://komito.net/integration/google-tag-manager/">
+<meta property="og:description" content="There are two options to integrate Komito Analytics, and both are simple and easy.">
+<meta property="og:image" content="https://komito.net/posts/track-scroll-depth/track-scroll-depth.jpg">
+<meta property="og:type" content="article">
+<meta property="article:author" content="https://www.facebook.com/vpodk">
+<meta property="article:publisher" content="https://www.facebook.com/DatamartInc">
+<meta property="og:site_name" content="Komito Analytics">
+<meta property="fb:app_id" content="490025408049997">
+<meta property="fb:pages" content="508986442796963">
+
+<meta name="twitter:title" content="How to integrate Komito Analytics using Google Tag Manager">
+<meta name="twitter:url" content="https://komito.net/integration/google-tag-manager/">
+<meta name="twitter:description" content="There are two options to integrate Komito Analytics, and both are simple and easy.">
+<meta name="twitter:image" content="https://komito.net/posts/track-scroll-depth/track-scroll-depth.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@KomitoAnalytics">
+<meta name="twitter:creator" content="@vpodk">
+
+<link href="../../favicon.ico" rel="shortcut icon">
+<link href="../../styles.css" rel="stylesheet">
+<link rel="preconnect" href="https://www.google.com">
+<link rel="preconnect" href="https://accounts.google.com">
+<link rel="preconnect" href="https://accounts.youtube.com">
+<link rel="preconnect" href="https://www.facebook.com">
+<link rel="preconnect" href="https://connect.facebook.net">
+
+<link rel="publisher" href="https://plus.google.com/103753969968292534269" title="Google+">
+<link itemprop="sameAs" href="https://www.facebook.com/KomitoAnalytics/">
+<link itemprop="sameAs" href="https://www.instagram.com/KomitoAnalytics/">
+<link itemprop="sameAs" href="https://twitter.com/KomitoAnalytics/">
+<style>.kmt-page-hero:after{background-image:url(google-tag-manager.jpg)}</style>
+</head>
+<body class="kmt-integration-gtm">
+<div class="kmt-page">
+  <script src="../../includes/header.js"></script>
+  <div class="kmt-page-hero"></div>
+  <div class="kmt-page-content">
+    <div class="kmt-section">
+      <div style="font-size:110%;max-width:800px">
+        <h3>How to integrate Komito Analytics using Google Tag Manager</h3>
+        <p></p>
+        <p>There are two options to integrate Komito Analytics, and both are simple and easy.
+        The first one is to simply import the prepared container template, and the second is to copy and paste the short code into a Custom HTML Tag.</p>
+        <p>&nbsp;</p>
+        <p><b>1. Import Container</b></p>
+        <p>Please follow these simple steps to import GTM container from JSON file:
+          <br>&nbsp; &bull; Download the container <a href="./komito-analytics-gtm-container.json" target="_blank" download>template file</a>.
+          <br>&nbsp; &bull; Sign in to Google Tag Manager.
+          <br>&nbsp; &bull; Select an existing container or create a new one.
+          <br>&nbsp; &bull; Go to the Admin section.
+          <br>&nbsp; &bull; Under Container options select Import Container.
+          <br>&nbsp; &bull; Preview and Publish.
+        </p>
+        <p>&nbsp;</p>
+        <p>For more information on importing containers, please see <a href="https://support.google.com/tagmanager/answer/6106997#import" rel="nofollow">Google Tag Manager Help Center</a>.</p>
+        <p>&nbsp;</p>
+        <p><b>2. Create Custom HTML Tag</b></p>
+        <p>Please follow these simple steps to create a Custom HTML tag:
+          <br>&nbsp; &bull; Sign in to Google Tag Manager.
+          <br>&nbsp; &bull; Select an existing container or create a new one.
+          <br>&nbsp; &bull; Click Tags and then New.
+          <br>&nbsp; &bull; Click Tag Configuration and select Custom HTML.
+          <br>&nbsp; &bull; Copy the tag code and paste it into the HTML field:
+          <code><pre><span class="tag">&lt;script</span> <span class="atn">src</span>="<a href="https://komito.net/komito.js">https://komito.net/komito.js</a>" <span class="atn">async</span><span class="tag">&gt;&lt;/script&gt;<span>
+<span class="tag">&lt;script&gt;</span>
+<span class="kwd">var</span> _komito = _komito || {
+  <span class="str">'trackTwitter'</span>: 1,    <span class="com">// Tracks Twitter events if widget is presented on page.</span>
+  <span class="str">'trackFacebook'</span>: 1,   <span class="com">// Tracks Facebook events if widget is presented on page.</span>
+  <span class="str">'trackLinkedIn'</span>: 1,   <span class="com">// Tracks LinkedIn events if plugin is presented on page.</span>
+  <span class="str">'trackDownloads'</span>: 1,  <span class="com">// Tracks files download links.</span>
+  <span class="str">'trackOutbound'</span>: 1,   <span class="com">// Tracks outbound links.</span>
+  <span class="str">'trackForms'</span>: 1,      <span class="com">// Tracks forms submissions.</span>
+  <span class="str">'trackUsers'</span>: 1,      <span class="com">// Tracks pageviews by users logged in to social networks.</span>
+  <span class="str">'trackActions</span>': 1,    <span class="com">// Tracks 'mailto', 'tel', 'sms' and 'skype' actions.</span>
+  <span class="str">'trackPrint'</span>: 1,      <span class="com">// Tracks page print actions.</span>
+  <span class="str">'trackMedia'</span>: 1,      <span class="com">// Tracks HTML5 video, audio, Vimeo and YouTube players events.</span>
+  <span class="str">'trackScroll'</span>: 1,     <span class="com">// Tracks scroll depth.</span>
+  <span class="str">'trackOrientation'</span>: 1,<span class="com">// Tracks orientation change on mobile devices.</span>
+  <span class="str">'trackAdblock'</span>: 0,    <span class="com">// Tracks page views with blocked ads. (Experimental)</span>
+  <span class="str">'trackErrorPages'</span>: 0, <span class="com">// Tracks error pages. (Experimental)</span>
+  <span class="str">'sendHeartbeat'</span>: 0,   <span class="com">// Sends heartbeat event. (Default interval 30 seconds)</span>
+  <span class="str">'debugMode'</span>: 0,       <span class="com">// Prints all requests to console.</span>
+  <span class="str">'nonInteraction'</span>: [<span class="str">'form'</span>, <span class="str">'print'</span>, <span class="str">'scroll'</span>, <span class="str">'video'</span>, <span class="str">'orientation'</span>, <span class="str">'adblock'</span>] <span class="com">// List of non interaction events.</span>
+};
+<span class="tag">&lt;/script&gt;</span></pre></code>
+          &nbsp; &bull; Update the metrics that you want to track automatically by changing "1" to "0".
+          <br>&nbsp; &bull; Select "All Pages" on Triggering section.
+          <br>&nbsp; &bull; Save, Preview and Publish.
+        </p>
+        <p>&nbsp;</p>
+        <p>For more information about Custom HTML tags, please see <a href="https://support.google.com/tagmanager/answer/6107167#CustomHTML" rel="nofollow">Google Tag Manager Help Center</a>.</p>
+        <p>&nbsp;</p>
+        <p><b>3. Bonus from </b><a itemprop="url" rel="nofollow"
+            href="https://www.lovesdata.com/blog/?tag=Komito+Analytics"><b>Loves Data</b></a></p>
+        <div itemscope itemtype="http://schema.org/VideoObject">
+          <meta itemprop="name" content="Tutorial // Event Tracking with Google Tag Manager">
+          <meta itemprop="description" content="You'll learn how you can make use of Komito Analytics, a free, open source script that allows you to automatically track a range of custom website interactions.">
+          <meta itemprop="thumbnailURL" content="https://i.ytimg.com/vi/zrI0FlNSSA0/maxresdefault.jpg">
+          <meta itemprop="embedURL" content="https://www.youtube.com/embed/zrI0FlNSSA0">
+          <meta itemprop="duration" content="PT4M26S">
+          <meta itemprop="uploadDate" content="2017-04-11T08:00:00+08:00">
+          <iframe width="100%" height="450"
+                  src="https://www.youtube.com/embed/zrI0FlNSSA0?enablejsapi=1"
+                  title="Tutorial // Event Tracking with Google Tag Manager"></iframe>
+          <div itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+            <div itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+              <meta itemprop="url" content="https://pbs.twimg.com/profile_images/895473059435487233/hb2xMIt_.jpg">
+            </div>
+            Thanks <a itemprop="url" rel="nofollow"
+            href="https://www.lovesdata.com/blog/?tag=Komito+Analytics"><span
+            itemprop="name">Loves Data</span></a> for great tutorial.
+            Watch more videos on their <a itemprop="sameAs" rel="nofollow"
+            href="https://www.youtube.com/user/LovesData">YouTube channel</a>.
+          </div>
+        </div>
+        <p>&nbsp;</p>
+        <p>That's how to integrate Komito Analytics using Google Tag Manager.</p>
+      </div>
+    </div>
+    <div class="kmt-section extra">
+      <p>
+        Questions? &nbsp;
+        <a href="../../support/" class="button"
+           title="Visit the support page">Ask for support</a>
+      </p>
+    </div>
+  </div>
+  <script src="../../includes/footer.js"></script>
+</div>
+
+<script src="https://www.google-analytics.com/analytics.js"></script>
+<script src="../../common.js"></script>
+<script src="https://komito.net/komito.js" async></script>
+</body></html>

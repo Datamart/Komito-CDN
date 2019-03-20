@@ -6,7 +6,7 @@
  * @see https://developers.google.com/web/fundamentals/primers/service-workers/
  */
 
-/** @const {string} */ var CACHE_KEY = 'komito-cache-20190310-2055';
+/** @const {string} */ var CACHE_KEY = 'komito-cache-20190319-2340';
 /** @const {string} */ var SCOPE_URL = 'https://komito.net/';
 /** @const {string} */ var WORKER_JS = 'worker.js';
 

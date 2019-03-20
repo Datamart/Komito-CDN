@@ -1,0 +1,82 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2019-03-20 00:00:00",
+    "containerVersion": {
+        "path": "accounts/63314461/containers/11357076/versions/0",
+        "accountId": "63314461",
+        "containerId": "11357076",
+        "containerVersionId": "0",
+        "container": {
+            "path": "accounts/63314461/containers/11357076",
+            "accountId": "63314461",
+            "containerId": "11357076",
+            "name": "Komito Analytics Container",
+            "publicId": "GTM-TN2GG3N",
+            "usageContext": [
+                "WEB"
+            ],
+            "fingerprint": "1553048463214",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/63314461/containers/11357076/workspaces?apiLink=container"
+        },
+        "tag": [
+            {
+                "accountId": "63314461",
+                "containerId": "11357076",
+                "tagId": "1",
+                "name": "Komito Analytics",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script src=\"https://komito.net/komito.js\" async></script>\n<script>\nvar _komito = _komito || {\n  'trackTwitter': 1,    // Tracks Twitter events if widget is presented on page.\n  'trackFacebook': 0,   // Tracks Facebook events if widget is presented on page.\n  'trackLinkedIn': 1,   // Tracks LinkedIn events if plugin is presented on page.\n  'trackDownloads': 1,  // Tracks files download links.\n  'trackOutbound': 1,   // Tracks outbound links.\n  'trackForms': 1,      // Tracks forms submissions.\n  'trackUsers': 1,      // Tracks pageviews by users logged in to social networks.\n  'trackActions': 1,    // Tracks 'mailto', 'tel', 'sms' and 'skype' actions.\n  'trackPrint': 1,      // Tracks page print actions.\n  'trackMedia': 1,      // Tracks HTML5 video, audio, Vimeo and YouTube players events.\n  'trackScroll': 1,     // Tracks scroll depth.\n  'trackOrientation': 1,// Tracks orientation change on mobile devices.\n  'trackAdblock': 0,    // Tracks page views with blocked ads. (Experimental)\n  'trackErrorPages': 0, // Tracks error pages. (Experimental)\n  'sendHeartbeat': 0,   // Sends heartbeat event. (Default interval 30 seconds)\n  'debugMode': 0,       // Prints all requests to console.\n  'nonInteraction': ['form', 'print', 'scroll', 'video', 'orientation', 'adblock'] // List of non interaction events.\n};\n</script>"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "supportDocumentWrite",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1553048405431",
+                "firingTriggerId": [
+                    "2147479553"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT"
+            }
+        ],
+        "builtInVariable": [
+            {
+                "accountId": "63314461",
+                "containerId": "11357076",
+                "type": "PAGE_URL",
+                "name": "Page URL"
+            },
+            {
+                "accountId": "63314461",
+                "containerId": "11357076",
+                "type": "PAGE_HOSTNAME",
+                "name": "Page Hostname"
+            },
+            {
+                "accountId": "63314461",
+                "containerId": "11357076",
+                "type": "PAGE_PATH",
+                "name": "Page Path"
+            },
+            {
+                "accountId": "63314461",
+                "containerId": "11357076",
+                "type": "REFERRER",
+                "name": "Referrer"
+            },
+            {
+                "accountId": "63314461",
+                "containerId": "11357076",
+                "type": "EVENT",
+                "name": "Event"
+            }
+        ],
+        "fingerprint": "0",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/63314461/containers/11357076/versions/0?apiLink=version"
+    }
+}
