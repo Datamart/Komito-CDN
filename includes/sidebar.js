@@ -7,6 +7,10 @@
   }
   if (script && screen.width > 1000) {
     var container = script.parentNode.insertBefore(document.createElement('DIV'), script);
+    var page = location.href.split('?')[0];
+    var width = 250;
+    var height = Math.round(width / 1.5);
+    var margin = Math.round(height / 2.5);
     var posts = [
       ['How to track scroll depth with Komito Analytics',
        'https://komito.net/posts/track-scroll-depth/track-scroll-depth.jpg'],
@@ -14,14 +18,15 @@
        'https://komito.net/integration/google-tag-manager/google-tag-manager.jpg']
     ];
     posts.sort(function(a, b){return 0.5 - Math.random()});
-    var html = '<div class="sidebar" style="float:right;width:250px">';
+    var html = '<div class="sidebar" style="float:right;width:' + width + 'px">';
     for (var i = 0; i < posts.length; i++) {
       var post = posts[i];
       var href = post[1].split('/').slice(0, -1).join('/') + '/';
-      if (href != location.href) {
-        html += '<a class="post" href="' + href + '" ' +
-        'style="background:url(' + post[1] + ') center;background-size:cover;' +
-        'display:inline-block;padding-top:160px;height:160px;margin:0 0 70px">'+
+      if (href != page) {
+        html += '<a class="post" href="' + href + '" style="' +
+        'background:url(' + post[1] + ') center;background-size:cover;' +
+        'display:inline-block;margin:0 0 ' + margin + 'px;' +
+        'padding-top:' + height + 'px;height:' + height + 'px">' +
         post[0] + '</a>';
       }
     }
