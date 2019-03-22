@@ -155,22 +155,6 @@
   }
 
   /**
-   * Loads and initializes Facebook SDK.
-   * @see https://developers.facebook.com/docs/javascript/quickstart
-   * @see https://developers.facebook.com/docs/javascript/reference/FB.init/v3.2
-   * @private
-   */
-  function initFacebookSdk_() {
-    var params = 'xfbml=1&version=v' + FB_SDK_VERSION +
-                 '&appId=' + FB_APP_ID + '&status=1&cookie=1';
-    var script = doc.createElement('SCRIPT');
-    script.async = 1;
-    script.id = 'facebook-jssdk';
-    script.src = 'https://connect.facebook.net/en_US/sdk.js#' + params;
-    doc.body.appendChild(script);
-  }
-
-  /**
    * Initializes lazy images preloader.
    */
   function initIntersectionObserver_() {
@@ -205,7 +189,6 @@
     initAlexa_();
     initServiceWorker_();
     initInstallPrompt_();
-    // initFacebookSdk_();
     initIntersectionObserver_();
   }
 
