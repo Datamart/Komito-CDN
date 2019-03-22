@@ -205,7 +205,7 @@
     initAlexa_();
     initServiceWorker_();
     initInstallPrompt_();
-    initFacebookSdk_();
+    // initFacebookSdk_();
     initIntersectionObserver_();
   }
 
