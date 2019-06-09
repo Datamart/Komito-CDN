@@ -1,0 +1,352 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+html, body, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  border: 0;
+  color: #04c;
+  text-decoration: none;
+}
+
+#main,
+#main > article {
+  flex: 1;
+}
+
+#main {
+  margin-top: 5em;
+}
+
+#main > aside {
+  background: #eee;
+}
+
+header,
+footer .extra {
+  background-color: #222;
+}
+
+header, article, aside {
+  padding: 1em;
+}
+
+header {
+  height: 5em;
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+}
+
+header .logo {
+  font-size: 1.4em;
+  float: left;
+}
+
+header .logo *,
+footer .logo * {
+  color: #fff;
+  display: inline-block;
+  font-style: normal;
+  font-weight: 400;
+  vertical-align: middle;
+}
+
+header .logo b {
+  margin-right: .2em;
+}
+
+header .logo span {
+  margin-left: .3em;
+}
+
+header .logo span, h1, h2, h3 {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  text-rendering: optimizeLegibility;
+  transform: scale(1, 1.15);
+  z-index: -1;
+}
+
+#nav {
+  display: block;
+  float: right;
+  left: -1em;
+  padding-top: .2em;
+  position: absolute;
+  user-select: none;
+  width: 100%;
+  z-index: 1;
+  -webkit-user-select: none;
+}
+
+#nav input,
+#nav .hamburger {
+  height: 32px;
+  position: absolute;
+  right: 0;
+  width: 40px;
+}
+
+#nav input {
+  display: block;
+  opacity: 0;
+  z-index: 2;
+  -webkit-touch-callout: none;
+}
+
+#nav .hamburger span,
+#nav .hamburger span::before,
+#nav .hamburger span::after {
+  background-color: #efefef;
+  /* @alternate */
+  background-color: rgba(255, 255, 255, .95);
+  border-radius: 4px;
+  height: 2px;
+  position: absolute;
+  transition: transform .15s ease;
+  width: 35px;
+}
+
+#nav .hamburger span {
+  display: block;
+  margin-top: 8px;
+  transition-duration: .4s;
+  transition-timing-function: cubic-bezier(.68, -.55, 0.265, 1.55);
+}
+
+#nav .hamburger span::before,
+#nav .hamburger span::after {
+  content: "";
+  display: block;
+}
+
+#nav .hamburger span::before {
+  top: 10px;
+  transition: opacity .15s .4s ease;
+}
+
+#nav .hamburger span::after {
+  bottom: -10px;
+  top: 20px;
+  transition: transform .4s cubic-bezier(.68, -.55, .265, 1.55);
+}
+
+#nav ul {
+  background: #222;
+  bottom: 0;
+  left: 0;
+  list-style-type: none;
+  opacity: 0;
+  padding: 2.5em 1em;
+  position: fixed;
+  right: 0;
+  top: 4em;
+  transform-origin: 0% 0%;
+  transform: translate(0, -200%);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), opacity 0.5s ease-out;
+  text-align: right;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+  z-index: 99;
+}
+
+.menu a {
+  color: #fff;
+  display: inline-block;
+  padding: 1em 1em .8em;
+  text-transform: uppercase;
+}
+
+.menu .active {
+  background-color: #666;
+  /* @alternate */
+  background-color: rgba(255, 255, 255, .3);
+  border-radius: 3px;
+  margin: 1em 0;
+}
+
+#nav li:last-child a {
+  background-image: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 32 32"><path fill="white" d="M16,0.4C7.2,0.4,0.1,7.6,0.1,16.3c0,7,4.6,13,10.9,15.1c0.8,0.1,1.1-0.3,1.1-0.8c0-0.4,0-1.4,0-2.7c-4.4,1-5.4-2.1-5.4-2.1C6,24,4.9,23.5,4.9,23.5c-1.4-1,0.1-1,0.1-1c1.6,0.1,2.4,1.6,2.4,1.6c1.4,2.4,3.7,1.7,4.6,1.3c0.1-1,0.6-1.7,1-2.1c-3.5-0.4-7.2-1.8-7.2-7.8c0-1.7,0.6-3.2,1.6-4.3c-0.2-0.4-0.7-2,0.2-4.2C7.7,7,9,6.6,12,8.7c1.3-0.4,2.6-0.5,4-0.5c1.3,0,2.7,0.2,4,0.5C23,6.6,24.4,7,24.4,7c0.9,2.2,0.3,3.8,0.2,4.2c1,1.1,1.6,2.5,1.6,4.3c0,6.1-3.7,7.4-7.3,7.8c0.6,0.5,1.1,1.5,1.1,2.9c0,2.1,0,3.8,0,4.4c0,0.4,0.3,0.9,1.1,0.8c6.3-2.1,10.9-8.1,10.9-15.1C31.9,7.6,24.8,0.4,16,0.4z"/></svg>');
+  background-position: 1em center;
+  background-repeat: no-repeat;
+  padding-left: 3.2em;
+}
+
+#nav input:checked ~ ul {
+  opacity: .95;
+  transform: none;
+  z-index: 99;
+}
+
+#nav input:checked ~ .hamburger span {
+  transform: translate3d(0, 10px, 0) rotate(135deg);
+  transition-delay: 0.1s;
+}
+
+#nav input:checked ~ .hamburger span::before {
+  opacity: 0;
+  transition-delay: 0s;
+}
+
+#nav input:checked ~ .hamburger span::after {
+  transform: translate3d(0, -20px, 0) rotate(-270deg);
+  transition-delay: .1s;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+}
+
+footer li {
+  display: inline-block;
+  line-height: normal;
+  margin: 0 1em 0 0;
+  vertical-align: middle;
+}
+
+footer ul {
+  display: none;
+  margin: 1.5em 0 1.1em;
+}
+
+footer .social {
+  display: block;
+  list-style: none;
+}
+
+footer .social li:first-child {
+  font-size: .9em;
+  margin-bottom: 2px;
+  text-transform: capitalize;
+}
+
+footer .social a:hover {
+  opacity: .75;
+}
+
+footer .menu li {margin: 0 0 0 .2em;}
+footer .menu a {font-size: .8em; padding: .3em .6em;}
+footer .menu .active {margin: 0}
+
+footer .extra {border-top: 1px solid #4d4d4d;clear: both; padding: 1.5em 1em;}
+footer .extra a {color: #fff; text-decoration: underline;}
+footer .logo span {margin-left: .4em;}
+footer .logo i {
+  display: block;
+  font-size: .7em;
+  text-align: left;
+  margin-top: .3em;
+}
+footer p {padding:0;margin: 1em 0}
+
+aside .card {
+  border: solid 1px #ddd;
+  border-radius: 3px;
+  margin: 1em 0;
+}
+
+aside .card a {
+  color: #222;
+  display: table;
+  vertical-align: bottom;
+  width: 100%;
+}
+
+aside .card span {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  height: 10em
+}
+
+aside .card b {
+  background-color: #fff;
+  display: block;
+  padding: 1em .5em;
+  text-align: center;
+  font-weight: normal;
+}
+
+aside .info {
+  background-color: #ffc;
+  padding: 1em;
+}
+
+.home article {text-align: center;}
+.home h1 {
+  background: url(https://komito.net/images/komito-hero-background.jpg) repeat center center fixed;
+  background-image: -webkit-image-set(url(https://komito.net/images/komito-hero-background.webp) 1x);
+  background-image: image-set(url(https://komito.net/images/komito-hero-background.webp) 1x);
+  background-size: cover;
+  color: #fff;
+  font-size: 2em;
+  padding: 2em .5em;
+}
+.home h3 {
+  font-size: 2em;
+  margin-top: 1.5em;
+}
+h3:after {
+  background-color: #f80;
+  content: '';
+  display: block;
+  height: 4px;
+  width: 2em;
+  margin: .5em auto;
+}
+
+.metrics table {width: 100%; margin: 0; min-height: 7em; padding: 0}
+.metrics table td {padding: .25em; text-align: left;}
+.compatible {text-align: center;}
+.compatible li,
+.partners li,
+.integration li {display: inline-block; padding: 1em; position: relative;list-style: none;}
+.adobe-analytics {top: -.1em;}
+.baidu-analytics {top: -.4em;}
+.clicktale {top: -.5em;}
+.urchin {top: .35em;}
+.webalytics {top: .35em;}
+
+@media only screen and (min-width: 768px) {
+  #main {display: flex;}
+  #main > aside {flex: 0 0 25%;}
+  header .logo {font-size: 1.6em;}
+  .hamburger {display: none;}
+  #nav, #nav ul  {padding: 0; position: static; margin: 0; width: auto;}
+  #nav ul {opacity: 1; margin-top: -1em; transform: none; transition: none;}
+  #nav li {display: inline-block;}
+  #nav li:last-child a {padding-left: 2.8em;}
+  .menu .active {margin: 1em;}
+  footer {text-align: left;}
+  footer ul {display: block; float: right;}
+  footer .social {float: left;margin-left: 2em;}
+  footer .menu {margin-right: 2em;}
+  footer .extra {margin-top: 3em;}
+  footer .extra div {font-size: 84%;float: right;text-align: right;}
+  footer .extra  span p {display: inline;}
+  footer .extra  span p::before{content: "•";padding-right:3px}
+  footer p {margin: 0 0 0.3em}
+  .home h1 {font-size: 3em;}
+  .home h3 {font-size: 2.5em;}
+  .metrics table {display: inline-block; width: 33%;}
+}
