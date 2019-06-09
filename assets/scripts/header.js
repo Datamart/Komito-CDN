@@ -58,7 +58,7 @@ window.getNavMenu = function() {
     '       </svg><span><b>Komito</b><i>Analytics</i></span></a>' +
     '  </div>' +
     '  <div id="nav">' +
-    '    <input type="checkbox">' +
+    '    <input type="checkbox" aria-label="Toggle menu">' +
     '    <div class="hamburger"><span></span></div>' + getNavMenu() +
     '  </div>' +
     '</header>';
