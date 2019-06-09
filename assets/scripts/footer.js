@@ -75,6 +75,38 @@
     }
   }
 
+  /**
+   * Initializes service worker.
+   * @private
+   */
+  function initServiceWorker_() {
+    if ('serviceWorker' in navigator) {
+      win.addEventListener('load', function() {
+        navigator.serviceWorker.register('/worker.js', {
+          'scope': '/'
+        }).then(function(registration) {
+          registration.addEventListener('updatefound', function() {
+            var newWorker = registration.installing;
+            newWorker.addEventListener('statechange', function() {
+              if ('installed' === newWorker.state) {
+                if (navigator.serviceWorker.controller) {
+                  // var toast = doc.body.appendChild(doc.createElement('DIV'));
+                  // toast.className = 'toast';
+                  // toast.innerHTML = 'A new version is available: <a href="./"' +
+                  //   'onclick="location.reload(true);return false">Refresh</a>';
+                }
+              }
+            });
+          });
+        }, function(error) {
+          // DEBUG && alert('Registration failed: ' + error);
+        });
+      });
+    }
+  }
+
   initGa_();
   initIntersectionObserver_();
+  initServiceWorker_();
+
 })(window, document);
