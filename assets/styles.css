@@ -170,6 +170,7 @@ header .logo span, h1, h2, h3 {
 .menu a {
   color: #fff;
   display: inline-block;
+  margin: 1em 0;
   padding: 1em 1em .8em;
   text-transform: uppercase;
 }
@@ -179,7 +180,6 @@ header .logo span, h1, h2, h3 {
   /* @alternate */
   background-color: rgba(255, 255, 255, .3);
   border-radius: 3px;
-  margin: 1em 0;
 }
 
 #nav li:last-child a {
@@ -292,8 +292,10 @@ aside .info {
   padding: 1em;
 }
 
-.home article {text-align: center;}
-.home h1 {
+.home article,
+.cta-area {text-align: center;}
+.home h1,
+.post h1 {
   background: url(https://komito.net/images/komito-hero-background.jpg) repeat center center fixed;
   background-image: -webkit-image-set(url(https://komito.net/images/komito-hero-background.webp) 1x);
   background-image: image-set(url(https://komito.net/images/komito-hero-background.webp) 1x);
@@ -302,9 +304,12 @@ aside .info {
   font-size: 2em;
   padding: 2em .5em;
 }
-.home h3 {
+.post h1 {min-height: 5em;}
+.home h3,
+.post h3 {
   font-size: 2em;
   margin-top: 1.5em;
+  text-align: center;
 }
 h3:after {
   background-color: #f80;
@@ -320,7 +325,7 @@ h3:after {
 .compatible {text-align: center;}
 .compatible li,
 .partners li,
-.integration li {display: inline-block; padding: 1em; position: relative;list-style: none;}
+.cta-area li {display: inline-block; padding: 1em; position: relative;list-style: none;}
 .adobe-analytics {top: -.1em;}
 .baidu-analytics {top: -.4em;}
 .clicktale {top: -.5em;}

@@ -2,12 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" itemscope
       itemtype="http://schema.org/Article" lang="en">
 <head>
-<meta itemprop="dateModified" content="2019-05-05">
+<meta itemprop="dateModified" content="2019-06-09">
 <meta itemprop="datePublished" content="2019-03-10">
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-<meta name="theme-color" content="#222">
-<link rel="manifest" href="/manifest.json">
+<meta charset="utf-8">
 
 <title>How to track scroll depth with Komito Analytics</title>
 <link rel="canonical" href="https://komito.net/posts/track-scroll-depth/">
@@ -42,75 +39,61 @@
 <meta name="twitter:site" content="@KomitoAnalytics">
 <meta name="twitter:creator" content="@vpodk">
 
-<link href="https://komito.net/favicon.ico" rel="shortcut icon">
-<link href="../../styles.css" rel="stylesheet">
+<link itemprop="sameAs" href="https://www.facebook.com/KomitoAnalytics/">
+<link itemprop="sameAs" href="https://www.instagram.com/KomitoAnalytics/">
+<link itemprop="sameAs" href="https://twitter.com/KomitoAnalytics/">
+
 <link rel="preconnect" href="https://www.google.com">
 <link rel="preconnect" href="https://accounts.google.com">
 <link rel="preconnect" href="https://accounts.youtube.com">
 <link rel="preconnect" href="https://www.facebook.com">
 <link rel="preconnect" href="https://connect.facebook.net">
 
-<link itemprop="sameAs" href="https://www.facebook.com/KomitoAnalytics/">
-<link itemprop="sameAs" href="https://www.instagram.com/KomitoAnalytics/">
-<link itemprop="sameAs" href="https://twitter.com/KomitoAnalytics/">
-<style>.kmt-page-hero:after{background-image:url(track-scroll-depth.jpg)}</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#222">
+<link href="../../manifest.json" rel="manifest">
+<link href="../../favicon.ico" rel="shortcut icon">
+<link href="../../assets/styles.css" rel="stylesheet">
+
+<style>.post h1{background-image:url(track-scroll-depth.jpg)}</style>
 </head>
-<body class="kmt-post">
-<div class="kmt-page">
-  <script src="../../includes/header.js"></script>
-  <div class="kmt-page-hero"></div>
-  <div class="kmt-page-content">
-    <div class="kmt-section">
-      <script src="../../includes/sidebar.js"></script>
-      <div style="font-size:110%;max-width:800px">
-        <h3>How to track scroll depth with Komito Analytics</h3>
-        <p></p>
-        <p>Scroll depth is one of the key metrics that helps to learn how people engage with your content.
-        It also opens new insights about your bounce rate and content strategy.</p>
-        <p>&nbsp;</p>
-        <p>Komito Analytics is a free, open-source enhancement for the most popular web analytics software.
-        It unlocks the power of digital analytics with additional insights about visitor's behavior.
-        Komito Analytics adds automatic scroll tracking to the page and sends events to web analytics software.</p>
-        <p>&nbsp;</p>
-        <p>Komito Analytics lets you measure how deep users are scrolling.
-        It tracks the 25%, 50%, 75%, and 100% scroll marks, sending an events to web analytics trackers found on page.
-        Komito Analytics supports Adobe Analytics, Baidu Analytics, Clicktale, Google Analytics, Urchin, and Yandex Metrica.</p>
-        <p>&nbsp;</p>
-        <p>What can we do if we know how deeply the users scroll the page?
-          <br>&nbsp; &bull; Fix bounce rate by moving up CTAs higher.
-          <br>&nbsp; &bull; Measure real user engagement with your content.
-          <br>&nbsp; &bull; Measure content readability.
-        </p>
-        <p>&nbsp;</p>
-        <p>Scroll depth tracking is enabled by default in Komito Analytics initial configuration.
-        To disable it, set the configuration property <code>trackScroll</code> to "0".
-        </p>
-        <p>&nbsp;</p>
-        <p>To view this data in Google Analytics go to "Behavior > Events > Top Events > scroll > depth":
-        <a href="track-scroll-depth-screenshot.png" target="_blank"><img
-           src="data:image/svg+xml,%3Csvg/%3E"
-           data-src="track-scroll-depth-screenshot.png"
-           alt="Scroll depth Google Analytics report." width="100%"></a>
-        </p>
-        <p>&nbsp;</p>
-        <p>Integration is as simple as possible: by adding one javascript file, via <a href="https://komito.net/integration/google-tag-manager/">Google Tag Manager</a> or using our <a href="https://wordpress.org/plugins/komito-analytics/">WordPress plugin</a>.</p>
-        <p>&nbsp;</p>
-        <p><small class="com">The header image is available under <a href="https://creativecommons.org/about/cc0" rel="nofollow">CC0 License</a> and is taken from <a href="https://www.pexels.com/photo/man-couch-working-laptop-7066/" rel="nofollow">Pexels</a> free stock photos.</small></p>
-      </div>
-    </div>
-    <div class="kmt-section extra">
-      <a href="../../integration/"
-         title="See Komito Analytics integration instructions"
-         class="button">See integration instructions</a>
-      <i class="or">-&nbsp;OR&nbsp;-</i>
-      <a href="../../support/" class="button grayscale"
-         title="Visit the support page">Ask for support</a>
-    </div>
+<body class="post">
+  <script src="../../assets/scripts/header.js"></script>
+  <div id="main">
+    <article>
+      <h1><!-- How to track scroll depth with Komito Analytics --></h1>
+      <h3>How to track scroll depth with Komito Analytics</h3>
+      <p>Scroll depth is one of the key metrics that helps to learn how people engage with your content.
+      It also opens new insights about your bounce rate and content strategy.</p>
+      <p>Komito Analytics is a free, open-source enhancement for the most popular web analytics software.
+      It unlocks the power of digital analytics with additional insights about visitor's behavior.
+      Komito Analytics adds automatic scroll tracking to the page and sends events to web analytics software.</p>
+      <p>Komito Analytics lets you measure how deep users are scrolling.
+      It tracks the 25%, 50%, 75%, and 100% scroll marks, sending an events to web analytics trackers found on page.
+      Komito Analytics supports Adobe Analytics, Baidu Analytics, Clicktale, Google Analytics, Urchin, and Yandex Metrica.</p>
+      <p>What can we do if we know how deeply the users scroll the page?
+        <br>&nbsp; &bull; Fix bounce rate by moving up CTAs higher.
+        <br>&nbsp; &bull; Measure real user engagement with your content.
+        <br>&nbsp; &bull; Measure content readability.
+      </p>
+      <p>Scroll depth tracking is enabled by default in Komito Analytics initial configuration.
+      To disable it, set the configuration property <code>trackScroll</code> to "0".
+      </p>
+      <p>To view this data in Google Analytics go to "Behavior > Events > Top Events > scroll > depth":</p>
+      <p>
+      <a href="track-scroll-depth-screenshot.png" target="_blank"><img
+         sr3c="data:image/svg+xml,%3Csvg/%3E"
+         data-src="track-scroll-depth-screenshot.png"
+         src="track-scroll-depth-screenshot.png"
+         alt="Scroll depth Google Analytics report." width="100%"></a>
+      </p>
+      <p>Integration is as simple as possible: by adding one javascript file, via <a href="https://komito.net/integration/google-tag-manager/">Google Tag Manager</a> or using our <a href="https://komito.net/integration/wordpress/">WordPress plugin</a>.</p>
+      <p><small class="com">The header image is available under <a href="https://creativecommons.org/about/cc0" rel="nofollow">CC0 License</a> and is taken from <a href="https://www.pexels.com/photo/man-couch-working-laptop-7066/" rel="nofollow">Pexels</a> free stock photos.</small></p>
+
+      <script src="../../assets/scripts/cta-area.js" async></script>
+    </article>
+    <script src="../../assets/scripts/sidebar.js" async></script>
   </div>
-  <script src="../../includes/footer.js"></script>
-</div>
-<script src="https://www.google-analytics.com/analytics.js"></script>
-<script src="../../common.js"></script>
-<script src="https://komito.net/komito.js" async></script>
+  <script src="../../assets/scripts/footer.js" async></script>
 </body>
 </html>
