@@ -238,13 +238,12 @@ footer .social li:first-child {
   margin-bottom: 2px;
   text-transform: capitalize;
 }
-
 footer .social a:hover {
   opacity: .75;
 }
 
 footer .menu li {margin: 0 0 0 .2em;}
-footer .menu a {font-size: .8em; padding: .3em .6em;}
+footer .menu a {display: inline; font-size: .8em; padding: .3em .6em;}
 footer .menu .active {margin: 0}
 
 footer .extra {border-top: 1px solid #4d4d4d;clear: both; padding: 1.5em 1em;}
@@ -333,6 +332,7 @@ h3:after {
 .webalytics {top: .35em;}
 
 @media only screen and (min-width: 768px) {
+  article {padding: 1em 2.5em;}
   #main {display: flex;}
   #main > aside {flex: 0 0 25%;}
   header .logo {font-size: 1.6em;}
@@ -353,5 +353,6 @@ h3:after {
   footer p {margin: 0 0 0.3em}
   .home h1 {font-size: 3em;}
   .home h3 {font-size: 2.5em;}
+  .post h1 {margin-top: 1.2em;}
   .metrics table {display: inline-block; width: 33%;}
 }
