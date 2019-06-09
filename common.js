@@ -9,8 +9,6 @@
 (function(win, doc) {
   /** @const {number} */ var DEBUG = ~location.search.indexOf('debug=');
   /** @const {string} */ var GA_TRACKING_ID = 'UA-5065160-14';
-  /** @const {string} */ var FB_APP_ID = '490025408049997';
-  /** @const {string} */ var FB_SDK_VERSION = '3.2';
 
   /**
    * Initializes Google Analytics.
