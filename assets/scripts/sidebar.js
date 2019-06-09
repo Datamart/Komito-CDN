@@ -17,7 +17,10 @@
     if (href != page) {
       html += '<div class="card">' +
               '  <a href="' + href + '" title="' + post[0] + '">' +
-              '    <span style="background-image:url('+post[1]+')"></span>' +
+              '    <img src="data:image/svg+xml,%3Csvg/%3E" ' +
+              '         data-src="' + post[1] + '" width="100%"' +
+              '         alt="' + post[0] + '">' +
+              //'    <span style="background-image:url('+post[1]+')"></span>' +
               '    <b>' + post[0] + '</b>' +
               '  </a>' +
               '</div>';

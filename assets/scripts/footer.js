@@ -1,4 +1,4 @@
-(function() {
+(function(win, doc) {
   var content = '' +
     '<footer>' +
     '  <ul class="social">' +
@@ -28,23 +28,53 @@
     '    </div>' +
     '  </div>' +
     '</footer>';
-  insertAdjacentHTMLContent(document.currentScript, content);
+  insertAdjacentHTMLContent(doc.currentScript, content);
 
+  /**
+   * Initializes Google Analytics.
+   * @private
+   */
   function initGa_() {
     if ('file:' !== location.protocol) {
       var GA_TRACKING_ID = 'UA-5065160-14';
-      document.body.appendChild(document.createElement('script')).src =
+      doc.body.appendChild(doc.createElement('script')).src =
         'https://www.googletagmanager.com/gtag/js?id=' + GA_TRACKING_ID;
 
-      window.dataLayer = window.dataLayer || [];
+      win.dataLayer = win.dataLayer || [];
       function gtag(){dataLayer.push(arguments)}
       gtag('js', new Date);
       gtag('config', GA_TRACKING_ID);
 
-      document.body.appendChild(document.createElement('script')).src =
+      doc.body.appendChild(doc.createElement('script')).src =
         'https://komito.net/komito.js';
     }
   }
 
+  /**
+   * Initializes lazy images preloader.
+   * @private
+   */
+  function initIntersectionObserver_() {
+    function load(image) { image.src = image.dataset.src; };
+    var images = doc.querySelectorAll('img[data-src]');
+
+    if ('IntersectionObserver' in win) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.intersectionRatio > 0) {
+            observer.unobserve(entry.target);
+            load(entry.target);
+          }
+        });
+      }, {'rootMargin': '50px 0px', 'threshold': 0.01});
+      images.forEach(function(image) { observer.observe(image); });
+    } else {
+      for (var length = images.length; length;) {
+        load(images[--length]);
+      }
+    }
+  }
+
   initGa_();
-})();
+  initIntersectionObserver_();
+})(window, document);

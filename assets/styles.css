@@ -270,13 +270,14 @@ aside .card a {
   width: 100%;
 }
 
-aside .card span {
+/*aside .card span {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   display: block;
   height: 10em
-}
+}*/
+aside .card img {min-height: 10em;width: 100%;}
 
 aside .card b {
   background-color: #fff;
