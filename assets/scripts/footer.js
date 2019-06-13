@@ -105,8 +105,24 @@
     }
   }
 
-  initGa_();
-  initIntersectionObserver_();
-  initServiceWorker_();
+  /**
+   * Initializes application.
+   * @private
+   */
+  function init_() {
+    function ready() {
+      initGa_();
+      initIntersectionObserver_();
+    }
+
+    'interactive' === doc.readyState || 'complete' === doc.readyState ?
+        setTimeout(ready, 0) :
+        win.addEventListener('DOMContentLoaded', ready);
+
+    initServiceWorker_();
+  }
+
+  // Initializing application.
+  init_();
 
 })(window, document);

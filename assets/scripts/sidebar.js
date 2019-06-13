@@ -9,6 +9,8 @@
 
   var page = location.href.split('?')[0];
   var html = '';
+  // var pixel = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
+  var pixel = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg"/>');
 
   for (var i = 0; i < posts.length; i++) {
     var post = posts[i];
@@ -17,7 +19,7 @@
     if (href != page) {
       html += '<div class="card">' +
               '  <a href="' + href + '" title="' + post[0] + '">' +
-              '    <img src="data:image/svg+xml,%3Csvg/%3E" ' +
+              '    <img src="' + pixel + '" ' +
               '         data-src="' + post[1] + '" width="100%"' +
               '         alt="' + post[0] + '">' +
               //'    <span style="background-image:url('+post[1]+')"></span>' +
@@ -35,5 +37,6 @@
          'href="https://twitter.com/KomitoAnalytics?ref_src=twsrc%5Etfw">Tweets by KomitoAnalytics</a>';
 
   insertAdjacentHTMLContent(document.currentScript, '<aside>' + html + '</aside>');
-  document.getElementsByTagName('aside')[0].appendChild(document.createElement('script')).src='https://platform.twitter.com/widgets.js';
+  document.getElementsByTagName('aside')[0].appendChild(
+    document.createElement('script')).src='https://platform.twitter.com/widgets.js';
 })();
