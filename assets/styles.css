@@ -296,6 +296,9 @@ aside .info {
   padding: 1em;
 }
 
+
+.center {text-align: center;}
+
 .home article,
 .cta-area {text-align: center;}
 .home h1,
