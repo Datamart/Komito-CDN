@@ -1,11 +1,11 @@
 (function() {
   var posts = [
       ['How to track scroll depth with Komito Analytics',
-       'https://komito.net/posts/track-scroll-depth/track-scroll-depth-thumbnail.jpg'],
+       'https://komito.net/posts/track-scroll-depth/track-scroll-depth-thumbnail.webp'],
       ['How to integrate Komito Analytics using Google Tag Manager',
-       'https://komito.net/integration/google-tag-manager/google-tag-manager-thumbnail.jpg'],
+       'https://komito.net/integration/google-tag-manager/google-tag-manager-thumbnail.webp'],
       ['How to integrate Komito Analytics using plugin for WordPress',
-       'https://komito.net/integration/wordpress/komito-analytics-wordpress-plugin-thumbnail.jpg']
+       'https://komito.net/integration/wordpress/komito-analytics-wordpress-plugin-thumbnail.webp']
   ];
   posts.sort(function(a, b){return 0.5 - Math.random()});
 
@@ -13,6 +13,15 @@
   var html = '';
   // var pixel = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
   var pixel = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg"/>');
+
+  window.fixWebP_ = function(event) {
+    var image = event.target;
+    // console.log(event.type, image.width, image.height, image.src);
+    if ('error' === event.type || (0 === image.width && 0 === image.height)) {
+      image.onerror = image.onload = null;
+      image.src = image.src.replace('.webp', '.jpg');
+    }
+  };
 
   for (var i = 0; i < posts.length; i++) {
     var post = posts[i];
@@ -22,9 +31,10 @@
       html += '<div class="card">' +
               '  <a href="' + href + '" title="' + post[0] + '">' +
               '    <img src="' + pixel + '" ' +
-              '         data-src="' + post[1] + '" width="100%"' +
-              '         alt="' + post[0] + '">' +
-              //'    <span style="background-image:url('+post[1]+')"></span>' +
+              '         data-src="' + post[1] + '" width="100%" ' +
+              '         alt="' + post[0] + '" ' +
+              '         onload="fixWebP_(event)" ' +
+              '         onerror="fixWebP_(event)">' +
               '    <b>' + post[0] + '</b>' +
               '  </a>' +
               '</div>';
