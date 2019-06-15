@@ -1,11 +1,11 @@
 (function() {
   var posts = [
       ['How to track scroll depth with Komito Analytics',
-       'https://komito.net/posts/track-scroll-depth/track-scroll-depth.jpg'],
+       'https://komito.net/posts/track-scroll-depth/track-scroll-depth-thumbnail.jpg'],
       ['How to integrate Komito Analytics using Google Tag Manager',
-       'https://komito.net/integration/google-tag-manager/google-tag-manager.jpg'],
+       'https://komito.net/integration/google-tag-manager/google-tag-manager-thumbnail.jpg'],
       ['How to integrate Komito Analytics using plugin for WordPress',
-       'https://komito.net/integration/wordpress/komito-analytics-wordpress-plugin.jpg']
+       'https://komito.net/integration/wordpress/komito-analytics-wordpress-plugin-thumbnail.jpg']
   ];
   posts.sort(function(a, b){return 0.5 - Math.random()});
 
