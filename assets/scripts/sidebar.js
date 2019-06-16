@@ -49,6 +49,5 @@
          'href="https://twitter.com/KomitoAnalytics?ref_src=twsrc%5Etfw">Tweets by KomitoAnalytics</a>';
 
   insertAdjacentHTMLContent(document.currentScript, '<aside>' + html + '</aside>');
-  document.getElementsByTagName('aside')[0].appendChild(
-    document.createElement('script')).src='https://platform.twitter.com/widgets.js';
+  loadScript('https://platform.twitter.com/widgets.js');
 })();

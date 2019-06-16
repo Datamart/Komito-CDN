@@ -36,17 +36,15 @@
    */
   function initGa_() {
     if ('file:' !== location.protocol) {
-      var GA_TRACKING_ID = 'UA-5065160-14';
-      doc.body.appendChild(doc.createElement('script')).src =
-        'https://www.googletagmanager.com/gtag/js?id=' + GA_TRACKING_ID;
+      var trackingId = 'UA-5065160-14';
+      loadScript('https://www.googletagmanager.com/gtag/js?id=' + trackingId);
 
       win.dataLayer = win.dataLayer || [];
       function gtag(){dataLayer.push(arguments)}
       gtag('js', new Date);
-      gtag('config', GA_TRACKING_ID);
+      gtag('config', trackingId);
 
-      doc.body.appendChild(doc.createElement('script')).src =
-        'https://komito.net/komito.js';
+      loadScript('https://komito.net/komito.js');
     }
   }
 

@@ -44,6 +44,12 @@ window.getNavMenu = function() {
          '             rel="nofollow">Get source code</a></li></ul>';
 };
 
+window.loadScript = function(src) {
+  var script = document.body.appendChild(document.createElement('script'));
+  script.async = true;
+  script.src = src;
+};
+
 (function() {
   var content = '' +
     '<header>' +
