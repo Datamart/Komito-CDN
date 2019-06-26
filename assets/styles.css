@@ -24,12 +24,12 @@ a {
   text-decoration: none;
 }
 
-#main,
 #main > article {
   flex: 1;
 }
 
 #main {
+  flex: 1 0 auto;
   margin-top: 5em;
 }
 
