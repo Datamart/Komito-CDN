@@ -6,20 +6,18 @@
  * @see https://developers.google.com/web/fundamentals/primers/service-workers/
  */
 
-/** @const {string} */ var CACHE_KEY = 'komito-cache-20190709-2055';
+/** @const {string} */ var CACHE_KEY = 'komito-cache-20190709-2130';
 /** @const {string} */ var SCOPE_URL = 'https://komito.net/';
 /** @const {string} */ var WORKER_JS = 'worker.js';
 
 /** @const {Array.<string>} */ var CACHE_URLS = [
-  // '/',
-  // '/demo/',
-  // '/integration/',
-  // '/styles.css',
-  // '/common.js',
-  // '/dashboard/',
-  // '/dashboard/dashboard.css',
-  // '/dashboard/dashboard.js'
+  '/assets/styles.css',
+  '/assets/scripts/header.js',
+  '/assets/scripts/cta-area.js',
+  '/assets/scripts/sidebar.js',
+  '/assets/scripts/footer.js'
 ];
+
 
 self.addEventListener('install', function(event) {
   event.waitUntil(caches.open(CACHE_KEY).then(function(cache) {
@@ -27,25 +25,16 @@ self.addEventListener('install', function(event) {
   }));
 });
 
+
 self.addEventListener('fetch', function(event) {
-  if ('GET' === event.request.method) {
-    /** @type {string} */ var url = event.request.url;
-    event.respondWith(caches.match(url).then(function(response) {
-      return response || fetch(event.request.clone()).then(function(response) {
-        if (SCOPE_URL === url.slice(0, 19) &&
-            WORKER_JS !== url.split('?')[0].split('/').pop()) {
-          if (response && 200 === response.status && 'basic' == response.type) {
-            var clone = response.clone();
-            caches.open(CACHE_KEY).then(function(cache) {
-              cache.put(url, clone);
-            });
-          }
-        }
-        return response;
-      });
-    }));
-  }
+  // event.respondWith(fromNetwork(event.request, 400).catch(function() {
+  //   return fromCache(event.request);
+  // }));
+
+  event.respondWith(fromCache(event.request));
+  event.waitUntil(update(event.request));
 });
+
 
 self.addEventListener('activate', function(event) {
   var whitelist = [CACHE_KEY];
@@ -58,3 +47,44 @@ self.addEventListener('activate', function(event) {
     }));
   }));
 });
+
+
+/**
+ * Time limited network request.
+ * If the network fails or the response is not served before timeout,
+ * the promise is rejected.
+ */
+function fromNetwork(request, timeout) {
+  return new Promise(function(fulfill, reject) {
+    var timeoutId = setTimeout(reject, timeout);
+    fetch(request).then(function(response) {
+      clearTimeout(timeoutId);
+      fulfill(response);
+    }, reject);
+  });
+}
+
+
+/**
+ * Open the cache where the assets were stored and search for the requested resource.
+ */
+function fromCache(request) {
+  return caches.open(CACHE_KEY).then(function(cache) {
+    return cache.match(request).then(function(matching) {
+      return matching || Promise.reject('no-match');
+    });
+  });
+}
+
+
+/**
+ * Update consists in opening the cache, performing a network request and
+ * storing the new response data.
+ */
+function update(request) {
+  return caches.open(CACHE).then(function (cache) {
+    return fetch(request).then(function (response) {
+      return cache.put(request, response);
+    });
+  });
+}

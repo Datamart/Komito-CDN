@@ -49,6 +49,32 @@
   }
 
   /**
+   * Replaces unsupported '.webp' with '.jpg' background image.
+   * @private
+   */
+  function fixWebP_() {
+    var selector = '#main h1';
+    var node = doc.querySelector(selector);
+
+    if (node) {
+      var bgImage = win.getComputedStyle(node).getPropertyValue('background-image');
+
+      function callback(result) {
+        result || doc.styleSheets[0].addRule(
+            selector,
+            'background-image: ' + bgImage.replace('.webp', '.jpg'));
+        node.onload = node.onerror = null;
+        node = null;
+      }
+
+      node = new Image;
+      node.onload = function () {callback(node.width > 0 && node.height > 0);};
+      node.onerror = function () {callback(false);};
+      node.src = bgImage.split('url(')[1].split(')')[0].replace(/"/g,'');
+    }
+  }
+
+  /**
    * Initializes lazy images preloader.
    * @private
    */
@@ -110,6 +136,7 @@
   function init_() {
     function ready() {
       initGa_();
+      fixWebP_();
       initIntersectionObserver_();
     }
 
