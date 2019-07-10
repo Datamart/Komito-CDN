@@ -30,7 +30,8 @@ a {
 
 #main {
   flex: 1 0 auto;
-  margin-top: 5em;
+  margin: 5em auto;
+  max-width: 1440px;
 }
 
 #main > aside {
