@@ -6,7 +6,7 @@
  * @see https://developers.google.com/web/fundamentals/primers/service-workers/
  */
 
-/** @const {string} */ var CACHE_KEY = 'komito-cache-20190709-2155';
+/** @const {string} */ var CACHE_KEY = 'komito-cache-20190709-2205';
 
 /** @const {!Array.<string>} */ var CACHE_URLS = [
   // Assets:
@@ -23,6 +23,7 @@
   'integration/wordpress/',
   '/posts/track-scroll-depth/',
   '/support/',
+  '/404.html',
 
   // Images
   '/images/komito-hero-background.jpg',
@@ -43,16 +44,6 @@ self.addEventListener('install', function(event) {
 });
 
 
-self.addEventListener('fetch', function(event) {
-  // event.respondWith(fromNetwork(event.request, 400).catch(function() {
-  //   return fromCache(event.request);
-  // }));
-
-  event.respondWith(fromCache(event.request));
-  event.waitUntil(update(event.request));
-});
-
-
 self.addEventListener('activate', function(event) {
   var whitelist = [CACHE_KEY];
 
@@ -64,6 +55,41 @@ self.addEventListener('activate', function(event) {
     }));
   }));
 });
+
+
+self.addEventListener('fetch', function(event) {
+  // event.respondWith(fromNetwork(event.request, 400).catch(function() {
+  //   return fromCache(event.request);
+  // }));
+
+  // event.respondWith(fromCache(event.request));
+  // event.waitUntil(update(event.request));
+
+  event.respondWith(
+    caches.match(event.request).then(function(response) {
+      return response || fetchAndCache(event.request);
+    })
+  );
+});
+
+
+function fetchAndCache(request) {
+  return fetch(request).then(function(response) {
+    // Check if we received a valid response
+    if (!response.ok) {
+      throw Error(response.statusText);
+    }
+
+    return caches.open(CACHE_KEY).then(function(cache) {
+      cache.put(request, response.clone());
+      return response;
+    });
+  }).catch(function(error) {
+    console.log('Request failed:', error);
+    // You could return a custom offline 404 page here
+    return fromCache('/404.html');
+  });
+}
 
 
 /**
