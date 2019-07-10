@@ -6,11 +6,9 @@
  * @see https://developers.google.com/web/fundamentals/primers/service-workers/
  */
 
-/** @const {string} */ var CACHE_KEY = 'komito-cache-20190709-2130';
-/** @const {string} */ var SCOPE_URL = 'https://komito.net/';
-/** @const {string} */ var WORKER_JS = 'worker.js';
+/** @const {string} */ var CACHE_KEY = 'komito-cache-20190709-2135';
 
-/** @const {Array.<string>} */ var CACHE_URLS = [
+/** @const {!Array.<string>} */ var CACHE_URLS = [
   '/assets/styles.css',
   '/assets/scripts/header.js',
   '/assets/scripts/cta-area.js',
@@ -82,7 +80,7 @@ function fromCache(request) {
  * storing the new response data.
  */
 function update(request) {
-  return caches.open(CACHE).then(function (cache) {
+  return caches.open(CACHE_KEY).then(function (cache) {
     return fetch(request).then(function (response) {
       return cache.put(request, response);
     });
