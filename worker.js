@@ -6,14 +6,33 @@
  * @see https://developers.google.com/web/fundamentals/primers/service-workers/
  */
 
-/** @const {string} */ var CACHE_KEY = 'komito-cache-20190709-2135';
+/** @const {string} */ var CACHE_KEY = 'komito-cache-20190709-2155';
 
 /** @const {!Array.<string>} */ var CACHE_URLS = [
+  // Assets:
   '/assets/styles.css',
   '/assets/scripts/header.js',
   '/assets/scripts/cta-area.js',
   '/assets/scripts/sidebar.js',
-  '/assets/scripts/footer.js'
+  '/assets/scripts/footer.js',
+
+  // Pages:
+  '/',
+  '/integration/',
+  '/integration/google-tag-manager/',
+  'integration/wordpress/',
+  '/posts/track-scroll-depth/',
+  '/support/',
+
+  // Images
+  '/images/komito-hero-background.jpg',
+  '/images/software/particles-logo-h50.png',
+  '/integration/google-tag-manager/google-tag-manager.jpg',
+  '/integration/google-tag-manager/google-tag-manager-thumbnail.jpg',
+  '/integration/wordpress/komito-analytics-wordpress-plugin.jpg',
+  '/integration/wordpress/komito-analytics-wordpress-plugin-thumbnail.jpg',
+  '/posts/track-scroll-depth/track-scroll-depth.jpg',
+  '/posts/track-scroll-depth/track-scroll-depth-thumbnail.jpg'
 ];
 
 
@@ -80,9 +99,9 @@ function fromCache(request) {
  * storing the new response data.
  */
 function update(request) {
-  return caches.open(CACHE_KEY).then(function (cache) {
-    return fetch(request).then(function (response) {
-      return cache.put(request, response);
+  return caches.open(CACHE_KEY).then(function(cache) {
+    return fetch(request).then(function(response) {
+      return cache.put(request, response.clone());
     });
   });
 }
