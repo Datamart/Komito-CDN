@@ -6,7 +6,7 @@
  * @see https://developers.google.com/web/fundamentals/primers/service-workers/
  */
 
-/** @const {string} */ var CACHE_KEY = 'komito-cache-20190713-1045';
+/** @const {string} */ var CACHE_KEY = 'komito-cache-20190713-1115';
 
 /** @const {!Array.<string>} */ var CACHE_URLS = [
   // Assets:
@@ -65,11 +65,15 @@ self.addEventListener('fetch', function(event) {
   // event.respondWith(fromCache(event.request));
   // event.waitUntil(update(event.request));
 
-  event.respondWith(
-    caches.match(event.request).then(function(response) {
-      return response || fetchAndCache(event.request);
-    })
-  );
+  if (0 === event.request.url.indexOf('https://komito.net/')) {
+    event.respondWith(
+      caches.match(event.request).then(function(response) {
+        return response || fetchAndCache(event.request);
+      })
+    );
+  } else {
+    event.respondWith(fetch(event.request));
+  }
 });
 
 
