@@ -130,6 +130,19 @@
   }
 
   /**
+   * Fixes embedded gists container width.
+   * @private
+   */
+  function fixGists_() {
+    var width = screen.availWidth;
+    var sheet = doc.styleSheets[1];
+
+    if (768 > width && sheet) {
+      sheet.insertRule('.gist{max-width: ' + (width - 32) + 'px}');
+    }
+  }
+
+  /**
    * Initializes application.
    * @private
    */
@@ -144,6 +157,7 @@
         setTimeout(ready, 0) :
         win.addEventListener('DOMContentLoaded', ready);
 
+    fixGists_();
     initServiceWorker_();
   }
 

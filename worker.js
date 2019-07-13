@@ -6,7 +6,7 @@
  * @see https://developers.google.com/web/fundamentals/primers/service-workers/
  */
 
-/** @const {string} */ var CACHE_KEY = 'komito-cache-20190709-2205';
+/** @const {string} */ var CACHE_KEY = 'komito-cache-20190713-1045';
 
 /** @const {!Array.<string>} */ var CACHE_URLS = [
   // Assets:
@@ -75,7 +75,7 @@ self.addEventListener('fetch', function(event) {
 
 function fetchAndCache(request) {
   return fetch(request).then(function(response) {
-    // Check if we received a valid response
+    // Check if we received a valid response.
     if (!response.ok) {
       throw Error(response.statusText);
     }
@@ -86,7 +86,6 @@ function fetchAndCache(request) {
     });
   }).catch(function(error) {
     console.log('Request failed:', error);
-    // You could return a custom offline 404 page here
     return fromCache('/404.html');
   });
 }
