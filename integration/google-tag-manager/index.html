@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" itemscope
       itemtype="http://schema.org/Article" lang="en">
 <head>
-<meta itemprop="dateModified" content="2019-06-10">
+<meta itemprop="dateModified" content="2019-07-14">
 <meta itemprop="datePublished" content="2019-03-20">
 <meta charset="utf-8">
 
@@ -55,7 +55,20 @@
 <link href="../../favicon.ico" rel="shortcut icon">
 <link href="../../assets/styles.css" rel="stylesheet">
 
-<style>.post h1{background-image:url(google-tag-manager.jpg);background-attachment:scroll;background-position:0 0}</style>
+<style>
+.post h1 {
+  background-image:url(google-tag-manager.jpg);
+  background-attachment:scroll;
+  background-position:0 0;
+}
+@media only screen and (max-width: 768px) {
+  .post h1 {
+    background-repeat: no-repeat;
+    background-size: contain;
+    min-height: 7em;
+  }
+}
+</style>
 </head>
 <body class="post">
   <script src="../../assets/scripts/header.js"></script>
