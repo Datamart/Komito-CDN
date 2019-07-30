@@ -6,7 +6,7 @@
  * @see https://developers.google.com/web/fundamentals/primers/service-workers/
  */
 
-/** @const {string} */ var CACHE_KEY = 'komito-cache-20190722-2305';
+/** @const {string} */ var CACHE_KEY = 'komito-cache-20190730-0725';
 
 /** @const {!Array.<string>} */ var CACHE_URLS = [
   // Assets:
@@ -45,11 +45,9 @@ self.addEventListener('install', function(event) {
 
 
 self.addEventListener('activate', function(event) {
-  var whitelist = [CACHE_KEY];
-
   event.waitUntil(caches.keys().then(function(cacheNames) {
     return Promise.all(cacheNames.map(function(cacheName) {
-      if (whitelist.indexOf(cacheName) === -1) {
+      if (cacheName !== CACHE_KEY) {
         return caches.delete(cacheName);
       }
     }));
