@@ -2,11 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" itemscope
       itemtype="http://schema.org/WebPage" lang="en">
 <head>
-<meta itemprop="dateModified" content="2018-10-05">
+<meta itemprop="dateModified" content="2019-09-25">
+<meta itemprop="datePublished" content="2018-10-05">
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-<meta name="theme-color" content="#222">
-<link rel="manifest" href="../manifest.json">
 
 <title>Komito Analytics Demo Page</title>
 <link rel="canonical" href="https://komito.net/demo/">
@@ -20,6 +18,7 @@
 <meta property="og:title" content="Komito Analytics Demo Page">
 <meta property="og:url" content="https://komito.net/demo/">
 <meta property="og:description" content="See Komito Analytics in Action!">
+
 <meta property="og:image" content="https://komito.net/images/komito-logo-dark-500x400.png">
 <meta property="og:type" content="website">
 <meta property="fb:app_id" content="490025408049997">
@@ -28,314 +27,28 @@
 <meta name="twitter:title" content="Komito Analytics Demo Page">
 <meta name="twitter:url" content="https://komito.net/demo/">
 <meta name="twitter:description" content="See Komito Analytics in Action!">
+
 <meta name="twitter:image" content="https://komito.net/images/komito-logo-dark-500x400.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@KomitoAnalytics">
 <meta name="twitter:creator" content="@KomitoAnalytics">
 
-<link href="../favicon.ico" rel="shortcut icon">
-<link href="../images/komito-logo-192x192.png" rel="icon" sizes="192x192">
-<link href="../images/komito-logo-192x192.png" rel="apple-touch-icon">
-<link href="../styles.css" rel="stylesheet">
+<link itemprop="sameAs" href="https://www.facebook.com/KomitoAnalytics/">
+<link itemprop="sameAs" href="https://www.instagram.com/KomitoAnalytics/">
+<link itemprop="sameAs" href="https://twitter.com/KomitoAnalytics/">
+
 <link rel="prefetch prerender" href="https://komito.net">
 <link rel="prefetch prerender" href="https://komito.net/integration/">
 <link rel="preconnect" href="https://s.ytimg.com">
 
-<link rel="publisher" href="https://plus.google.com/103753969968292534269" title="Google+">
-<link itemprop="sameAs" href="https://www.facebook.com/KomitoAnalytics/">
-<link itemprop="sameAs" href="https://www.instagram.com/KomitoAnalytics/">
-<link itemprop="sameAs" href="https://twitter.com/KomitoAnalytics/">
-</head>
-<body class="kmt-demo">
-<div class="kmt-page">
-  <div class="kmt-page-header">
-    <div class="kmt-logo">
-      <a href="../" title="Komito Analytics"><svg version="1.1"
-         xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="45px"
-         role="img" aria-label="Komito Analytics Logo"
-         height="45px" viewBox="0 0 45 45"><polygon fill="#d20"
-         points="0,0 0,20.1 19.8,0"/><polygon fill="#f80"
-         points="0,32 0,45 20.9,45 8.3,24.6"/><polygon fill="#07d"
-         points="33.6,45 45,45 45,0 32.3,0 14.6,18"/>
-      </svg><span><b>Komito</b><i>Analytics</i></span></a>
-    </div>
-    <div class="hamburger">
-      <div class="hamburger-box"><div class="hamburger-inner"></div></div>
-    </div>
-    <ul class="kmt-navigation">
-      <li><a title="Komito Analytics overview page."
-             href="../">Overview</a></li>
-      <li><a title="Step-by-step Komito Analytics integration instructions."
-             href="../integration/">Integration</a></li>
-      <li><span>Demo</span></li>
-      <li><a href="https://github.com/Datamart/Komito/tree/master"
-             title="Get Komito Analytics Source Code."
-             rel="nofollow">Get source code</a></li>
-    </ul>
-  </div>
-  <div class="kmt-page-content">
-    <div class="kmt-section">
-      <h3>Komito Analytics Demo</h3>
-      <p>See Komito Analytics in action!</p>
-      <p class="info">This page runs a Komito in debug mode. Please open Console to view dispatched events and sent requests.</p>
-
-      <div class="kmt-parameter">
-        <h4>Print</h4>
-        <table>
-          <tr>
-            <th>Clicking on links "Print" event will be dispatched.</th>
-            <td>
-              <ul>
-                <li><a href="javascript:window.print()">Print</a> (Ctrl+P / Cmd+P)</li>
-              </ul>
-            </td>
-          </tr>
-        </table>
-      </div>
-
-      <div class="kmt-parameter">
-        <h4>Scroll</h4>
-        <table>
-          <tr>
-            <th>Scrolling page "Scroll" event will be dispatched.</th>
-            <td>
-              <ul>
-                <li><a href="javascript:window.scrollTo(0, document.documentElement.scrollHeight * 0.25);">Scroll 25%</a></li>
-                <li><a href="javascript:window.scrollTo(0, document.documentElement.scrollHeight * 0.5);">Scroll 50%</a></li>
-                <li><a href="javascript:window.scrollTo(0, document.documentElement.scrollHeight * 0.75);">Scroll 75%</a></li>
-                <li><a href="javascript:window.scrollTo(0, document.documentElement.scrollHeight);">Scroll 100%</a></li>
-              </ul>
-            </td>
-          </tr>
-        </table>
-      </div>
-
-      <div class="kmt-parameter">
-        <h4>Outbound Links</h4>
-        <table>
-          <tr>
-            <th>Clicking on links "Outbound" event will be dispatched.<br>
-              If link is a Social Network, "Social" event will be dispatched too.</th>
-            <td>
-              <ul>
-                <li><a href="https://www.dtm.io/">Datamart</a></li>
-                <li><a href="https://www.linkedin.com/company/datamartinc" rel="nofollow">LinkedIn</a></li>
-                <li><a href="https://www.facebook.com/KomitoAnalytics" rel="nofollow">Facebook</a></li>
-                <li><a href="https://plus.google.com/+vpodk" rel="nofollow">Google+</a></li>
-                <li><a href="https://twitter.com/KomitoAnalytics" rel="nofollow">Twitter</a></li>
-                <li><a href="https://analytics.blogspot.com/" rel="nofollow">Blogger</a></li>
-              </ul>
-            </td>
-          </tr>
-        </table>
-      </div>
-
-      <div class="kmt-parameter">
-        <h4>Download Links</h4>
-        <table>
-          <tr>
-            <th>Clicking on links "Download" event will be dispatched.<br>
-              If link is in other domain, "Outbound" event will be dispatched too.</th>
-            <td>
-              <ul>
-                <li>
-                  <a href="https://www.dtm.io/case-studies/files/Datamart-WebAnalytics-CaseStudy.pdf"
-                     rel="nofollow">Datamart-WebAnalytics-CaseStudy.pdf</a>
-                </li>
-                <li>
-                  <a href="https://dl.google.com/closure-compiler/compiler-latest.zip"
-                     rel="nofollow">Google-Closure-Compiler.zip</a> (Other domain)
-                </li>
-              </ul>
-            </td>
-          </tr>
-        </table>
-      </div>
-
-      <div class="kmt-parameter">
-        <h4>Call To Action Links</h4>
-        <table>
-          <tr>
-            <th>Clicking on links "CTA" event will be dispatched.</th>
-            <td>
-              <ul>
-                <li><a href="mailto:support@komito.net">mailto:support@komito.net</a></li>
-                <li><a href="mailto:hr@dtm.io?subject=Resume">mailto:hr@dtm.io?subject=Resume</a></li>
-                <li><a href="tel:+14157997500">tel:+14157997500</a></li>
-                <li><a href="sms:+14157997500">sms:+14157997500</a></li>
-                <li><a href="skype:datamart.company?call">skype:datamart.company?call</a></li>
-              </ul>
-            </td>
-          </tr>
-        </table>
-      </div>
-
-      <div class="kmt-parameter">
-        <h4>Forms</h4>
-        <table>
-          <tr>
-            <th>Clicking on button "Form" event will be dispatched.</th>
-            <td>
-              <form name="registration-form" onsubmit="return false">
-                <div class="form-item">
-                  <label>Name:</label>
-                  <input name="name" value="name" type="text">
-                </div>
-                <div class="form-item">
-                  <label>Age:</label>
-                  <select name="age"><option value="20">20</option></select>
-                </div>
-                <div class="form-item">
-                  <label>Text:</label>
-                  <textarea name="comment">comment</textarea>
-                </div>
-                <div class="dtm-form-item">
-                  <button type="submit"
-                          style="padding:9px 15px 10px"
-                          class="dtm-button clr-red">Submit</button>
-                </div>
-              </form>
-            </td>
-          </tr>
-        </table>
-      </div>
-
-      <div class="kmt-parameter">
-        <h4>Media</h4>
-        <table>
-          <tr>
-            <th>"Media" event will be dispatched.</th>
-            <td>
-              <em>HTML5</em>
-              <video width="460" height="260" controls>
-                <source src="https://web.archive.org/web/20190518100139if_/https://www.quirksmode.org/html5/videos/big_buck_bunny.mp4"
-                        type="video/mp4">
-                <source src="https://web.archive.org/web/20190510190318if_/http://www.quirksmode.org/html5/videos/big_buck_bunny.webm"
-                        type="video/webm">
-                <source src="https://web.archive.org/web/20190414125618if_/http://www.quirksmode.org/html5/videos/big_buck_bunny.ogv"
-                        type="video/ogg">
-              </video>
-              <em>Youtube</em>
-              <iframe src="https://www.youtube.com/embed/aqz-KE-bpKQ"
-                      width="460" height="260" frameborder="0"
-                      webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-              <em>Vimeo</em>
-              <iframe src="https://player.vimeo.com/video/1084537"
-                      width="460" height="260" frameborder="0"
-                      webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-            </td>
-          </tr>
-        </table>
-      </div>
-
-      <div class="kmt-parameter">
-        <h4>Social Buttons</h4>
-        <table class="social-buttons">
-          <tr>
-            <th>Clicking on links "Social" event will be dispatched.</th>
-            <td>
-              <ul>
-                <li>
-                  <b>Twitter</b>
-                  <script type="text/javascript"
-                          src="https://platform.twitter.com/widgets.js"></script>
-                  <a href="https://twitter.com/share" class="twitter-share-button"
-                     data-lang="en" rel="nofollow">Tweet</a>
-                  <a href="https://twitter.com/KomitoAnalytics" class="twitter-follow-button"
-                     data-show-count="false" data-lang="en" rel="nofollow">Follow @KomitoAnalytics</a>
-                  <a href="https://twitter.com/intent/tweet?text=Hello%20world"
-                     target="_blank" rel="noopener">Tweet</a>
-                </li>
-                <li>
-                  <b>LinkedIn</b>
-                  <script type="text/javascript"
-                          src="https://platform.linkedin.com/in.js"></script>
-                  <script type="IN/Share" data-counter="right"></script>
-                  <script type="IN/FollowCompany" data-id="6442972"
-                          data-counter="right"></script>
-                </li>
-                <li>
-                  <b>Facebook</b>
-                  <div class="fb-like" data-href="https://komito.net/"
-                       data-layout="button" data-action="like" data-show-faces="false"
-                       data-share="false"></div>
-                  <div class="fb-share-button"
-                       data-href="https://komito.net/"></div>
-                  <div class="fb-send" data-href="https://komito.net/"
-                       data-colorscheme="light"></div>
-                  <div class="fb-follow"
-                       data-href="https://komito.net/"
-                       data-colorscheme="light"
-                       data-layout="button" data-show-faces="false"></div>
-                  <div id="fb-root" class="fb_reset"></div>
-                </li>
-              </ul>
-            </td>
-          </tr>
-        </table>
-      </div>
-
-    </div>
-    <div class="kmt-section extra">
-      <p><em>Still have a questions?&nbsp;</em>
-      <a href="mailto:support@komito.net" class="button" title="Ask Komito support team">Ask Komito support team</a>
-      <i class="or">-&nbsp;OR&nbsp;-</i>
-      <a href="https://github.com/Datamart/Komito/issues" rel="nofollow" class="button grayscale" title="Post issue">Post issue</a>
-      </p>
-    </div>
-  </div>
-  <div class="kmt-page-footer">
-    <div class="kmt-footer-navigation">
-      <ul class="kmt-social">
-        <li>Follow us on:</li>
-        <li>
-          <a href="https://www.facebook.com/KomitoAnalytics/" title="Komito Analytics on Facebook"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 60.734 60.733" role="img" aria-label="Facebook Logo"><path fill="#fff" d="M57.378,0.001H3.352C1.502,0.001,0,1.5,0,3.353v54.026c0,1.853,1.502,3.354,3.352,3.354h29.086V37.214h-7.914v-9.167h7.914v-6.76c0-7.843,4.789-12.116,11.787-12.116c3.355,0,6.232,0.251,7.071,0.36v8.198l-4.854,0.002c-3.805,0-4.539,1.809-4.539,4.462v5.851h9.078l-1.187,9.166h-7.892v23.52h15.475c1.852,0,3.355-1.503,3.355-3.351V3.351C60.731,1.5,59.23,0.001,57.378,0.001z"/></svg></a></li>
-        <li>
-          <a href="https://www.instagram.com/KomitoAnalytics/" title="Komito Analytics on Instagram"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 169.063 169.063" role="img" aria-label="Instagram Logo"><path d="M122.406,0H46.654C20.929,0,0,20.93,0,46.655v75.752c0,25.726,20.929,46.655,46.654,46.655h75.752 c25.727,0,46.656-20.93,46.656-46.655V46.655C169.063,20.93,148.133,0,122.406,0z M154.063,122.407 c0,17.455-14.201,31.655-31.656,31.655H46.654C29.2,154.063,15,139.862,15,122.407V46.655C15,29.201,29.2,15,46.654,15h75.752 c17.455,0,31.656,14.201,31.656,31.655V122.407z" fill="#fff"/><path d="M84.531,40.97c-24.021,0-43.563,19.542-43.563,43.563c0,24.02,19.542,43.561,43.563,43.561s43.563-19.541,43.563-43.561 C128.094,60.512,108.552,40.97,84.531,40.97z M84.531,113.093c-15.749,0-28.563-12.812-28.563-28.561 c0-15.75,12.813-28.563,28.563-28.563s28.563,12.813,28.563,28.563C113.094,100.281,100.28,113.093,84.531,113.093z" fill="#fff"/><path d="M129.921,28.251c-2.89,0-5.729,1.17-7.77,3.22c-2.051,2.04-3.23,4.88-3.23,7.78c0,2.891,1.18,5.73,3.23,7.78 c2.04,2.04,4.88,3.22,7.77,3.22c2.9,0,5.73-1.18,7.78-3.22c2.05-2.05,3.22-4.89,3.22-7.78c0-2.9-1.17-5.74-3.22-7.78 C135.661,29.421,132.821,28.251,129.921,28.251z" fill="#fff"/></svg></a>
-        </li>
-        <li>
-          <a href="https://twitter.com/KomitoAnalytics/" title="Komito Analytics on Twitter"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 612 612" role="img" aria-label="Twitter Logo"><path d="M612,116.258c-22.525,9.981-46.694,16.75-72.088,19.772c25.929-15.527,45.777-40.155,55.184-69.411 c-24.322,14.379-51.169,24.82-79.775,30.48c-22.907-24.437-55.49-39.658-91.63-39.658c-69.334,0-125.551,56.217-125.551,125.513    c0,9.828,1.109,19.427,3.251,28.606C197.065,206.32,104.556,156.337,42.641,80.386c-10.823,18.51-16.98,40.078-16.98,63.101 c0,43.559,22.181,81.993,55.835,104.479c-20.575-0.688-39.926-6.348-56.867-15.756v1.568c0,60.806,43.291,111.554,100.693,123.104 c-10.517,2.83-21.607,4.398-33.08,4.398c-8.107,0-15.947-0.803-23.634-2.333c15.985,49.907,62.336,86.199,117.253,87.194 c-42.947,33.654-97.099,53.655-155.916,53.655c-10.134,0-20.116-0.612-29.944-1.721c55.567,35.681,121.536,56.485,192.438,56.485 c230.948,0,357.188-191.291,357.188-357.188l-0.421-16.253C573.872,163.526,595.211,141.422,612,116.258z" fill="#fff"/></svg></a>
-        </li>
-      </ul>
-      <ul class="kmt-navigation">
-        <li><a title="Komito Analytics overview page."
-               href="../">Overview</a></li>
-        <li><a title="Step-by-step Komito Analytics integration instructions."
-               href="../integration/">Integration</a></li>
-        <li><span>Demo</span></li>
-        <li><a href="https://github.com/Datamart/Komito/tree/master"
-               title="Get Komito Analytics Source Code."
-               rel="nofollow">Get source code</a></li>
-      </ul>
-    </div>
-    <div class="kmt-footer-extra">
-      <a href="https://www.dtm.io" title="Datamart Inc."
-         class="dtm-logo"><svg xmlns="http://www.w3.org/2000/svg"
-         role="img" aria-label="Datamart Logo"
-         width="33px" height="33px" viewBox="0 0 83 75"><path fill="#d61700" d="M41.008,0.938c9.558,0,18.338,3.321,25.255,8.87L29.338,2.652 C33.032,1.539,36.949,0.938,41.008,0.938L41.008,0.938z"/><path fill="#d61700" d="M78.159,25.45c0.784,1.833,1.438,3.736,1.947,5.696L36.787,80.062 l-21-66.474L78.159,25.45L78.159,25.45z"/><path fill="#d61700" d="M80.388,50.366C77.372,63.57,67.886,74.306,55.443,79.069L80.388,50.366L80.388,50.366z"/><path fill="#d61700" d="M21.163,76.523C8.896,69.589,0.612,56.431,0.612,41.333c0-6.387,1.484-12.427,4.124-17.796L21.163,76.523L21.163,76.523z"/></svg><span><i>Powered by</i><b>Datamart</b></span></a>
-      <p>Komito Analytics is subject to the terms and conditions of
-        <a href="https://www.apache.org/licenses/LICENSE-2.0" rel="nofollow"
-           title="Apache License">Apache License 2.0</a>
-        <br>
-        <span itemprop="publisher" itemscope
-              itemtype="http://schema.org/Organization">
-          <a href="tel:+14157997500" itemprop="telephone">+1 (415) 799-7500</a> •
-          <a href="mailto:support@komito.net" itemprop="email">support@komito.net</a> •
-          © <script>document.currentScript.outerText=(new Date).getFullYear()</script>
-          <a itemprop="url" href="https://www.dtm.io" title="Datamart Inc."><span
-             itemprop="name">Datamart Inc.</span></a>
-          <meta itemprop="address" content="2100 Geng Road, Suite 210, Palo Alto, CA 94303">
-          <link itemprop="logo" href="https://www.dtm.io/images/datamart-logo-512x512.png">
-          <link itemprop="sameAs" href="https://plus.google.com/103753969968292534269">
-          <link itemprop="sameAs" href="https://www.linkedin.com/company/datamartinc">
-          <link itemprop="sameAs" href="https://www.facebook.com/datamartinc">
-          <link itemprop="sameAs" href="https://twitter.com/thedatamartinc">
-        </span>
-      </p>
-    </div>
-  </div>
-</div>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#222">
+<link href="../manifest.json" rel="manifest">
+<link href="../favicon.ico" rel="shortcut icon">
+<link href="../images/komito-logo-192x192.png" rel="icon" sizes="192x192">
+<link href="../images/komito-logo-192x192.png" rel="apple-touch-icon">
+<link href="../assets/styles.css" rel="stylesheet">
+<style>.post h1{min-height:auto}</style>
 <script>
 // Emulating GA Classic.
 var _gaq = {
@@ -380,11 +93,203 @@ window['yaCounter123456'] = {
 };
 
 // Enabling experimental trackers.
-var _komito = _komito || {'trackAdblock': 1, 'trackErrorPages': 1, 'sendHeartbeat': 30};
-window.addEventListener('message', function(e){ console.log(e) });
-</script>
+var _komito = {
+  trackAdblock: 1,
+  trackErrorPages: 1,
+  sendHeartbeat: 30,
+  onBeforeTrack: function(event) {
+    console.log('onBeforeTrack:', events);
+  }
+};
 
-<script src="https://www.google-analytics.com/analytics.js"></script>
-<script src="../common.js"></script>
-<script src="https://komito.net/komito.js" async></script>
-</body></html>
+window.addEventListener('message', function(event) {
+  console.log('onMessage:', event);
+});
+</script>
+</head>
+<body class="post">
+  <script src="../assets/scripts/header.js"></script>
+  <div id="main">
+    <article>
+      <h1 class="center">See Komito Analytics in action!</h1>
+      <p class="info">This page runs a Komito in debug mode. Please open Console to view dispatched events and sent requests.</p>
+
+      <h4>Print</h4>
+      <div class="grid">
+        <div class="cell">Clicking on link "Print" event will be dispatched:</div>
+        <div class="cell">
+          <ul><li><a href="javascript:window.print()">Print</a> (Ctrl+P / Cmd+P)</li></ul>
+        </div>
+      </div>
+
+      <h4>Scroll</h4>
+      <div class="grid">
+        <div class="cell">Scrolling page "Scroll" event will be dispatched:</div>
+        <div class="cell">
+          <ul>
+            <li><a href="javascript:window.scrollTo(0, document.documentElement.scrollHeight * 0.25);">Scroll 25%</a></li>
+            <li><a href="javascript:window.scrollTo(0, document.documentElement.scrollHeight * 0.5);">Scroll 50%</a></li>
+            <li><a href="javascript:window.scrollTo(0, document.documentElement.scrollHeight * 0.75);">Scroll 75%</a></li>
+            <li><a href="javascript:window.scrollTo(0, document.documentElement.scrollHeight);">Scroll 100%</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <h4>Outbound Links</h4>
+      <div class="grid">
+        <div class="cell">
+          Clicking on links "Outbound" event will be dispatched.
+          If link is a Social Network, "Social" event will be dispatched too.
+        </div>
+        <div class="cell">
+          <ul>
+            <li><a href="https://www.dtm.io/">Datamart</a></li>
+            <li><a href="https://www.linkedin.com/company/datamartinc" rel="nofollow">LinkedIn</a></li>
+            <li><a href="https://www.facebook.com/KomitoAnalytics" rel="nofollow">Facebook</a></li>
+            <li><a href="https://twitter.com/KomitoAnalytics" rel="nofollow">Twitter</a></li>
+            <li><a href="https://analytics.blogspot.com/" rel="nofollow">Blogger</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <h4>Download Links</h4>
+      <div class="grid">
+        <div class="cell">
+          Clicking on links "Download" event will be dispatched.
+          If link is in other domain, "Outbound" event will be dispatched too.
+        </div>
+        <div class="cell">
+          <ul>
+            <li>
+              <a href="https://www.dtm.io/case-studies/files/Datamart-WebAnalytics-CaseStudy.pdf"
+                 rel="nofollow">Datamart-WebAnalytics-CaseStudy.pdf</a>
+            </li>
+            <li>
+              <a href="https://dl.google.com/closure-compiler/compiler-latest.zip"
+                 rel="nofollow">Google-Closure-Compiler.zip</a> (Other domain)
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <h4>Call To Action Links</h4>
+      <div class="grid">
+        <div class="cell">Clicking on links "CTA" event will be dispatched:</div>
+        <div class="cell">
+          <ul>
+            <li><a href="mailto:support@komito.net">mailto:support@komito.net</a></li>
+            <li><a href="mailto:hr@dtm.io?subject=Resume">mailto:hr@dtm.io?subject=Resume</a></li>
+            <li><a href="tel:+14157997500">tel:+14157997500</a></li>
+            <li><a href="sms:+14157997500">sms:+14157997500</a></li>
+            <li><a href="skype:datamart.company?call">skype:datamart.company?call</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <h4>Forms</h4>
+      <div class="grid">
+        <div class="cell">Clicking on button "Form" event will be dispatched:</div>
+        <div class="cell">
+          <form name="registration-form" onsubmit="return false">
+            <table border="0">
+              <tr valign="top">
+                <td>Name:</td>
+                <td><input name="name" value="name" type="text"></td>
+              </tr>
+              <tr valign="top">
+                <td>Age:</td>
+                <td><select name="age"><option value="20">20</option></select></td>
+              </tr>
+              <tr valign="top">
+                <td>Text:</td>
+                <td><textarea name="comment">comment</textarea></td>
+              </tr>
+              <tr valign="top">
+                <td colspan="2" align="right">
+                  <button type="submit">Submit</button>
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+      </div>
+
+      <h4>Media</h4>
+      <div class="grid">
+        <div class="cell">"Media" event will be dispatched:</div>
+        <div class="cell">
+          <div>
+            <div><em>HTML5</em></div>
+            <video width="460" height="260" controls>
+              <source src="https://web.archive.org/web/20190518100139if_/https://www.quirksmode.org/html5/videos/big_buck_bunny.mp4"
+                      type="video/mp4">
+              <source src="https://web.archive.org/web/20190510190318if_/http://www.quirksmode.org/html5/videos/big_buck_bunny.webm"
+                      type="video/webm">
+              <source src="https://web.archive.org/web/20190414125618if_/http://www.quirksmode.org/html5/videos/big_buck_bunny.ogv"
+                      type="video/ogg">
+            </video>
+          </div>
+          <div>
+            <div><em>Youtube</em></div>
+            <iframe src="https://www.youtube.com/embed/aqz-KE-bpKQ"
+                    width="460" height="260" frameborder="0"
+                    webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+          </div>
+          <div>
+            <div><em>Vimeo</em></div>
+            <iframe src="https://player.vimeo.com/video/1084537"
+                    width="460" height="260" frameborder="0"
+                    webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+
+      <h4>Social Buttons</h4>
+      <div class="grid">
+        <div class="cell">Clicking on links "Social" event will be dispatched:</div>
+        <div class="cell">
+          <ul>
+            <li>
+              <b>Twitter</b>
+              <script src="https://platform.twitter.com/widgets.js"></script>
+              <a href="https://twitter.com/share" class="twitter-share-button"
+                 data-lang="en" rel="nofollow">Tweet</a>
+              <a href="https://twitter.com/KomitoAnalytics" class="twitter-follow-button"
+                 data-show-count="false" data-lang="en" rel="nofollow">Follow @KomitoAnalytics</a>
+              <a href="https://twitter.com/intent/tweet?text=Hello%20world"
+                 target="_blank" rel="noopener">Tweet</a>
+            </li>
+            <li>
+              <b>LinkedIn</b>
+              <script src="https://platform.linkedin.com/in.js"></script>
+              <script type="IN/Share" data-counter="right"></script>
+              <script type="IN/FollowCompany" data-id="6442972"
+                      data-counter="right"></script>
+            </li>
+            <li>
+              <b>Facebook</b>
+              <div class="fb-like" data-href="https://komito.net/"
+                   data-layout="button" data-action="like" data-show-faces="false"
+                   data-share="false"></div>
+              <div class="fb-share-button"
+                   data-href="https://komito.net/"></div>
+              <div class="fb-send" data-href="https://komito.net/"
+                   data-colorscheme="light"></div>
+              <div class="fb-follow"
+                   data-href="https://komito.net/"
+                   data-colorscheme="light"
+                   data-layout="button" data-show-faces="false"></div>
+              <div id="fb-root" class="fb_reset"></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <script src="../assets/scripts/cta-area.js" async></script>
+      <p class="center">Questions? <a href="../support/" title="Visit the support page">Ask support team</a>.</p>
+    </article>
+    <script src="../assets/scripts/sidebar.js" async></script>
+  </div>
+  <script src="../assets/scripts/footer.js" async></script>
+</body>
+</html>
