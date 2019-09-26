@@ -23,7 +23,7 @@
     }
   };
 
-  for (var i = 0; i < posts.length; i++) {
+  for (var i = posts.length; i--;) {
     var post = posts[i];
     var href = post[1].split('/').slice(0, -1).join('/') + '/';
 
@@ -42,8 +42,9 @@
   }
 
   html += '<div class="card info">' +
-          'Privacy is not a question: Komito Analytics does not store any data.<br><br>' +
-          'Why? Because it\'s an extension for the most popular web analytics software, not a service.</div>';
+          'Privacy is not a concern: Komito Analytics does not store any data.<br><br>' +
+          'Why? Because it\'s an extension for the most popular web analytics software, not a service.<br><br>' +
+          '<a href="/about/">Read more about Komito Analytics</a></div>';
 
   html +='<a class="twitter-timeline" data-chrome="nofooter" data-tweet-limit="3" ' +
          'href="https://twitter.com/KomitoAnalytics?ref_src=twsrc%5Etfw">Tweets by KomitoAnalytics</a>';

@@ -18,7 +18,8 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-a {
+a,
+aside .card.info a {
   border: 0;
   color: #04c;
   text-decoration: none;
@@ -296,7 +297,6 @@ aside .info {
   background-color: #ffc;
   padding: 1em;
 }
-
 
 .center {text-align: center;}
 

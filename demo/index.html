@@ -51,11 +51,11 @@
 <style>
 .post h1{margin-top:.9em;min-height:auto}
 iframe,video{max-width:100%}
+.twitter-buttons, .linkedin-buttons, .facebook-buttons{padding: 5px 0}
 .twitter-buttons iframe{margin:0 5px -4px}
 .linkedin-buttons .IN-widget{left:5px;position:relative;top:-3px}
 .linkedin-buttons .IN-widget iframe{margin-bottom:-3px}
-.facebook-buttons .fb-like{bottom:3px}
-.facebook-buttons .fb-share-button{bottom:5px}
+.facebook-buttons .fb_iframe_widget{bottom:3px;margin-left:5px}
 </style>
 <script>
 // Emulating GA Classic.
@@ -275,7 +275,7 @@ window.addEventListener('message', function(event) {
                       data-counter="right"></script>
             </li>
             <li class="facebook-buttons">
-              <b>Facebook</b>
+              <b>Facebook:</b>
               <div class="fb-like" data-href="https://komito.net/"
                    data-layout="button" data-action="like" data-show-faces="false"
                    data-share="false"></div>
