@@ -9,7 +9,7 @@
     <title>XML Sitemap</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="./favicon.ico" rel="shortcut icon" />
-    <link href="./styles.css" rel="stylesheet" />
+    <link href="./dashboard/styles.css" rel="stylesheet" />
     </head>
     <body class="kmt-post">
     <div class="kmt-page">
