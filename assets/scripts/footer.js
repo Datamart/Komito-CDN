@@ -35,7 +35,7 @@
    * @private
    */
   function initGa_() {
-    if ('file:' !== location.protocol) {
+    if ('file:' !== location.protocol && !win.dataLayer) {
       var trackingId = 'UA-5065160-14';
       loadScript('https://www.googletagmanager.com/gtag/js?id=' + trackingId);
 
