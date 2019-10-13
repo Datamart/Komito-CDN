@@ -31,11 +31,18 @@
   insertAdjacentHTMLContent(doc.currentScript, content);
 
   /**
-   * Initializes Google Analytics.
+   * Initializes Google Tag Manager.
    * @private
    */
-  function initGa_() {
-    if ('file:' !== location.protocol && !win.dataLayer) {
+  function initGTM_() {
+    if ('file:' !== location.protocol) {
+      var containerId = 'GTM-57BM5H';
+      win.dataLayer = win.dataLayer || [];
+      win.dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+
+      loadScript('https://www.googletagmanager.com/gtm.js?id=' + containerId);
+
+      /*
       var trackingId = 'UA-5065160-14';
       loadScript('https://www.googletagmanager.com/gtag/js?id=' + trackingId);
 
@@ -45,6 +52,7 @@
       gtag('config', trackingId);
 
       loadScript('https://komito.net/komito.js');
+      */
     }
   }
 
@@ -148,7 +156,7 @@
    */
   function init_() {
     function ready() {
-      initGa_();
+      initGTM_();
       fixWebP_();
       initIntersectionObserver_();
     }
