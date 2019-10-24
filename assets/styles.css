@@ -304,9 +304,9 @@ aside .info {
 .cta-area {text-align: center;}
 .home h1,
 .post h1 {
-  background: url(https://komito.net/images/komito-hero-background.jpg) repeat center center fixed;
-  background-image: -webkit-image-set(url(https://komito.net/images/komito-hero-background.webp) 1x);
-  background-image: image-set(url(https://komito.net/images/komito-hero-background.webp) 1x);
+  background: url(https://komito.net/assets/images/komito-hero-background.jpg) repeat center center fixed;
+  background-image: -webkit-image-set(url(https://komito.net/assets/images/komito-hero-background.webp) 1x);
+  background-image: image-set(url(https://komito.net/assets/images/komito-hero-background.webp) 1x);
   background-size: cover;
   color: #fff;
   font-size: 2em;

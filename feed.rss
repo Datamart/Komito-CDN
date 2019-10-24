@@ -35,7 +35,7 @@
             <article>
               <header>
                 <figure>
-                  <img src="https://komito.net/images/komito-logo-600x455.jpg" />
+                  <img src="https://komito.net/assets/images/logos/komito-logo-600x455.jpg" />
                   <figcaption>Komito Analytics header image.</figcaption>
                 </figure>
                 <h1>Komito Analytics at a Glance</h1>
@@ -112,7 +112,7 @@
         <![CDATA[
         <header>
           <figure>
-            <img src="https://komito.net/images/komito-logo-144x144.png" />
+            <img src="https://komito.net/assets/images/logos/komito-logo-144x144.png" />
           </figure>
           <h1>Komito Analytics</h1>
         </header>

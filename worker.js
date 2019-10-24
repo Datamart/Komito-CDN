@@ -6,34 +6,46 @@
  * @see https://developers.google.com/web/fundamentals/primers/service-workers/
  */
 
-/** @const {string} */ var CACHE_KEY = 'komito-cache-20191020-2300';
+/** @const {string} */ var CACHE_KEY = 'komito-cache-20191023-2300';
 
 /** @const {!Array.<string>} */ var CACHE_URLS = [
   // Assets:
-  '/assets/styles.css',
+  '/assets/images/software/particles-logo-h50.png',
+  '/assets/images/software/particles-logo-h50.webp',
+  '/assets/images/komito-hero-background.jpg',
+  '/assets/images/komito-hero-background.webp',
   '/assets/scripts/header.js',
   '/assets/scripts/cta-area.js',
   '/assets/scripts/sidebar.js',
   '/assets/scripts/footer.js',
+  '/assets/styles.css',
 
   // Pages:
   '/',
+  '/about/'
   '/integration/',
-  '/integration/google-tag-manager/',
-  'integration/wordpress/',
-  '/posts/track-scroll-depth/',
   '/support/',
   '/404.html',
 
-  // Images
-  '/images/komito-hero-background.jpg',
-  '/images/software/particles-logo-h50.png',
+  // Articles:
+  '/integration/google-tag-manager/',
   '/integration/google-tag-manager/google-tag-manager.jpg',
   '/integration/google-tag-manager/google-tag-manager-thumbnail.jpg',
+  '/integration/wordpress/',
   '/integration/wordpress/komito-analytics-wordpress-plugin.jpg',
   '/integration/wordpress/komito-analytics-wordpress-plugin-thumbnail.jpg',
-  '/posts/track-scroll-depth/track-scroll-depth.jpg',
-  '/posts/track-scroll-depth/track-scroll-depth-thumbnail.jpg'
+
+  // Posts:
+  '/posts/track-form-submissions/',
+  '/posts/track-form-submissions/track-form-submissions-screenshot.png',
+  '/posts/track-form-submissions/track-form-submissions-thumbnail.jpg',
+  '/posts/track-form-submissions/track-form-submissions-thumbnail.webp',
+  '/posts/track-form-submissions/track-form-submissions.jpg',
+  '/posts/track-scroll-depth/',
+  '/posts/track-scroll-depth/track-scroll-depth-screenshot.png',
+  '/posts/track-scroll-depth/track-scroll-depth-thumbnail.jpg',
+  '/posts/track-scroll-depth/track-scroll-depth-thumbnail.webp',
+  '/posts/track-scroll-depth/track-scroll-depth.jpg'
 ];
 
 
