@@ -48,7 +48,7 @@
           'Why? Because it\'s an extension for the most popular web analytics software, not a service.<br><br>' +
           '<a href="/about/">Read more about Komito Analytics</a></div>';
 
-  html +='<a class="twitter-timeline" data-chrome="nofooter" data-tweet-limit="3" ' +
+  html +='<a class="twitter-timeline" data-dnt="true" data-chrome="nofooter" data-tweet-limit="3" ' +
          'href="https://twitter.com/KomitoAnalytics?ref_src=twsrc%5Etfw">Tweets by KomitoAnalytics</a>';
 
   insertAdjacentHTMLContent(document.currentScript, '<aside>' + html + '</aside>');
