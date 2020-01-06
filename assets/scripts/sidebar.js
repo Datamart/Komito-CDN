@@ -7,7 +7,9 @@
       ['How to integrate Komito Analytics using plugin for WordPress?',
        'https://komito.net/integration/wordpress/komito-analytics-wordpress-plugin-thumbnail.webp'],
       ['How to track form submissions with Komito Analytics?',
-       'https://komito.net/posts/track-form-submissions/track-form-submissions-thumbnail.webp']
+       'https://komito.net/posts/track-form-submissions/track-form-submissions-thumbnail.webp'],
+      ['How to track color scheme with Komito Analytics?',
+       'https://komito.net/posts/track-color-scheme/track-color-scheme-thumbnail.webp']
   ];
   posts.sort(function(a, b){return 0.5 - Math.random()});
 
@@ -25,7 +27,7 @@
     }
   };
 
-  for (var i = posts.length; i--;) {
+  for (var i = Math.min(posts.length, 3); i--;) {
     var post = posts[i];
     var href = post[1].split('/').slice(0, -1).join('/') + '/';
 
