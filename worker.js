@@ -6,7 +6,7 @@
  * @see https://developers.google.com/web/fundamentals/primers/service-workers/
  */
 
-/** @const {string} */ var CACHE_KEY = 'komito-cache-20200121-0840';
+/** @const {string} */ var CACHE_KEY = 'komito-cache-20200121-0930';
 
 /** @const {!Array.<string>} */ var CACHE_URLS = [
   // Assets:
@@ -41,11 +41,24 @@
   '/posts/track-form-submissions/track-form-submissions-thumbnail.jpg',
   '/posts/track-form-submissions/track-form-submissions-thumbnail.webp',
   '/posts/track-form-submissions/track-form-submissions.jpg',
+
   '/posts/track-scroll-depth/',
   '/posts/track-scroll-depth/track-scroll-depth-screenshot.png',
   '/posts/track-scroll-depth/track-scroll-depth-thumbnail.jpg',
   '/posts/track-scroll-depth/track-scroll-depth-thumbnail.webp',
-  '/posts/track-scroll-depth/track-scroll-depth.jpg'
+  '/posts/track-scroll-depth/track-scroll-depth.jpg',
+
+  '/posts/track-color-scheme/',
+  '/posts/track-color-scheme/track-color-scheme-screenshot.png',
+  '/posts/track-color-scheme/track-color-scheme-thumbnail.jpg',
+  '/posts/track-color-scheme/track-color-scheme-thumbnail.webp',
+  '/posts/track-color-scheme/track-color-scheme.jpg',
+
+  '/posts/track-social-interactions/',
+  '/posts/track-social-interactions/social-interactions-screenshot.png',
+  '/posts/track-social-interactions/social-interactions-thumbnail.jpg',
+  '/posts/track-social-interactions/social-interactions-thumbnail.webp',
+  '/posts/track-social-interactions/social-interactions.jpg'
 ];
 
 
