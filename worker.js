@@ -55,10 +55,10 @@
   '/posts/track-color-scheme/track-color-scheme.jpg',
 
   '/posts/track-social-interactions/',
-  '/posts/track-social-interactions/social-interactions-screenshot.png',
-  '/posts/track-social-interactions/social-interactions-thumbnail.jpg',
-  '/posts/track-social-interactions/social-interactions-thumbnail.webp',
-  '/posts/track-social-interactions/social-interactions.jpg'
+  '/posts/track-social-interactions/track-social-interactions-screenshot.png',
+  '/posts/track-social-interactions/track-social-interactions-thumbnail.jpg',
+  '/posts/track-social-interactions/track-social-interactions-thumbnail.webp',
+  '/posts/track-social-interactions/track-social-interactions.jpg'
 ];
 
 
