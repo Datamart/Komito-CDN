@@ -9,9 +9,12 @@
       ['How to track form submissions with Komito Analytics?',
        'https://komito.net/posts/track-form-submissions/track-form-submissions-thumbnail.webp'],
       ['How to track color scheme with Komito Analytics?',
-       'https://komito.net/posts/track-color-scheme/track-color-scheme-thumbnail.webp']
+       'https://komito.net/posts/track-color-scheme/track-color-scheme-thumbnail.webp'],
+      ['How to track Social Media Interactions with Komito Analytics?',
+       'https://komito.net/posts/track-social-interactions/track-social-interactions-thumbnail.webp']
   ];
   posts.sort(function(a, b){return 0.5 - Math.random()});
+
 
   var page = location.href.split('?')[0];
   var html = '';
@@ -27,7 +30,8 @@
     }
   };
 
-  for (var i = Math.min(posts.length, 3); i--;) {
+  var maxPosts = /\/posts\/$/.test(location.pathname) ? posts.length : 3;
+  for (var i = Math.min(posts.length, maxPosts); i--;) {
     var post = posts[i];
     var href = post[1].split('/').slice(0, -1).join('/') + '/';
 
