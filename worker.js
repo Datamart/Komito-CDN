@@ -22,7 +22,7 @@
 
   // Pages:
   '/',
-  '/about/'
+  '/about/',
   '/integration/',
   '/support/',
   '/404.html',
