@@ -285,6 +285,11 @@ aside .card img {
   width: 100%;
 }
 
+.posts aside .card img {
+  max-height: none;
+  min-height: auto;
+}
+
 aside .card b {
   background-color: #fff;
   display: block;
@@ -347,6 +352,8 @@ article ul, article p {line-height: 1.5}
 .team b {display: block; margin-bottom: .5em}
 .team .cell, .accomplishments .cell {margin-top: 1em}
 .accomplishments ul, .accomplishments li {list-style: none}
+
+.posts #twitter-widget-0 {display: none !important}
 
 @media only screen and (min-width: 768px) {
   article {padding: 1em 2.5em;}

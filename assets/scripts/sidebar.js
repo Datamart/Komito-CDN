@@ -30,7 +30,7 @@
     }
   };
 
-  var maxPosts = /\/posts\/$/.test(location.pathname) ? posts.length : 3;
+  var maxPosts = /\/posts\/(index\.html)?$/.test(location.pathname) ? posts.length : 3;
   for (var i = Math.min(posts.length, maxPosts); i--;) {
     var post = posts[i];
     var href = post[1].split('/').slice(0, -1).join('/') + '/';
