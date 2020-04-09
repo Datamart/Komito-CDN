@@ -30,7 +30,7 @@
     }
   };
 
-  var maxPosts = /\/posts\/(index\.html)?$/.test(location.pathname) ? posts.length : 3;
+  var maxPosts = /\/posts\/(index\.html)?$/.test(location.pathname) ? posts.length : 5;
   for (var i = Math.min(posts.length, maxPosts); i--;) {
     var post = posts[i];
     var href = post[1].split('/').slice(0, -1).join('/') + '/';
@@ -54,9 +54,9 @@
           'Why? Because it\'s an extension for the most popular web analytics software, not a service.<br><br>' +
           '<a href="/about/">Read more about Komito Analytics</a></div>';
 
-  html +='<a class="twitter-timeline" data-dnt="true" data-chrome="nofooter" data-tweet-limit="3" ' +
-         'href="https://twitter.com/KomitoAnalytics?ref_src=twsrc%5Etfw">Tweets by KomitoAnalytics</a>';
+  //html +='<a class="twitter-timeline" data-dnt="true" data-chrome="nofooter" data-tweet-limit="3" ' +
+  //       'href="https://twitter.com/KomitoAnalytics?ref_src=twsrc%5Etfw">Tweets by KomitoAnalytics</a>';
 
   insertAdjacentHTMLContent(document.currentScript, '<aside>' + html + '</aside>');
-  loadScript('https://platform.twitter.com/widgets.js');
+  // loadScript('https://platform.twitter.com/widgets.js');
 })();
