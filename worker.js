@@ -6,10 +6,11 @@
  * @see https://developers.google.com/web/fundamentals/primers/service-workers/
  */
 
-/** @const {string} */ var CACHE_KEY = 'komito-cache-20201030-1120';
+/** @const {string} */ var CACHE_KEY = 'komito-cache-20210322-2140';
 
 /** @const {!Array.<string>} */ var CACHE_URLS = [
   // Assets:
+  '/assets/images/komito-cloudflare-web-traffic.png',
   '/assets/images/software/particles-logo-h50.png',
   '/assets/images/software/particles-logo-h50.webp',
   '/assets/images/komito-hero-background.jpg',
