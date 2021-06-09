@@ -6,7 +6,7 @@
  * @see https://developers.google.com/web/fundamentals/primers/service-workers/
  */
 
-/** @const {string} */ var CACHE_KEY = 'komito-cache-20210406-1050';
+/** @const {string} */ var CACHE_KEY = 'komito-cache-20210609-0800';
 
 /** @const {!Array.<string>} */ var CACHE_URLS = [
   // Assets:
