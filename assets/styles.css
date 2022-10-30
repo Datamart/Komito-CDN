@@ -321,7 +321,8 @@ aside .info {
 .home h2,
 .post h2,
 .home h3,
-.post h3 {
+.post h3,
+.services h3 {
   font-size: 2em;
   margin-top: 1.5em;
   text-align: center;
