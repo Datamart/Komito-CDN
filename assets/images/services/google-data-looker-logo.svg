@@ -2,9 +2,11 @@
   <defs>
     <style>
     .text {
-      fill:#5f6368;
-      font: 300 700%/0 "Google Sans",Helvetica Neue,sans-serif;
-      letter-spacing: normal;
+      fill: #757575;
+      font-family: "Google Sans","Product Sans",Roboto,sans-serif;
+      font-size: 400%;
+      font-weight: 400;
+      letter-spacing: 1px;
     }
     </style>
   </defs>
