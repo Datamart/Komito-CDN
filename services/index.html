@@ -53,14 +53,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400|Google+Sans:400|Product+Sans:400">
 
-<style>.cell img, .cell svg {height:3em}.services .cell{margin-bottom:3em}</style>
+<style>
+.services .grid{gap:1.5em}
+.services .cell{margin-bottom:3em}
+.cell img, .cell svg{height:3em}
+.justify{text-align:justify}
+</style>
 </head>
 <body class="services">
   <script src="../assets/scripts/header.js"></script>
   <div id="main">
     <article>
       <h3>Komito Analytics Services</h3>
-      <p class="center">
+      <p class="justify">
         Web analytics services provided by the Komito Analytics team help to 
         understand how visitors interact with the website.
 
@@ -70,7 +75,7 @@
       </p>
       <p>&nbsp;</p>
       <div class="grid">
-        <div class="cell" itemscope itemtype="https://schema.org/Service">
+        <div class="cell justify" itemscope itemtype="https://schema.org/Service">
           <img src="../assets/images/services/google-analytics-logo.svg"
                itemprop="logo" alt="Google Analytics">
           <p itemprop="description">
@@ -78,7 +83,7 @@
             includes proper audit, setup and implementation of a new or existing 
             <strong>Google Analytics</strong> account.
             Nunc maximus finibus tortor non rhoncus, nisi arcu aliquam nisl, 
-            at volutpat eros.
+            at volutpat.
             <ul>
               <li>Lorem ipsum dolor sit amet</li>
               <li>consectetur adipiscing elit</li>
@@ -91,7 +96,7 @@
             <meta itemprop="priceCurrency" content="USD">
           </div>
         </div>
-        <div class="cell" itemscope itemtype="https://schema.org/Service">
+        <div class="cell justify" itemscope itemtype="https://schema.org/Service">
           <img src="../assets/images/services/google-tag-manager-logo.svg"
                itemprop="logo" alt="Google Tag Manager">
           <p itemprop="description">
@@ -111,7 +116,7 @@
             <meta itemprop="priceCurrency" content="USD">
           </div>
         </div>
-        <div class="cell" itemscope itemtype="https://schema.org/Service">
+        <div class="cell justify" itemscope itemtype="https://schema.org/Service">
           <link itemprop="logo" content="../assets/images/services/google-looker-logo.svg">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1150.56 192"
                role="image" aria-label="Google Looker Studio">
