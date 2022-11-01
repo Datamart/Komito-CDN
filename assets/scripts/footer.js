@@ -37,25 +37,25 @@
    * @private
    */
   function initGTM_() {
-    if ('file:' !== location.protocol) {
-      var containerId = 'GTM-57BM5H';
-      win.dataLayer = win.dataLayer || [];
-      win.dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+    // if ('file:' !== location.protocol) {
+    //   var containerId = 'GTM-57BM5H';
+    //   win.dataLayer = win.dataLayer || [];
+    //   win.dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
 
-      loadScript('https://www.googletagmanager.com/gtm.js?id=' + containerId);
+    //   loadScript('https://www.googletagmanager.com/gtm.js?id=' + containerId);
 
-      /*
-      var trackingId = 'UA-5065160-14';
-      loadScript('https://www.googletagmanager.com/gtag/js?id=' + trackingId);
+    //   /*
+    //   var trackingId = 'UA-5065160-14';
+    //   loadScript('https://www.googletagmanager.com/gtag/js?id=' + trackingId);
 
-      win.dataLayer = win.dataLayer || [];
-      function gtag(){dataLayer.push(arguments)}
-      gtag('js', new Date);
-      gtag('config', trackingId);
+    //   win.dataLayer = win.dataLayer || [];
+    //   function gtag(){dataLayer.push(arguments)}
+    //   gtag('js', new Date);
+    //   gtag('config', trackingId);
 
-      loadScript('https://komito.net/komito.js');
-      */
-    }
+    //   loadScript('https://komito.net/komito.js');
+    //   */
+    // }
   }
 
   /**

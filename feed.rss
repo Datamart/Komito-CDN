@@ -21,7 +21,7 @@
       <link>https://komito.net/</link>
       <guid>https://komito.net/</guid>
       <!-- https://www.w3.org/Protocols/rfc822/#z28 -->
-      <pubDate>Sat, 25 Nov 2017 16:00:00 -0800</pubDate>
+      <pubDate>Mon, 31 Oct 2022 16:00:00 -0800</pubDate>
       <content:encoded>
         <![CDATA[
         <!doctype html>
@@ -74,7 +74,7 @@
               <h1>Partners</h1>
               <p>List of Komito Analytics integration and support partners.</p>
               <ul>
-                <li><a href="http://lametrica.com/analitica-web/">La Metrica</a></li>
+                <li><a href="https://www.analyticsmania.com/">Analytics Mania</a></li>
                 <li><a href="https://www.lovesdata.com/blog/?tag=Komito+Analytics">Loves Data</a></li>
                 <li><a href="http://webalytics.de/webmarketing/webanalyse/">Webalytics</a></li>
               </ul>
@@ -87,7 +87,7 @@
               <footer>
                 <aside>
                   <p>Komito Analytics is subject to the terms and conditions of <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></p><p>&nbsp;</p>
-                  <p>© 2017 <a href="https://www.dtm.io">Datamart Inc.</a></p>
+                  <p>© 2022 <a href="https://www.dtm.io">Datamart Inc.</a></p>
                 </aside>
               </footer>
               <figure class="op-tracker">
@@ -160,7 +160,7 @@
         </em>
 
         <p>Komito Analytics is subject to the terms and conditions of <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a></p>
-        <p>© 2017 <a href="https://www.dtm.io">Datamart Inc.</a></p>
+        <p>© 2022 <a href="https://www.dtm.io">Datamart Inc.</a></p>
         ]]>
       </turbo:content>
       <yandex:related>

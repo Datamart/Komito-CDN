@@ -340,15 +340,20 @@ h3:after {
 .metrics table {width: 100%; margin: 0; min-height: 7em; padding: 0}
 .metrics table td {padding: .25em; text-align: left;}
 .metrics table td:first-child {width: 64px;}
-.compatible {text-align: center;}
+
+.compatible,
+.partners,
+.cta-area ul {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 .compatible li,
 .partners li,
-.cta-area li {display: inline-block; padding: 1em; position: relative;list-style: none;}
-.adobe-analytics {top: -.1em;}
+.cta-area li {padding: 1em;list-style: none;position: relative;}
 .baidu-analytics {top: -.4em;}
-.clicktale {top: -.5em;}
 .urchin {top: .35em;}
-.webalytics {top: .35em;}
 
 article ul {list-style-position: inside;}
 article ul, article p {line-height: 1.5}
