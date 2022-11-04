@@ -27,13 +27,14 @@ window.getNavMenu = function() {
     ['/demo/', 'Demo', 'See Komito Analytics in action!']
   ];
   var path = location.pathname;
-  var menu = '<ul class="menu" role="navigation" aria-label="Main menu">';
+  var menu = '<ul class="menu" role="navigation" aria-label="Main menu" '+
+             'itemscope itemtype="http://schema.org/SiteNavigationElement">';
   var isDev = 'file:' === location.protocol;
 
   for (var i = 0; i < links.length;) {
     var link = links[i++];
 
-    menu += '<li><a href="' + link[0] + '" ' +
+    menu += '<li><a itemprop="url" href="' + link[0] + '" ' +
             (path == link[0] || (isDev && 1 === i) ? ' class="active"' : '') +
             'title="' + link[2] + '">' + link[1] + '</a></li>';
   }
@@ -41,7 +42,8 @@ window.getNavMenu = function() {
   return menu +
          '<li><a href="https://github.com/Datamart/Komito/tree/master"' +
          '             title="Get Komito Analytics Source Code."' +
-         '             rel="nofollow">Get source code</a></li></ul>';
+         '             rel="nofollow"' +
+         '             itemprop="url">Get source code</a></li></ul>';
 };
 
 window.loadScript = function(src) {
@@ -52,7 +54,7 @@ window.loadScript = function(src) {
 
 (function() {
   var content = '' +
-    '<header>' +
+    '<header itemscope itemtype="https://schema.org/WPHeader">' +
     '  <div class="logo">' +
     '    <a href="/" title="Komito Analytics"><svg version="1.1"' +
     '       xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="45px"' +

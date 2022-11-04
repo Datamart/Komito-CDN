@@ -17,7 +17,7 @@
 
 
   var page = location.href.split('?')[0];
-  var html = '';
+  var html = '<div itemscope itemtype="http://schema.org/WPSideBar">';
   // var pixel = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
   var pixel = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg"/>');
 
@@ -57,6 +57,15 @@
   //html +='<a class="twitter-timeline" data-dnt="true" data-chrome="nofooter" data-tweet-limit="3" ' +
   //       'href="https://twitter.com/KomitoAnalytics?ref_src=twsrc%5Etfw">Tweets by KomitoAnalytics</a>';
 
-  insertAdjacentHTMLContent(document.currentScript, '<aside>' + html + '</aside>');
+  html += '<div>';
+
+  var sidebar = document.getElementById('sidebar');
+  if (sidebar) {
+    sidebar.innerHTML = html;
+  } else {
+    // For backward compatibility with a legacy or cached pages.
+    insertAdjacentHTMLContent(document.currentScript, '<aside>' + html + '</aside>');
+  }
   // loadScript('https://platform.twitter.com/widgets.js');
 })();
+
