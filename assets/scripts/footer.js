@@ -168,7 +168,7 @@
         win.addEventListener('DOMContentLoaded', ready);
 
     fixGists_();
-    initServiceWorker_();
+    // initServiceWorker_();
   }
 
   // Initializing application.
