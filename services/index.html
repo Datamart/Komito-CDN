@@ -60,6 +60,15 @@
 .justify{text-align:justify}
 [itemprop="offers"]{margin-top:auto}
 .services ul{text-align:left}
+.services .cell button{padding:.5em;margin-top:2em}
+#dialog{width:25em;max-width:85%}
+#dialog::backdrop{background-color:rgba(0,0,0,.65)}
+#dialog label{align-items:center;display:flex;margin:1em 0}
+#dialog label span{width:4em}
+#dialog label input{flex:1}
+#dialog label input,#dialog button{padding:.5em}
+#dialog .buttons{text-align:right}
+#dialog iframe{width:1px;height:1px;visibility:hidden;position:absolute}
 </style>
 </head>
 <body class="services">
@@ -91,7 +100,7 @@
               <li>Click-tracking for external links, emails, phone numbers</li>
               <li>Scrolldepth tracking with % and pixel</li>
               <li>Data collection on Core Web Vitals</li>
-              <li>Video interaction(YT, Vimeo, HTML5)</li>
+              <li>Video interaction (YT, Vimeo, HTML5)</li>
             </ul>
           </p>
           <div itemprop="offers" itemtype="https://schema.org/Offer" itemscope>
@@ -99,6 +108,7 @@
             <span itemprop="price" content="1000.00">$1,000.00</span>
             <meta itemprop="priceCurrency" content="USD">
           </div>
+          <button onclick="showForm(1)">Contact us</button>
         </div>
         <div class="cell justify" itemscope itemtype="https://schema.org/Service">
           <img src="../assets/images/services/google-tag-manager-logo.svg"
@@ -117,11 +127,12 @@
             <span itemprop="price" content="2000.00">$2,000.00</span>
             <meta itemprop="priceCurrency" content="USD">
           </div>
+          <button onclick="showForm(2)">Contact us</button>
         </div>
         <div class="cell justify" itemscope itemtype="https://schema.org/Service">
           <link itemprop="logo" content="../assets/images/services/google-looker-logo.svg">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1150.56 192"
-               role="image" aria-label="Google Looker Studio">
+               aria-label="Google Looker Studio">
             <defs>
               <style>
               .text {
@@ -153,6 +164,7 @@
             <span itemprop="price" content="3000.00">$3,000.00</span>
             <meta itemprop="priceCurrency" content="USD">
           </div>
+          <button onclick="showForm(3)">Contact us</button>
         </div>
       </div>
       <p class="center">
@@ -164,5 +176,37 @@
     </aside>
   </div>
   <script src="../assets/scripts/footer.js" async></script>
+
+  <dialog id="dialog" aria-modal="true">
+    <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdSpwyQh06LdG5vm-zRyVFqQRS_Cl2tp4PJCIvb1PXrZuSgZQ/formResponse"
+          method="post" target="formResponse">
+      <label><span>Name:</span><input name="entry.892750761" autocomplete="name" required></label>
+      <label><span>Email:</span><input name="entry.161174534" autocomplete="email" required type="email"></label>
+      <input name="entry.346562545" value="Option 1" type="hidden">
+      <div class="buttons">
+        <button type="reset">Cancel</button>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+    <iframe name="formResponse" id="formResponse"></iframe>
+    <div id="confirmation">Message sent</div>
+  </dialog>
+  <script>
+    function showForm(option){
+      var confirmation=document.getElementById('confirmation');
+      var dialog=document.getElementById('dialog');
+      var form=dialog.getElementsByTagName('form')[0];
+      form.elements['entry.346562545'].value='Option '+option;
+      form.onreset=function(){dialog.close()};
+      form.onsubmit=function(e){
+        form.style.display='none';
+        confirmation.style.display='block';
+        setTimeout(function(){dialog.close()},3E3);
+      };
+      form.style.display='block';
+      confirmation.style.display='none';
+      dialog.showModal();
+    }
+  </script>
 </body>
 </html>
