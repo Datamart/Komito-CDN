@@ -54,6 +54,7 @@ window.loadScript = function(src) {
 
 (function() {
   var content = '' +
+    '<a href="#main" class="skip-nav">Skip to Main Content</a>' + 
     '<header itemscope itemtype="https://schema.org/WPHeader">' +
     '  <div class="logo">' +
     '    <a href="/" title="Komito Analytics"><svg version="1.1"' +

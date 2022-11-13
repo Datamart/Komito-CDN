@@ -29,6 +29,19 @@ aside .card.info a {
   text-decoration: none;
 }
 
+.skip-nav {
+  left: -200px;
+  position: absolute;
+  overflow: hidden;
+  top: 6px;
+  z-index: 10000;
+}
+
+.skip-nav:focus {
+  left: 107px;
+  overflow: visible;
+}
+
 #main > article {
   flex: 1;
 }
@@ -44,7 +57,8 @@ aside .card.info a {
 }
 
 header,
-footer .extra {
+footer .extra,
+.skip-nav {
   background-color: #222;
 }
 
@@ -65,7 +79,8 @@ header .logo {
 }
 
 header .logo *,
-footer .logo * {
+footer .logo *,
+.skip-nav {
   color: #fff;
   display: inline-block;
   font-style: normal;
