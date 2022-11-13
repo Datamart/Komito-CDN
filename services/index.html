@@ -218,7 +218,7 @@
       };
       form.style.display='block';
       confirmation.style.display='none';
-      dialog.showModal();
+      setTimeout(function(){dialog.showModal()},screen.width>400?0:250);
     }
   </script>
 </body>
