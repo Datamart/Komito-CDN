@@ -56,7 +56,8 @@ window.loadScript = function(src) {
   var content = '' +
     '<a href="#main" class="skip-nav">Skip to Main Content</a>' + 
     '<header itemscope itemtype="https://schema.org/WPHeader">' +
-    '  <div class="logo">' +
+    '<div class="wrapper">' +
+    '<div class="logo">' +
     '    <a href="/" title="Komito Analytics"><svg version="1.1"' +
     '       xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="45px"' +
     '       role="presentation" aria-label="Komito Analytics Logo"' +
@@ -65,11 +66,12 @@ window.loadScript = function(src) {
     '       points="0,32 0,45 20.9,45 8.3,24.6"/><polygon fill="#07d"' +
     '       points="33.6,45 45,45 45,0 32.3,0 14.6,18"/>' +
     '       </svg><span><b>Komito</b><i>Analytics</i></span></a>' +
-    '  </div>' +
-    '  <div id="nav">' +
+    '</div>' +
+    '<div id="nav">' +
     '    <input type="checkbox" aria-label="Toggle menu">' +
     '    <div class="hamburger"><span></span></div>' + getNavMenu() +
     '  </div>' +
+    '</div>' +
     '</header>';
   insertAdjacentHTMLContent(document.currentScript, content);
 })();

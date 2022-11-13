@@ -42,6 +42,12 @@ aside .card.info a {
   overflow: visible;
 }
 
+.wrapper,
+#main {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
 #main > article {
   flex: 1;
 }
@@ -49,7 +55,6 @@ aside .card.info a {
 #main {
   flex: 1 0 auto;
   margin: 5em auto;
-  max-width: 1440px;
 }
 
 #main > aside {
@@ -196,6 +201,7 @@ header .logo span, h1, h2, h3 {
   text-transform: uppercase;
 }
 
+.menu a:hover,
 .menu .active {
   background-color: #666;
   /* @alternate */
@@ -267,7 +273,7 @@ footer .menu li {margin: 0 0 0 .2em;}
 footer .menu a {display: inline; font-size: .8em; padding: .3em .6em;}
 footer .menu .active {margin: 0}
 
-footer .extra {border-top: 1px solid #4d4d4d;clear: both; padding: 1.5em 1em;}
+footer .extra {border-top: 1px solid #4d4d4d;clear: both; padding: 1.5em 2em;}
 footer .extra a {color: #fff; text-decoration: underline;}
 footer .logo span {margin-left: .4em;}
 footer .logo i {
@@ -401,7 +407,7 @@ article ul, article p {line-height: 1.5}
   footer .social {float: left;margin-left: 2em;}
   footer .menu {margin-right: 2em;}
   footer .extra {margin-top: 3em;}
-  footer .extra div {font-size: 84%;float: right;text-align: right;}
+  footer .extra .copyright {font-size: 84%;float: right;text-align: right;}
   footer .extra  span p {display: inline;}
   footer .extra  span p::before{content: "•";padding-right:3px}
   footer p {margin: 0 0 0.3em}

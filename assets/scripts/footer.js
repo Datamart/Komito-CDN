@@ -1,6 +1,7 @@
 (function(win, doc) {
   var content = '' +
-    '<footer itemscope itemtype="https://schema.org/WPFooter">' +
+    '<footer itemscope itemtype="https://schema.org/WPFooter">' + 
+    '<div class="wrapper">' +
     '  <ul class="social">' +
     '    <li>Follow us on:</li>' +
     '    <li><a href="https://www.linkedin.com/products/datamartinc-komito-analytics/" title="Komito Analytics on LinkedIn" aria-label="LinkedIn"><svg role="img" aria-label="LinkedIn Logo" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 455 455" width="24px" height="24px"><path d="M246.4,204.35v-0.665c-0.136,0.223-0.324,0.446-0.442,0.665H246.4z" fill="white"/><path d="M0,0v455h455V0H0z M141.522,378.002H74.016V174.906h67.506V378.002z M107.769,147.186h-0.446C84.678,147.186,70,131.585,70,112.085c0-19.928,15.107-35.087,38.211-35.087 c23.109,0,37.31,15.159,37.752,35.087C145.963,131.585,131.32,147.186,107.769,147.186z M385,378.002h-67.524V269.345 c0-27.291-9.756-45.92-34.195-45.92c-18.664,0-29.755,12.543-34.641,24.693c-1.776,4.34-2.24,10.373-2.24,16.459v113.426h-67.537 c0,0,0.905-184.043,0-203.096H246.4v28.779c8.973-13.807,24.986-33.547,60.856-33.547c44.437,0,77.744,29.02,77.744,91.398V378.002 z" fill="#fff"/></svg></a></li>' +  
@@ -9,10 +10,12 @@
     '    <li><a href="https://twitter.com/KomitoAnalytics/" title="Komito Analytics on Twitter" aria-label="Twitter"><svg role="img" aria-label="Twitter Logo" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 612 612"><path d="M612,116.258c-22.525,9.981-46.694,16.75-72.088,19.772c25.929-15.527,45.777-40.155,55.184-69.411 c-24.322,14.379-51.169,24.82-79.775,30.48c-22.907-24.437-55.49-39.658-91.63-39.658c-69.334,0-125.551,56.217-125.551,125.513 c0,9.828,1.109,19.427,3.251,28.606C197.065,206.32,104.556,156.337,42.641,80.386c-10.823,18.51-16.98,40.078-16.98,63.101 c0,43.559,22.181,81.993,55.835,104.479c-20.575-0.688-39.926-6.348-56.867-15.756v1.568c0,60.806,43.291,111.554,100.693,123.104 c-10.517,2.83-21.607,4.398-33.08,4.398c-8.107,0-15.947-0.803-23.634-2.333c15.985,49.907,62.336,86.199,117.253,87.194 c-42.947,33.654-97.099,53.655-155.916,53.655c-10.134,0-20.116-0.612-29.944-1.721c55.567,35.681,121.536,56.485,192.438,56.485 c230.948,0,357.188-191.291,357.188-357.188l-0.421-16.253C573.872,163.526,595.211,141.422,612,116.258z" fill="#fff" /></svg></a></li>' +
     '    <li><a href="https://stackoverflow.com/questions/tagged/komito-analytics" title="Komito Analytics on StackOverflow" aria-label="StackOverflow"><svg role="img" aria-label="StackOverflow Logo" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" height="24px" width="24px" viewBox="0 0 512 512" stroke-width="35" stroke="#333"><rect width="512" height="512" fill="#fff" rx="10%"></rect><path fill="none" d="M125 297v105h241V297"></path><path d="M170 341h150m-144-68l148 31M199 204l136 64m-95-129l115 97M293 89l90 120"></path></svg></a></li>' +
     '  </ul>' + getNavMenu() +
+    '</div>' +
 
-    '  <div class="extra">' +
+    '<div class="extra">' +
+    '  <div class="wrapper">' +
     '    <a href="https://www.dtm.io" title="Datamart Inc." class="logo"><svg xmlns="http://www.w3.org/2000/svg" role="presentation" aria-label="Datamart Logo" width="33px" height="33px" viewBox="0 0 83 75"><path fill="#d61700" d="M41.008,0.938c9.558,0,18.338,3.321,25.255,8.87L29.338,2.652 C33.032,1.539,36.949,0.938,41.008,0.938L41.008,0.938z" /><path fill="#d61700" d="M78.159,25.45c0.784,1.833,1.438,3.736,1.947,5.696L36.787,80.062 l-21-66.474L78.159,25.45L78.159,25.45z" /><path fill="#d61700" d="M80.388,50.366C77.372,63.57,67.886,74.306,55.443,79.069L80.388,50.366L80.388,50.366z" /><path fill="#d61700" d="M21.163,76.523C8.896,69.589,0.612,56.431,0.612,41.333c0-6.387,1.484-12.427,4.124-17.796L21.163,76.523L21.163,76.523z" /></svg><span><i>Powered by</i><b>Datamart</b></span></a>' +
-    '    <div>' +
+    '    <div class="copyright">' +
     '      <p>Komito Analytics is subject to the terms and conditions of' +
     '        <a href="https://www.apache.org/licenses/LICENSE-2.0" rel="nofollow" title="Apache License">Apache License 2.0</a>' +
     '      </p>' +
@@ -29,34 +32,9 @@
     '      </span>' +
     '    </div>' +
     '  </div>' +
+    '</div>' +
     '</footer>';
   insertAdjacentHTMLContent(doc.currentScript, content);
-
-  /**
-   * Initializes Google Tag Manager.
-   * @private
-   */
-  function initGTM_() {
-    // if ('file:' !== location.protocol) {
-    //   var containerId = 'GTM-57BM5H';
-    //   win.dataLayer = win.dataLayer || [];
-    //   win.dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
-
-    //   loadScript('https://www.googletagmanager.com/gtm.js?id=' + containerId);
-
-    //   /*
-    //   var trackingId = 'UA-5065160-14';
-    //   loadScript('https://www.googletagmanager.com/gtag/js?id=' + trackingId);
-
-    //   win.dataLayer = win.dataLayer || [];
-    //   function gtag(){dataLayer.push(arguments)}
-    //   gtag('js', new Date);
-    //   gtag('config', trackingId);
-
-    //   loadScript('https://komito.net/komito.js');
-    //   */
-    // }
-  }
 
   /**
    * Replaces unsupported '.webp' with '.jpg' background image.
@@ -110,36 +88,6 @@
   }
 
   /**
-   * Initializes service worker.
-   * @private
-   */
-  function initServiceWorker_() {
-    if ('serviceWorker' in navigator) {
-      win.addEventListener('load', function() {
-        navigator.serviceWorker.register('/worker.js', {
-          'scope': '/'
-        }).then(function(registration) {
-          registration.addEventListener('updatefound', function() {
-            var newWorker = registration.installing;
-            newWorker.addEventListener('statechange', function() {
-              if ('installed' === newWorker.state) {
-                if (navigator.serviceWorker.controller) {
-                  // var toast = doc.body.appendChild(doc.createElement('DIV'));
-                  // toast.className = 'toast';
-                  // toast.innerHTML = 'A new version is available: <a href="./"' +
-                  //   'onclick="location.reload(true);return false">Refresh</a>';
-                }
-              }
-            });
-          });
-        }, function(error) {
-          // DEBUG && alert('Registration failed: ' + error);
-        });
-      });
-    }
-  }
-
-  /**
    * Fixes embedded gists container width.
    * @private
    */
@@ -158,7 +106,7 @@
    */
   function init_() {
     function ready() {
-      initGTM_();
+      // initGTM_();
       fixWebP_();
       initIntersectionObserver_();
     }
