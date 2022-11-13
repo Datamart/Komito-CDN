@@ -27,7 +27,7 @@ window.getNavMenu = function() {
     ['/demo/', 'Demo', 'See Komito Analytics in action!']
   ];
   var path = location.pathname;
-  var menu = '<ul class="menu" role="navigation" aria-label="Main menu" '+
+  var menu = '<ul class="menu" aria-label="Main menu" '+
              'itemscope itemtype="http://schema.org/SiteNavigationElement">';
   var isDev = 'file:' === location.protocol;
 
