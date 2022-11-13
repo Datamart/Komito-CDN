@@ -1,3 +1,9 @@
+window.loadScript = function(src) {
+  var script = document.body.appendChild(document.createElement('script'));
+  script.async = true;
+  script.src = src;
+};
+
 (function (win, doc) {
   /**
    * Initializes Google Tag Manager.
