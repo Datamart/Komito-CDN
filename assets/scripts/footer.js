@@ -147,7 +147,7 @@
     var width = screen.availWidth;
     var sheet = doc.styleSheets[1];
 
-    if (768 > width && sheet) {
+    if (768 > width && sheet && document.querySelector('.gist')) {
       sheet.insertRule('.gist{max-width: ' + (width - 32) + 'px}');
     }
   }
