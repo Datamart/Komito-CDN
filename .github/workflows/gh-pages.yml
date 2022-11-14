@@ -1,5 +1,5 @@
 
-name: deploy
+name: gh-pages-build-deploy
 
 on:
   push:
