@@ -1,4 +1,5 @@
-var fs = require("fs");
+const fs = require("fs");
+const { resolve } = require("path");
 
 globalThis.window = {};
 globalThis.document = {};
@@ -21,24 +22,27 @@ const buildSection = (filePath, regExp, scriptPath, callback) => {
 };
 
 const buildHeader = () => {
-  const regExp = /<script src="(\.+)?\/assets\/scripts\/header.js"><\/script>/gm;
-  const scriptPath = "../../assets/scripts/header.js";
-  const filePath = "../../index.html";
+  const regExp =
+    /<script src="(\.+)?\/assets\/scripts\/header.js"><\/script>/gm;
+  const scriptPath = resolve(__dirname + "/../../assets/scripts/header.js");
+  const filePath = resolve(__dirname + "/../../index.html");
   buildSection(filePath, regExp, scriptPath, buildFooter);
 };
 
 const buildFooter = () => {
-  const regExp = /<script src="(\.+)?\/assets\/scripts\/footer.js"(\s+async)?><\/script>/gm;
-  const scriptPath = "../../assets/scripts/footer.js";
-  const filePath = "../../index.html";
+  const regExp =
+    /<script src="(\.+)?\/assets\/scripts\/footer.js"(\s+async)?><\/script>/gm;
+  const scriptPath = resolve(__dirname + "/../../assets/scripts/footer.js");
+  const filePath = resolve(__dirname + "/../../index.html");
   buildSection(filePath, regExp, scriptPath, buildCTA);
 };
 
 const buildCTA = () => {
-  const regExp = /<script src="(\.+)?\/assets\/scripts\/cta-area.js"(\s+async)?><\/script>/gm;
-  const scriptPath = "../../assets/scripts/cta-area.js";
-  const filePath = "../../index.html";
+  const regExp =
+    /<script src="(\.+)?\/assets\/scripts\/cta-area.js"(\s+async)?><\/script>/gm;
+  const scriptPath = resolve(__dirname + "/../../assets/scripts/cta-area.js");
+  const filePath = resolve(__dirname + "/../../index.html");
   buildSection(filePath, regExp, scriptPath, buildCTA);
-}
+};
 
 buildHeader();
