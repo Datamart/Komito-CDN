@@ -1,0 +1,24 @@
+
+name: deploy
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    if: github.repository == 'Datamart/Komito-CDN'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+    - name: Checkout 🛎️
+      uses: actions/checkout@v3
+
+    - name: Build 🔧 
+      run: node ./.github/workflows/build.js
+
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@4.1.0
+      with:
+        branch: gh-pages
+        folder: .
