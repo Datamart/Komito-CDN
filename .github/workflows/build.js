@@ -7,42 +7,56 @@ globalThis.location = { pathname: "/", protocol: "https:" };
 
 globalThis.getNavMenu = () => globalThis.window.getNavMenu();
 
-const buildSection = (filePath, regExp, scriptPath, callback) => {
+const buildSection = (filePath, regExp, scriptPath) => {
+  const pathname = filePath.split("/").slice(-2, -1)[0];
+  globalThis.location.pathname =
+    "Komito-CDN" === pathname ? "/" : "/" + pathname + "/";
+
   globalThis.insertAdjacentHTMLContent = (_, content) => {
-    fs.readFile(filePath, "utf8", (err, data) => {
-      if (err) return console.error(err);
-      const result = data.replace(regExp, content.replace(/\s+/gm, " "));
-      fs.writeFile(filePath, result, "utf8", (err) => {
-        if (err) return console.error(err);
-        callback && callback();
-      });
-    });
+    const data = fs.readFileSync(filePath, "utf8");
+    const result = data.replace(regExp, content.replace(/\s+/gm, " "));
+    fs.writeFileSync(filePath, result, "utf8");
   };
   require(scriptPath);
+  delete require.cache[require.resolve(scriptPath)];
 };
 
-const buildHeader = () => {
-  const regExp =
-    /<script src="(\.+)?\/assets\/scripts\/header.js"><\/script>/gm;
-  const scriptPath = resolve(__dirname + "/../../assets/scripts/header.js");
-  const filePath = resolve(__dirname + "/../../index.html");
-  buildSection(filePath, regExp, scriptPath, buildFooter);
+const FILES = [
+  resolve(__dirname + "/../../index.html"),
+  resolve(__dirname + "/../../about/index.html"),
+  resolve(__dirname + "/../../demo/index.html"),
+  resolve(__dirname + "/../../integration/index.html"),
+  resolve(__dirname + "/../../services/index.html"),
+  resolve(__dirname + "/../../support/index.html"),
+  resolve(__dirname + "/../../404.html"),
+];
+
+const HEADER_JS = resolve(__dirname + "/../../assets/scripts/header.js");
+const HEADER_RE =
+  /<script src="[\/\.]+assets\/scripts\/header\.js"(\s+async)?><\/script>/gm;
+
+const FOOTER_JS = resolve(__dirname + "/../../assets/scripts/footer.js");
+const FOOTER_RE =
+  /<script src="[\/\.]+assets\/scripts\/footer\.js"(\s+async)?><\/script>/gm;
+
+const CTA_AREA_JS = resolve(__dirname + "/../../assets/scripts/cta-area.js");
+const CTA_AREA_RE =
+  /<script src="[\/\.]+assets\/scripts\/cta-area\.js"(\s+async)?><\/script>/gm;
+
+const buildHeader = (filePath) => {
+  buildSection(filePath, HEADER_RE, HEADER_JS);
 };
 
-const buildFooter = () => {
-  const regExp =
-    /<script src="(\.+)?\/assets\/scripts\/footer.js"(\s+async)?><\/script>/gm;
-  const scriptPath = resolve(__dirname + "/../../assets/scripts/footer.js");
-  const filePath = resolve(__dirname + "/../../index.html");
-  buildSection(filePath, regExp, scriptPath, buildCTA);
+const buildFooter = (filePath) => {
+  buildSection(filePath, FOOTER_RE, FOOTER_JS);
 };
 
-const buildCTA = () => {
-  const regExp =
-    /<script src="(\.+)?\/assets\/scripts\/cta-area.js"(\s+async)?><\/script>/gm;
-  const scriptPath = resolve(__dirname + "/../../assets/scripts/cta-area.js");
-  const filePath = resolve(__dirname + "/../../index.html");
-  buildSection(filePath, regExp, scriptPath, buildCTA);
+const buildCTA = (filePath) => {
+  buildSection(filePath, CTA_AREA_RE, CTA_AREA_JS);
 };
 
-buildHeader();
+FILES.forEach((filePath) => {
+  buildHeader(filePath);
+  buildFooter(filePath);
+  buildCTA(filePath);
+});
