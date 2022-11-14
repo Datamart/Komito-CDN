@@ -19,7 +19,6 @@ const CTA_AREA_RE =
 globalThis.window = {};
 globalThis.document = {};
 globalThis.location = { pathname: "/", protocol: "https:" };
-
 globalThis.getNavMenu = () => globalThis.window.getNavMenu();
 
 const buildSection = (filePath, regExp, scriptPath) => {
@@ -37,24 +36,12 @@ const buildSection = (filePath, regExp, scriptPath) => {
   delete require.cache[require.resolve(scriptPath)];
 };
 
-const buildHeader = (filePath) => {
-  buildSection(filePath, HEADER_RE, HEADER_JS);
-};
-
-const buildFooter = (filePath) => {
-  buildSection(filePath, FOOTER_RE, FOOTER_JS);
-};
-
-const buildCTA = (filePath) => {
-  buildSection(filePath, CTA_AREA_RE, CTA_AREA_JS);
-};
-
 const getFiles = (dirPath) => {
   let result = [];
   const files = fs.readdirSync(dirPath);
-  for (var i = 0; i < files.length; i++) {
-    var filename = path.join(dirPath, files[i]);
-    var stat = fs.lstatSync(filename);
+  for (let i = 0; i < files.length; i++) {
+    const filename = path.join(dirPath, files[i]);
+    const stat = fs.lstatSync(filename);
     if (stat.isDirectory()) {
       getFiles(filename);
       result = result.concat(getFiles(filename));
@@ -67,7 +54,7 @@ const getFiles = (dirPath) => {
 
 const files = getFiles(ROOT);
 files.forEach((filePath) => {
-  buildHeader(filePath);
-  buildFooter(filePath);
-  buildCTA(filePath);
+  buildSection(filePath, HEADER_RE, HEADER_JS);
+  buildSection(filePath, FOOTER_RE, FOOTER_JS);
+  buildSection(filePath, CTA_AREA_RE, CTA_AREA_JS);
 });
