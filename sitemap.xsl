@@ -50,6 +50,7 @@
         <script src="./assets/scripts/sidebar.js" async="async"></script>
       </div>
       <script src="./assets/scripts/footer.js" async="async"></script>
+      <script src="./assets/scripts/helper.js" async="async"></script>
     </body>
     </html>
   </xsl:template>
