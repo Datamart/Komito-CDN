@@ -12,17 +12,24 @@ const FOOTER_JS = `${ROOT}/assets/scripts/footer.js`;
 const FOOTER_RE =
   /<script src="[\/\.]+assets\/scripts\/footer\.js"(\s+async)?><\/script>/gm;
 
+const SIDEBAR_JS = `${ROOT}/assets/scripts/sidebar.js`;
+const SIDEBAR_RE =
+  /<script src="[\/\.]+assets\/scripts\/sidebar\.js"(\s+async)?><\/script>/gm;
+
 const CTA_AREA_JS = `${ROOT}/assets/scripts/cta-area.js`;
 const CTA_AREA_RE =
   /<script src="[\/\.]+assets\/scripts\/cta-area\.js"(\s+async)?><\/script>/gm;
 
 globalThis.window = {};
-globalThis.document = {};
-globalThis.location = { pathname: "/", protocol: "https:" };
+globalThis.document = { getElementById: () => null };
+globalThis.location = { pathname: "/", protocol: "https:", href: "" };
 globalThis.getNavMenu = () => globalThis.window.getNavMenu();
 
 const buildSection = (filePath, regExp, scriptPath) => {
   globalThis.insertAdjacentHTMLContent = (_, content) => {
+    if (regExp === SIDEBAR_RE) {
+      content = content.replace(/<\/?aside>/gm, '');
+    }
     const data = fs.readFileSync(filePath, "utf8");
     const result = data.replace(regExp, content.replace(/\s+/gm, " "));
     fs.writeFileSync(filePath, result, "utf8");
@@ -56,5 +63,6 @@ files.forEach((filePath) => {
 
   buildSection(filePath, HEADER_RE, HEADER_JS);
   buildSection(filePath, FOOTER_RE, FOOTER_JS);
+  // buildSection(filePath, SIDEBAR_RE, SIDEBAR_JS);
   buildSection(filePath, CTA_AREA_RE, CTA_AREA_JS);
 });
