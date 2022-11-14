@@ -22,10 +22,6 @@ globalThis.location = { pathname: "/", protocol: "https:" };
 globalThis.getNavMenu = () => globalThis.window.getNavMenu();
 
 const buildSection = (filePath, regExp, scriptPath) => {
-  const pathname = filePath.split("/").slice(-2, -1)[0];
-  globalThis.location.pathname =
-    "Komito-CDN" === pathname ? "/" : `/${pathname}/`;
-
   globalThis.insertAdjacentHTMLContent = (_, content) => {
     const data = fs.readFileSync(filePath, "utf8");
     const result = data.replace(regExp, content.replace(/\s+/gm, " "));
@@ -54,6 +50,10 @@ const getFiles = (dirPath) => {
 
 const files = getFiles(ROOT);
 files.forEach((filePath) => {
+  const pathname = filePath.split("/").slice(-2, -1)[0];
+  globalThis.location.pathname =
+    "Komito-CDN" === pathname ? "/" : `/${pathname}/`;
+
   buildSection(filePath, HEADER_RE, HEADER_JS);
   buildSection(filePath, FOOTER_RE, FOOTER_JS);
   buildSection(filePath, CTA_AREA_RE, CTA_AREA_JS);
