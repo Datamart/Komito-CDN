@@ -196,7 +196,7 @@ header .logo span, h1, h2, h3 {
 .menu a {
   color: #fff;
   display: inline-block;
-  margin: 1em 0;
+  margin: 1em .25em;
   padding: 1em 1em .8em;
   text-transform: uppercase;
 }
@@ -401,7 +401,7 @@ article ul, article p {line-height: 1.5}
   #nav ul {opacity: 1; margin-top: -1em; transform: none; transition: none;}
   #nav li {display: inline-block;}
   #nav li:last-child a {padding-left: 2.8em;}
-  .menu .active {margin: 1em;}
+  .menu .active {margin: 1em 0;}
   footer {text-align: left;}
   footer ul {display: block; float: right;}
   footer .social {float: left;margin-left: 2em;}
