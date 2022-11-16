@@ -305,8 +305,7 @@ aside .card a {
   height: 10em
 }*/
 aside .card img {
-  max-height: 12em;
-  min-height: 10em;
+  aspect-ratio: 16/9;
   width: 100%;
 }
 
