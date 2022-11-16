@@ -46,7 +46,6 @@ const getFiles = (dirPath) => {
     const filename = path.join(dirPath, files[i]);
     const stat = fs.lstatSync(filename);
     if (stat.isDirectory()) {
-      getFiles(filename);
       result = result.concat(getFiles(filename));
     } else if (filename.endsWith(".html")) {
       result.push(filename);
