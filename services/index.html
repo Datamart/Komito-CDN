@@ -53,15 +53,17 @@
 .services .cell{display:flex;flex-direction:column;margin-bottom:3em}
 .cell img, .cell svg{height:3em}
 .justify{text-align:justify}
-[itemprop="offers"]{margin-top:auto;padding-top:2em}
-.services article ul{text-align:left}
-.services .cell button{border:1px solid transparent;border-radius:3px;color:#fff;cursor:pointer;margin-top:2em;opacity:.85;padding:.75em}
+.services article ul{margin-bottom:2em;text-align:left}
+.services .cell button{border:1px solid transparent;border-radius:3px;color:#fff;cursor:pointer;margin-top:auto;opacity:.85;padding:.75em}
 .services .cell button:active,
 .services .cell button:focus,
 .services .cell button:hover{opacity:1;box-shadow:0 1px 2px 0 #ddd, 0 1px 3px 1px #ddd}
 .services .cell:nth-child(1) button{background-color:#f70}
+.services .cell:nth-child(1) .price{color:#d60}
 .services .cell:nth-child(2) button{background-color:#05d}
+.services .cell:nth-child(2) .price{color:#05d}
 .services .cell:nth-child(3) button{background-color:#d10}
+.services .cell:nth-child(3) .price{color:#d10}
 #dialog{width:25em;max-width:85%}
 #dialog::backdrop{background-color:rgba(0,0,0,.65)}
 #dialog label{align-items:center;display:flex;margin:1em 0}
@@ -70,6 +72,14 @@
 #dialog label input,#dialog button{padding:.5em}
 #dialog .buttons{text-align:right}
 #dialog iframe{width:1px;height:1px;visibility:hidden;position:absolute}
+.services .price{font-weight:bold;margin-top:.5em;order:1;text-align:right;width:100%}
+.google-looker-logo .text {
+  fill: #757575;
+  font-family: "Google Sans","Product Sans",Roboto,sans-serif;
+  font-size: 610%;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
 </style>
 </head>
 <body class="services">
@@ -107,7 +117,7 @@
             <li><strong>Demographics</strong>: What are the age groups and genders of visitors?</li>
             <li><strong>Engagement</strong>: What is the visit duration and how many pages did they visit?</li>
           </ul>
-          <div itemprop="offers" itemtype="https://schema.org/Offer" itemscope>
+          <div class="price" itemprop="offers" itemtype="https://schema.org/Offer" itemscope>
             Starting from
             <span itemprop="price" content="500.00">$500.00</span>
             <meta itemprop="priceCurrency" content="USD">
@@ -135,7 +145,7 @@
             <li>Scroll depth tracking;</li>
             <li>User preferred color scheme.</li>
           </ul>
-          <div itemprop="offers" itemtype="https://schema.org/Offer" itemscope>
+          <div class="price" itemprop="offers" itemtype="https://schema.org/Offer" itemscope>
             Starting from
             <span itemprop="price" content="1000.00">$1,000.00</span>
             <meta itemprop="priceCurrency" content="USD">
@@ -145,18 +155,7 @@
         <div class="cell justify" itemscope itemtype="https://schema.org/Service">
           <link itemprop="logo" content="../assets/images/services/google-looker-logo.svg">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1150.56 192"
-               aria-label="Google Looker Studio">
-            <defs>
-              <style>
-              .text {
-                fill: #757575;
-                font-family: "Google Sans","Product Sans",Roboto,sans-serif;
-                font-size: 610%;
-                font-weight: 400;
-                letter-spacing: 1px;
-              }
-              </style>
-            </defs>
+               aria-label="Google Looker Studio" class="google-looker-logo">
             <path fill="#AECBFA" d="M58.49,0A16.6,16.6,0,0,0,44.72,25.86l7.09-7.08a6.88,6.88,0,0,1-.35-2.19,7,7,0,1,1,7,7,6.87,6.87,0,0,1-2.18-.35l-7.08,7.08A16.59,16.59,0,1,0,58.49,0Z"/>
             <path fill="#5E97F6" d="M51.89,48.35a25.79,25.79,0,0,0-5.17-15.54L37.52,42A13.19,13.19,0,0,1,35,57.92l5,12.22A25.93,25.93,0,0,0,51.89,48.35Z"/>
             <path fill="#5E97F6" d="M26.18,61.54h-.24a13.2,13.2,0,1,1,7.25-24.23l9.11-9.11A25.94,25.94,0,1,0,25.94,74.29a26.53,26.53,0,0,0,5.24-.52Z"/>
@@ -184,7 +183,7 @@
             </li>
             <li>Bespoke designs and branding data viazualization.</li>
           </ul>
-          <div itemprop="offers" itemtype="https://schema.org/Offer" itemscope>
+          <div class="price" itemprop="offers" itemtype="https://schema.org/Offer" itemscope>
             Starting from
             <span itemprop="price" content="2000.00">$2,000.00</span>
             <meta itemprop="priceCurrency" content="USD">

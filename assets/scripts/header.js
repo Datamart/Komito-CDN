@@ -24,7 +24,8 @@ window.getNavMenu = function() {
   var links = [
     ['/', 'Overview', 'Komito Analytics overview page.'],
     ['/integration/', 'Integration', 'Step-by-step Komito Analytics integration instructions.'],
-    ['/demo/', 'Demo', 'See Komito Analytics in action!']
+    // ['/demo/', 'Demo', 'See Komito Analytics in action!']
+    ['/services/', 'Services', 'Services provided by the Komito Analytics team.']
   ];
   var path = location.pathname;
   var menu = '<ul class="menu" aria-label="Main menu" ' +
