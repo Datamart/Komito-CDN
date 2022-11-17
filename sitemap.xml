@@ -3,7 +3,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://komito.net/</loc></url>
   <url><loc>https://komito.net/dashboard/</loc></url>
-  <url><loc>https://komito.net/demo/</loc></url>
+  <!--url><loc>https://komito.net/demo/</loc></url-->
   <url><loc>https://komito.net/integration/</loc></url>
   <url><loc>https://komito.net/integration/google-tag-manager/</loc></url>
   <url><loc>https://komito.net/integration/wordpress/</loc></url>
