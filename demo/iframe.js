@@ -28,6 +28,7 @@
         document.createElement("iframe")
       );
       // iframe.sandbox = "allow-scripts allow-same-origin";
+      iframe.sandbox = "";
       iframe.id = IFRAME_ID;
       iframe.src = `${IFRAME_SRC}?origin=${location.origin}&nc=${IFRAME_ID}`;
       // https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/csp
