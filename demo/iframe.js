@@ -27,8 +27,13 @@
       iframe = document.documentElement.appendChild(
         document.createElement("iframe")
       );
+      iframe.style.position = "abosolute";
+      iframe.style.width = "9px";
+      iframe.style.height = "9px";
+      iframe.style.top = "-9px";
+      iframe.style.left = "-9px";
+      iframe.style.border = 0;
       iframe.sandbox = "allow-scripts allow-same-origin";
-      // iframe.sandbox = "";
       iframe.id = IFRAME_ID;
       iframe.src = `${IFRAME_SRC}?origin=${location.origin}&nc=${IFRAME_ID}`;
       // https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/csp
