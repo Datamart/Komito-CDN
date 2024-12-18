@@ -21,11 +21,12 @@
             FOO_ACTION: "bar",
           };
 
-          const getCookie = (/** @type {string} */ name) =>
-            document.cookie
+          const getCookie = (/** @type {string} */ name) => {
+            const result = document.cookie
               .split("; ")
-              .find((cookie) => cookie.startsWith(name + "="))
-              .split("=")[1];
+              .find((cookie) => cookie.startsWith(name + "="));
+            return (result || "").split("=")[1];
+          };
 
           const setCookie = (
             /** @type {string} */ name,

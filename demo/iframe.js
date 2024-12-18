@@ -29,7 +29,9 @@
       );
       iframe.sandbox = "allow-scripts allow-same-origin";
       iframe.id = IFRAME_ID;
-      iframe.src = `${IFRAME_SRC}?origin=${location.origin}`;
+      iframe.src = `${IFRAME_SRC}?origin=${location.origin}&nc=${IFRAME_ID}`;
+      // https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/csp
+      // iframe.csp = `frame-src 'self' ${IFRAME_DOMAIN}`;
     }
     return iframe;
   };
