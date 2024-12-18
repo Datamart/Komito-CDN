@@ -28,9 +28,9 @@
             const cookie = (pair || "").split("=")[1];
             if (cookie) {
               try {
-                return JSON.parse(atob(decodeURIComponent(visitorCookie)));
+                return JSON.parse(atob(decodeURIComponent(cookie)));
               } catch (ex) {
-                console.error("[IFRAME] Coult not parse cookie:", cookie);
+                console.error("[IFRAME] Coult not parse cookie:", cookie, ex);
               }
             }
             return null;
