@@ -24,7 +24,7 @@
   const getCookieIframe = () => {
     let iframe = document.getElementById(IFRAME_ID);
     if (!iframe) {
-      updateCSP();
+      // updateCSP();
       iframe = document.documentElement.appendChild(
         document.createElement("iframe")
       );
