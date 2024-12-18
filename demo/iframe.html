@@ -65,7 +65,7 @@
 
           window.addEventListener("message", (event) => {
             console.log("[IFRAME] message:event:", event);
-            if (event.origin === parentOrigin && event.data) {
+            if (event.data) {
               const action = event.data.action;
               const origin = event.origin;
               const source = event.source;
