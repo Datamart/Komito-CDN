@@ -60,11 +60,11 @@
       if (action === actions.HANDSHAKE_ACTION) {
         console.log("[PARENT] HANDSHAKE_ACTION");
         iframe.contentWindow.postMessage(
-          { action: actions.INCREMENT_VISITS_ACTION },
+          { action: actions.INCREMENT_VIEWS_ACTION },
           IFRAME_ORIGIN
         );
-      } else if (action === actions.INCREMENT_VISITS_ACTION) {
-        console.log("[PARENT] INCREMENT_VISITS_ACTION");
+      } else if (action === actions.INCREMENT_VIEWS_ACTION) {
+        console.log("[PARENT] INCREMENT_VIEWS_ACTION");
       } else {
         console.error("[PARENT] Unknowon action:", action);
       }
