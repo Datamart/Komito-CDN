@@ -10,9 +10,7 @@
       document.querySelector('meta[http-equiv="content-security-policy"]');
 
     if (!meta) {
-      meta = document.documentElement.appendChild(
-        document.createElement("meta")
-      );
+      meta = document.head.appendChild(document.createElement("meta"));
       meta.setAttribute("http-equiv", "content-security-policy");
     }
 
