@@ -37,28 +37,28 @@
   };
 
   window.addEventListener("load", (event) => {
-    console.log("load:event:", event);
+    console.log("[PARENT] load:event:", event);
     const iframe = getCookieIframe();
     iframe.contentWindow.postMessage({ action: "handshake" }, "*");
   });
 
   window.addEventListener("message", (event) => {
-    console.log("message:event:", event);
+    console.log("[PARENT] message:event:", event);
 
     const actions = event.data && event.data.actions;
     if (actions) {
       const iframe = getCookieIframe();
       const action = event.data && event.data.action;
       if (action === actions.HANDSHAKE_ACTION) {
-        console.log("HANDSHAKE_ACTION");
+        console.log("[PARENT] HANDSHAKE_ACTION");
         iframe.contentWindow.postMessage(
           { action: actions.INCREMENT_VISITS_ACTION },
           "*"
         );
       } else if (action === actions.INCREMENT_VISITS_ACTION) {
-        console.log("INCREMENT_VISITS_ACTION");
+        console.log("[PARENT] INCREMENT_VISITS_ACTION");
       } else {
-        console.error("Unknowon action:", action);
+        console.error("[PARENT] Unknowon action:", action);
       }
     }
   });
