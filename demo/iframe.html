@@ -31,13 +31,17 @@
           const setCookie = (
             /** @type {string} */ name,
             /** @type {string} */ value
-          ) =>
-            (document.cookie = [
+          ) => {
+            const cookie = [
               `${encodeURIComponent(name)}=${encodeURIComponent(value)}`,
               `expires=${new Date(Date.now() + 86400e3 * 365).toUTCString()}`,
               // `domain=${document.domain}`,
-              // "path=/; secure",
-            ].join("; "));
+              "path=/; secure",
+            ].join("; ");
+            console.debug("[IFRAME] before setCookie:", cookie);
+            document.cookie = cookie;
+            console.debug("[IFRAME] after setCookie:", document.cookie);
+          };
 
           const getUser = () => {
             const visits = getCookie(VISITS_COUNT_KEY) || 1;
