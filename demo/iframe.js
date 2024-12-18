@@ -53,7 +53,8 @@
     console.log("[PARENT] message:event:", event);
 
     const actions = event.data && event.data.actions;
-    if (actions) {
+    const origin = event.origin;
+    if (actions && origin === IFRAME_ORIGIN) {
       const iframe = getCookieIframe();
       const action = event.data && event.data.action;
       if (action === actions.HANDSHAKE_ACTION) {
