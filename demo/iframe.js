@@ -1,3 +1,5 @@
+// Copy of https://komito.net/demo/iframe.js
+
 (() => {
   const IFRAME_DOMAIN = "komito.net";
   const IFRAME_ORIGIN = `https://${IFRAME_DOMAIN}`;
@@ -23,9 +25,8 @@
 
   const initIframe = () => {
     // updateCSP();
-    const iframe = document.documentElement.appendChild(
-      document.createElement("iframe")
-    );
+    const body = document.body || document.documentElement;
+    const iframe = body.appendChild(document.createElement("iframe"));
     iframe.style.position = "absolute";
     iframe.style.width = "9px";
     iframe.style.height = "9px";
