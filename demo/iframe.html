@@ -36,6 +36,7 @@
               `${encodeURIComponent(name)}=${encodeURIComponent(value)}`,
               `expires=${new Date(Date.now() + 86400e3 * 365).toUTCString()}`,
               // `domain=${document.domain}`,
+              "SameSite=None",
               "path=/; secure",
             ].join("; ");
             console.debug("[IFRAME] before setCookie:", cookie);
