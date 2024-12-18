@@ -16,7 +16,7 @@
       meta.setAttribute("http-equiv", "content-security-policy");
     }
 
-    const content = meta.getAttribute("content") || "";
+    let content = meta.getAttribute("content") || "";
     // TODO: update the "frame-src" policy directive if exisits:
     content = `frame-src 'self' ${IFRAME_DOMAIN}; ${content}`;
     meta.setAttribute("content", content);
