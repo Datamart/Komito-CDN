@@ -77,7 +77,7 @@
                 source.postMessage({ user, action, actions }, origin);
               } else if (action === actions.INCREMENT_VISITS_ACTION) {
                 const visits = +getCookie(VISITS_COUNT_KEY) || 1;
-                setCookie(VISITS_COUNT_KEY, ++visits);
+                setCookie(VISITS_COUNT_KEY, 1 + visits);
                 source.postMessage({ user, action, actions }, origin);
               }
             }
