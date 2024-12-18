@@ -46,7 +46,7 @@
   window.addEventListener("load", (event) => {
     console.log("[PARENT] load:event:", event);
     const iframe = getCookieIframe();
-    iframe.contentWindow.postMessage({ action: "handshake" }, IFRAME_ORIGIN);
+    iframe.contentWindow.postMessage({ action: "handshake" }, location.origin);
   });
 
   window.addEventListener("message", (event) => {
@@ -61,7 +61,7 @@
         console.log("[PARENT] HANDSHAKE_ACTION");
         iframe.contentWindow.postMessage(
           { action: actions.INCREMENT_VIEWS_ACTION },
-          IFRAME_ORIGIN
+          location.origin
         );
       } else if (action === actions.INCREMENT_VIEWS_ACTION) {
         console.log("[PARENT] INCREMENT_VIEWS_ACTION");
