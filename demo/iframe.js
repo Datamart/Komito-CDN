@@ -1,6 +1,7 @@
 (() => {
   const IFRAME_DOMAIN = "komito.net";
-  const IFRAME_SRC = `https://${IFRAME_DOMAIN}/demo/iframe.html`;
+  const IFRAME_ORIGIN = `https://${IFRAME_DOMAIN}`;
+  const IFRAME_SOURCE = `${IFRAME_ORIGIN}/demo/iframe.html`;
   const RANDOM_NUMBER = (+new Date()).toString(36).slice(-5);
   const IFRAME_ID = `iframe-${RANDOM_NUMBER}`;
 
@@ -35,7 +36,7 @@
       iframe.style.border = 0;
       iframe.sandbox = "allow-scripts allow-same-origin";
       iframe.id = IFRAME_ID;
-      iframe.src = `${IFRAME_SRC}?origin=${location.origin}&nc=${IFRAME_ID}`;
+      iframe.src = `${IFRAME_SOURCE}?origin=${location.origin}&nc=${IFRAME_ID}`;
       // https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/csp
       // iframe.csp = `frame-src 'self' ${IFRAME_DOMAIN}`;
     }
@@ -45,7 +46,7 @@
   window.addEventListener("load", (event) => {
     console.log("[PARENT] load:event:", event);
     const iframe = getCookieIframe();
-    iframe.contentWindow.postMessage({ action: "handshake" }, "*");
+    iframe.contentWindow.postMessage({ action: "handshake" }, IFRAME_ORIGIN);
   });
 
   window.addEventListener("message", (event) => {
@@ -59,7 +60,7 @@
         console.log("[PARENT] HANDSHAKE_ACTION");
         iframe.contentWindow.postMessage(
           { action: actions.INCREMENT_VISITS_ACTION },
-          "*"
+          IFRAME_ORIGIN
         );
       } else if (action === actions.INCREMENT_VISITS_ACTION) {
         console.log("[PARENT] INCREMENT_VISITS_ACTION");
