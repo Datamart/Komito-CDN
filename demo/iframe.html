@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="robots" content="noindex,follow" />
+    <meta charset="utf-8" />
+    <!--
+    An iframe analytics handler hosted on a shared domain:
+    e.g. https://shared-domain.com/iframe.html?origin=https://example.com
+    -->
+    <script>
+      (() => {
+        if (self !== parent) {
+          const VISITOR_KEY = "_vstr";
+
+          const actions = {
+            HANDSHAKE_ACTION: "handshake",
+            GET_VISITOR_ACTION: "getVisitor",
+            INCREMENT_VIEWS_ACTION: "incrementViews",
+            BLA_BLA_BLA_ACTION: "bla",
+            FOO_ACTION: "bar",
+          };
+
+          const getCookie = (/** @type {string} */ name) => {
+            const pair = document.cookie
+              .split("; ")
+              .find((cookie) => cookie.startsWith(name + "="));
+
+            const cookie = (pair || "").split("=")[1];
+            if (cookie) {
+              try {
+                return JSON.parse(atob(decodeURIComponent(cookie)));
+              } catch (ex) {
+                console.error("[IFRAME] Coult not parse cookie:", cookie, ex);
+              }
+            }
+            return null;
+          };
+
+          const setCookie = (
+            /** @type {string} */ name,
+            /** @type {Object} */ value
+          ) => {
+            const encoded = encodeURIComponent(btoa(JSON.stringify(value)));
+            const cookie = [
+              `${encodeURIComponent(name)}=${encoded}`,
+              `expires=${new Date(Date.now() + 86400e3 * 365).toUTCString()}`,
+              `domain=${document.domain}`,
+              "path=/; samesite=none; secure",
+            ].join("; ");
+            document.cookie = cookie;
+            console.debug("[IFRAME] setCookie:", document.cookie);
+          };
+
+          const getVisitor = () => {
+            let visitor = getCookie(VISITOR_KEY);
+            if (!visitor) {
+              visitor = {
+                id: window.crypto.getRandomValues(new Uint32Array(1))[0],
+                views: 0,
+              };
+              setCookie(VISITOR_KEY, visitor);
+            }
+            return visitor;
+          };
+
+          window.addEventListener("load", (event) => {
+            console.log("[IFRAME] load:event:", event);
+            const url = new URL(document.referrer || location.href);
+            const origin = document.referrer
+              ? url.origin
+              : url.searchParams.get("origin");
+            if (origin) {
+              const action = actions.HANDSHAKE_ACTION;
+              const source = window.parent;
+              const visitor = getVisitor();
+              source.postMessage({ visitor, action, actions }, origin);
+            }
+          });
+
+          window.addEventListener("message", (event) => {
+            console.log("[IFRAME] message:event:", event);
+            if (event.data) {
+              const action = event.data.action;
+              const origin = event.origin;
+              const source = event.source;
+              const visitor = getVisitor();
+              if (
+                action === actions.HANDSHAKE_ACTION ||
+                action === actions.GET_VISITOR_ACTION
+              ) {
+                source.postMessage({ visitor, action, actions }, origin);
+              } else if (action === actions.INCREMENT_VIEWS_ACTION) {
+                visitor.views += 1;
+                setCookie(VISITOR_KEY, visitor);
+                source.postMessage({ visitor, action, actions }, origin);
+              }
+            }
+          });
+        }
+      })();
+    </script>
+  </head>
+</html>
