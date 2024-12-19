@@ -25,12 +25,12 @@
               .split("; ")
               .find((cookie) => cookie.startsWith(name + "="));
 
-            const cookie = (pair || "").split("=")[1];
-            if (cookie) {
+            const value = (pair || "").split("=")[1];
+            if (value) {
               try {
-                return JSON.parse(atob(decodeURIComponent(cookie)));
+                return JSON.parse(atob(decodeURIComponent(value)));
               } catch (ex) {
-                console.error("[IFRAME] Coult not parse cookie:", cookie, ex);
+                console.error("[IFRAME] Could not parse cookie:", value, ex);
               }
             }
             return null;
